@@ -1442,7 +1442,7 @@
     </footer>
 
     <script>
-        // ============================================
+              // ============================================
         // المنتجات
         // ============================================
         const products = [
@@ -1457,8 +1457,8 @@
                     "1757028183_IMG_20250830_122844_404 (1).jpg",
                 ],
                 colors: [
-                    { name: "أخضر", class: "green" },
-                    { name: "أسود", class: "black" }
+                    { name: "أخضر", class: "green", inStock: true },
+                    { name: "أسود", class: "black", inStock: true }
                 ],
                 sizes: ["m", "l", "xl"],
                 inStock: true
@@ -1494,28 +1494,28 @@
                     "1764099750_IMG_0358.jpeg"
                 ],
                 colors: [
-                    { name: "أسود", class: "black" },
-                    { name: "بني", class: "brown" },
-                    { name: "أحمر", class: "red" }
+                    { name: "أسود", class: "black", inStock: false },
+                    { name: "بني", class: "brown", inStock: false },
+                    { name: "أحمر", class: "red", inStock: true }
                 ],
                 sizes: ["m", "l", "xl", "xxl"],
                 inStock: true
             },
             {
                 id: 4,
-                name: "JACKET NIKE DOUBLE FACE",
+                name: "JACKETE NIKE DOUBLE FACE",
                 price: "260",
                 originalPrice: "350",
                 description: "Dodone nike أصلية بتصميم عصري ومريح - جودة عالية وخامة ممتازة",
                 images: [
-                    "WhatsApp Image 2026-03-13 at 20.41.11.jpeg",
+                     "WhatsApp Image 2026-03-13 at 20.41.11.jpeg",
                     "WhatsApp Image 2026-03-03 at 20.41.11.jpeg"
                 ],
                 colors: [
-                    { name: "أسود", class: "black" }
+                    { name: "أسود", class: "black", inStock: true }
                 ],
                 sizes: ["m", "l", "xl"],
-                inStock: true  // تم تغييرها إلى true
+                inStock: true
             },
             {
                 id: 5,
@@ -1533,13 +1533,13 @@
                     "1750592984_IMG_7345.jpeg"
                 ],
                 colors: [
-                    { name: "Bleu clair", class: "bleu-clair" },
-                    { name: "Bleu foncé", class: "bleu-fonce" },
-                    { name: "Blanc", class: "white" },
-                    { name: "Marron", class: "marron" },
-                    { name: "Noir", class: "black" },
-                    { name: "Marron clair", class: "marron-clair" },
-                    { name: "Argent", class: "argent" }
+                    { name: "Bleu clair", class: "bleu-clair", inStock: true },
+                    { name: "Bleu foncé", class: "bleu-fonce", inStock: true },
+                    { name: "Blanc", class: "white", inStock: true },
+                    { name: "Marron", class: "marron", inStock: true },
+                    { name: "Noir", class: "black", inStock: true },
+                    { name: "Marron clair", class: "marron-clair", inStock: true },
+                    { name: "Argent", class: "argent", inStock: true }
                 ],
                 sizes: ["m", "l", "xl", "xxl"],
                 inStock: true
@@ -1555,8 +1555,8 @@
                     "Untitled design (32).png"
                 ],
                 colors: [
-                    { name: "Vert", class: "vert" },
-                    { name: "Noir", class: "black" }
+                    { name: "Vert", class: "vert", inStock: true },
+                    { name: "Noir", class: "black", inStock: true }
                 ],
                 sizes: ["m", "l", "xl"],
                 inStock: true
@@ -1590,9 +1590,9 @@
                     "Untitled design (37).png"
                 ],
                 colors: [
-                    { name: "Argent", class: "argent" },
-                    { name: "Noir", class: "black" },
-                    { name: "Marron clair", class: "marron-clair" }
+                    { name: "Argent", class: "argent", inStock: true },
+                    { name: "Noir", class: "black", inStock: false },
+                    { name: "Marron clair", class: "marron-clair", inStock: false }
                 ],
                 sizes: ["m", "l", "xl", "xxl"],
                 inStock: true
@@ -1609,9 +1609,9 @@
                     "Untitled design (30).png"
                 ],
                 colors: [
-                    { name: "Noir", class: "black" },
-                    { name: "Marron clair", class: "marron-clair" },
-                    { name: "Blanc", class: "white" }
+                    { name: "Noir", class: "black", inStock: true },
+                    { name: "Marron clair", class: "marron-clair", inStock: true },
+                    { name: "Blanc", class: "white", inStock: true }
                 ],
                 sizes: ["m", "l", "xl", "xxl"],
                 inStock: true
@@ -1634,7 +1634,6 @@
                 inStock: true
             }
         ];
-
         // ============================================
         // متغيرات عامة
         // ============================================
@@ -2381,5 +2380,6 @@
     </script>
 </body>
 </html>
+
 
 
