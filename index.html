@@ -1723,18 +1723,17 @@
         let isDragging = false;
         let startX = 0;
         let currentX = 0;
-        let slideWidth = 0;
 
         // تهيئة معرض الصور
         function initImageSlider() {
             imageSlider = document.getElementById('imageSlider');
             if (!imageSlider) return;
             
-            // حساب عرض الشريحة
-            slideWidth = imageSlider.clientWidth;
+            // إعادة تعيين المؤشر الحالي
+            currentImageIndex = 0;
             
             // ضبط موضع البداية
-            imageSlider.scrollLeft = currentImageIndex * slideWidth;
+            imageSlider.scrollLeft = 0;
             
             // أحداث الماوس للسحب (للكمبيوتر)
             imageSlider.addEventListener('mousedown', startDrag);
@@ -1779,6 +1778,7 @@
             
             // تحديد أقرب صورة بعد السحب
             setTimeout(() => {
+                const slideWidth = imageSlider.clientWidth;
                 const newIndex = Math.round(imageSlider.scrollLeft / slideWidth);
                 if (newIndex !== currentImageIndex && newIndex >= 0 && newIndex < currentProduct.images.length) {
                     currentImageIndex = newIndex;
@@ -1813,6 +1813,7 @@
             
             // تحديد أقرب صورة بعد السحب
             setTimeout(() => {
+                const slideWidth = imageSlider.clientWidth;
                 const newIndex = Math.round(imageSlider.scrollLeft / slideWidth);
                 if (newIndex !== currentImageIndex && newIndex >= 0 && newIndex < currentProduct.images.length) {
                     currentImageIndex = newIndex;
@@ -1826,22 +1827,28 @@
             if (!imageSlider) {
                 imageSlider = document.getElementById('imageSlider');
                 if (!imageSlider) return;
-                slideWidth = imageSlider.clientWidth;
             }
             
+            if (!currentProduct) return;
+            
+            const slideWidth = imageSlider.clientWidth;
             let newIndex = currentImageIndex + direction;
             
+            // التأكد من عدم تجاوز الحدود
             if (newIndex < 0) newIndex = 0;
             if (newIndex >= currentProduct.images.length) newIndex = currentProduct.images.length - 1;
+            
+            // تحديث المؤشر الحالي
+            currentImageIndex = newIndex;
             
             // تمرير سلس إلى الصورة المطلوبة
             imageSlider.style.scrollBehavior = 'smooth';
             imageSlider.scrollTo({
-                left: newIndex * slideWidth,
+                left: currentImageIndex * slideWidth,
                 behavior: 'smooth'
             });
             
-            currentImageIndex = newIndex;
+            // تحديث الصورة المصغرة النشطة
             updateActiveThumbnail(currentImageIndex);
         }
 
@@ -1850,17 +1857,27 @@
             if (!imageSlider) {
                 imageSlider = document.getElementById('imageSlider');
                 if (!imageSlider) return;
-                slideWidth = imageSlider.clientWidth;
             }
+            
+            if (!currentProduct) return;
+            
+            // التأكد من أن الرقم المطلوب ضمن الحدود
+            if (index < 0) index = 0;
+            if (index >= currentProduct.images.length) index = currentProduct.images.length - 1;
+            
+            // تحديث المؤشر الحالي
+            currentImageIndex = index;
+            
+            const slideWidth = imageSlider.clientWidth;
             
             // تمرير سلس إلى الصورة المطلوبة
             imageSlider.style.scrollBehavior = 'smooth';
             imageSlider.scrollTo({
-                left: index * slideWidth,
+                left: currentImageIndex * slideWidth,
                 behavior: 'smooth'
             });
             
-            currentImageIndex = index;
+            // تحديث الصورة المصغرة النشطة
             updateActiveThumbnail(currentImageIndex);
         }
 
