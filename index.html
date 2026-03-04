@@ -726,7 +726,6 @@
             text-shadow: 0 0 5px white;
         }
 
-        /* الألوان الأساسية */
         .color-option.green { background: #4CAF50; }
         .color-option.black { background: #000000; }
         .color-option.white { background: #FFFFFF; border: 1px solid #ddd; }
@@ -738,8 +737,6 @@
         .color-option.marron-clair { background: #D2B48C; }
         .color-option.argent { background: #C0C0C0; }
         .color-option.vert { background: #4CAF50; }
-        
-        /* الألوان الجديدة */
         .color-option.beige { background: #F5F5DC; }
         .color-option.pink { background: #FFC0CB; }
         .color-option.lightbrown { background: #D2B48C; }
@@ -1715,9 +1712,203 @@
         let currentProduct = null;
         let selectedColor = '';
         let selectedSize = '';
-        let currentImageIndex = 0;
+
+        // ============================================
+        // معرض الصور المحسن - تنقل سلس بين الصور
+        // ============================================
+        
         let imageSlider = null;
+        let currentImageIndex = 0;
         let fullscreenCurrentIndex = 0;
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
+        let slideWidth = 0;
+
+        // تهيئة معرض الصور
+        function initImageSlider() {
+            imageSlider = document.getElementById('imageSlider');
+            if (!imageSlider) return;
+            
+            // حساب عرض الشريحة
+            slideWidth = imageSlider.clientWidth;
+            
+            // ضبط موضع البداية
+            imageSlider.scrollLeft = currentImageIndex * slideWidth;
+            
+            // أحداث الماوس للسحب (للكمبيوتر)
+            imageSlider.addEventListener('mousedown', startDrag);
+            imageSlider.addEventListener('mousemove', duringDrag);
+            imageSlider.addEventListener('mouseup', endDrag);
+            imageSlider.addEventListener('mouseleave', endDrag);
+            
+            // أحداث اللمس للجوال
+            imageSlider.addEventListener('touchstart', handleTouchStart, { passive: false });
+            imageSlider.addEventListener('touchmove', handleTouchMove, { passive: false });
+            imageSlider.addEventListener('touchend', handleTouchEnd);
+            
+            // منع السلوك الافتراضي للسحب
+            imageSlider.addEventListener('dragstart', (e) => e.preventDefault());
+        }
+
+        // بدء السحب بالماوس
+        function startDrag(e) {
+            isDragging = true;
+            startX = e.pageX - imageSlider.offsetLeft;
+            currentX = imageSlider.scrollLeft;
+            imageSlider.style.cursor = 'grabbing';
+            imageSlider.style.scrollBehavior = 'auto';
+            e.preventDefault();
+        }
+
+        // أثناء السحب بالماوس
+        function duringDrag(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - imageSlider.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            imageSlider.scrollLeft = currentX - walk;
+        }
+
+        // إنهاء السحب بالماوس
+        function endDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            imageSlider.style.cursor = 'grab';
+            imageSlider.style.scrollBehavior = 'smooth';
+            
+            // تحديد أقرب صورة بعد السحب
+            setTimeout(() => {
+                const newIndex = Math.round(imageSlider.scrollLeft / slideWidth);
+                if (newIndex !== currentImageIndex && newIndex >= 0 && newIndex < currentProduct.images.length) {
+                    currentImageIndex = newIndex;
+                    updateActiveThumbnail(currentImageIndex);
+                }
+            }, 50);
+        }
+
+        // بدأ اللمس (للهاتف)
+        function handleTouchStart(e) {
+            isDragging = true;
+            startX = e.touches[0].pageX - imageSlider.offsetLeft;
+            currentX = imageSlider.scrollLeft;
+            imageSlider.style.scrollBehavior = 'auto';
+            e.preventDefault();
+        }
+
+        // أثناء اللمس (للهاتف)
+        function handleTouchMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.touches[0].pageX - imageSlider.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            imageSlider.scrollLeft = currentX - walk;
+        }
+
+        // إنهاء اللمس (للهاتف)
+        function handleTouchEnd(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            imageSlider.style.scrollBehavior = 'smooth';
+            
+            // تحديد أقرب صورة بعد السحب
+            setTimeout(() => {
+                const newIndex = Math.round(imageSlider.scrollLeft / slideWidth);
+                if (newIndex !== currentImageIndex && newIndex >= 0 && newIndex < currentProduct.images.length) {
+                    currentImageIndex = newIndex;
+                    updateActiveThumbnail(currentImageIndex);
+                }
+            }, 50);
+        }
+
+        // التنقل بين الصور بالأسهم
+        function slideImage(direction) {
+            if (!imageSlider) {
+                imageSlider = document.getElementById('imageSlider');
+                if (!imageSlider) return;
+                slideWidth = imageSlider.clientWidth;
+            }
+            
+            let newIndex = currentImageIndex + direction;
+            
+            if (newIndex < 0) newIndex = 0;
+            if (newIndex >= currentProduct.images.length) newIndex = currentProduct.images.length - 1;
+            
+            // تمرير سلس إلى الصورة المطلوبة
+            imageSlider.style.scrollBehavior = 'smooth';
+            imageSlider.scrollTo({
+                left: newIndex * slideWidth,
+                behavior: 'smooth'
+            });
+            
+            currentImageIndex = newIndex;
+            updateActiveThumbnail(currentImageIndex);
+        }
+
+        // الذهاب إلى صورة محددة (من التصغيرات)
+        function goToSlide(index) {
+            if (!imageSlider) {
+                imageSlider = document.getElementById('imageSlider');
+                if (!imageSlider) return;
+                slideWidth = imageSlider.clientWidth;
+            }
+            
+            // تمرير سلس إلى الصورة المطلوبة
+            imageSlider.style.scrollBehavior = 'smooth';
+            imageSlider.scrollTo({
+                left: index * slideWidth,
+                behavior: 'smooth'
+            });
+            
+            currentImageIndex = index;
+            updateActiveThumbnail(currentImageIndex);
+        }
+
+        // تحديث الصورة المصغرة النشطة
+        function updateActiveThumbnail(index) {
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        // فتح الصورة بالكامل
+        function openFullscreenFromCurrent() {
+            fullscreenCurrentIndex = currentImageIndex;
+            openFullscreen(currentProduct.images[currentImageIndex]);
+        }
+
+        function openFullscreen(imageSrc) {
+            const overlay = document.getElementById('fullscreenOverlay');
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            fullscreenImage.src = imageSrc;
+            overlay.classList.add('active');
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenOverlay').classList.remove('active');
+        }
+
+        function fullscreenPrevImage() {
+            if (!currentProduct) return;
+            fullscreenCurrentIndex--;
+            if (fullscreenCurrentIndex < 0) {
+                fullscreenCurrentIndex = currentProduct.images.length - 1;
+            }
+            document.getElementById('fullscreenImage').src = currentProduct.images[fullscreenCurrentIndex];
+        }
+
+        function fullscreenNextImage() {
+            if (!currentProduct) return;
+            fullscreenCurrentIndex++;
+            if (fullscreenCurrentIndex >= currentProduct.images.length) {
+                fullscreenCurrentIndex = 0;
+            }
+            document.getElementById('fullscreenImage').src = currentProduct.images[fullscreenCurrentIndex];
+        }
 
         // ============================================
         // عرض الصفحة الرئيسية
@@ -1953,151 +2144,8 @@
         }
 
         // ============================================
-        // تهيئة معرض الصور
+        // دوال الألوان
         // ============================================
-        function initImageSlider() {
-            imageSlider = document.getElementById('imageSlider');
-            if (!imageSlider) return;
-            
-            imageSlider.addEventListener('scroll', handleSliderScroll);
-            
-            let touchStartX = 0;
-            
-            imageSlider.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-            
-            imageSlider.addEventListener('touchend', (e) => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const diff = touchStartX - touchEndX;
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        slideImage(1);
-                    } else {
-                        slideImage(-1);
-                    }
-                }
-            });
-        }
-
-        function handleSliderScroll() {
-            if (!imageSlider || !currentProduct) return;
-            
-            const slideWidth = imageSlider.clientWidth;
-            const scrollPosition = imageSlider.scrollLeft;
-            const newIndex = Math.round(scrollPosition / slideWidth);
-            
-            if (newIndex !== currentImageIndex && newIndex >= 0 && newIndex < currentProduct.images.length) {
-                currentImageIndex = newIndex;
-                updateActiveThumbnail(currentImageIndex);
-            }
-        }
-
-        function slideImage(direction) {
-            if (!imageSlider) {
-                imageSlider = document.getElementById('imageSlider');
-                if (!imageSlider) return;
-            }
-            
-            const slideWidth = imageSlider.clientWidth;
-            let newIndex = currentImageIndex + direction;
-            
-            if (newIndex < 0) newIndex = 0;
-            if (newIndex >= currentProduct.images.length) newIndex = currentProduct.images.length - 1;
-            
-            imageSlider.scrollTo({
-                left: newIndex * slideWidth,
-                behavior: 'smooth'
-            });
-            
-            currentImageIndex = newIndex;
-            updateActiveThumbnail(currentImageIndex);
-        }
-
-        function goToSlide(index) {
-            if (!imageSlider) {
-                imageSlider = document.getElementById('imageSlider');
-                if (!imageSlider) return;
-            }
-            
-            const slideWidth = imageSlider.clientWidth;
-            
-            imageSlider.scrollTo({
-                left: index * slideWidth,
-                behavior: 'smooth'
-            });
-            
-            currentImageIndex = index;
-            updateActiveThumbnail(index);
-        }
-
-        function updateActiveThumbnail(index) {
-            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-                if (i === index) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
-                }
-            });
-        }
-
-        function openFullscreenFromCurrent() {
-            fullscreenCurrentIndex = currentImageIndex;
-            openFullscreen(currentProduct.images[currentImageIndex]);
-        }
-
-        function openFullscreen(imageSrc) {
-            const overlay = document.getElementById('fullscreenOverlay');
-            const fullscreenImage = document.getElementById('fullscreenImage');
-            fullscreenImage.src = imageSrc;
-            overlay.classList.add('active');
-        }
-
-        function closeFullscreen() {
-            document.getElementById('fullscreenOverlay').classList.remove('active');
-        }
-
-        function fullscreenPrevImage() {
-            if (!currentProduct) return;
-            fullscreenCurrentIndex--;
-            if (fullscreenCurrentIndex < 0) {
-                fullscreenCurrentIndex = currentProduct.images.length - 1;
-            }
-            document.getElementById('fullscreenImage').src = currentProduct.images[fullscreenCurrentIndex];
-        }
-
-        function fullscreenNextImage() {
-            if (!currentProduct) return;
-            fullscreenCurrentIndex++;
-            if (fullscreenCurrentIndex >= currentProduct.images.length) {
-                fullscreenCurrentIndex = 0;
-            }
-            document.getElementById('fullscreenImage').src = currentProduct.images[fullscreenCurrentIndex];
-        }
-
-        function getColorClass(colorName) {
-            const colorMap = {
-                'أخضر': 'green',
-                'أسود': 'black',
-                'أبيض': 'white',
-                'أحمر': 'red',
-                'بني': 'brown',
-                'Bleu clair': 'bleu-clair',
-                'Bleu foncé': 'bleu-fonce',
-                'Marron': 'marron',
-                'Marron clair': 'marron-clair',
-                'Argent': 'argent',
-                'Vert': 'vert',
-                'Blanc': 'white',
-                'Noir': 'black',
-                'باج': 'beige',
-                'وردي': 'pink',
-                'بني فاتح': 'lightbrown',
-                'أزرق': 'blue'
-            };
-            return colorMap[colorName] || 'black';
-        }
-
         function selectColor(colorName, element) {
             selectedColor = colorName;
             
@@ -2117,6 +2165,9 @@
             showModal('نفذ اللون', `لقد نفذت كمية اللون ${colorName}، المتبقي فقط ${availableColors}.`);
         }
 
+        // ============================================
+        // دوال القياسات
+        // ============================================
         function toggleSizeFields() {
             const checkbox = document.getElementById('unknownSizeCheck');
             const sizeFields = document.getElementById('sizeFields');
@@ -2454,6 +2505,9 @@
             }
         }
 
+        // ============================================
+        // تهيئة الصفحة
+        // ============================================
         document.addEventListener('DOMContentLoaded', () => {
             renderHomePage();
             
