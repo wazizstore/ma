@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>waziz shop | متجر الملابس الرسمي - المغرب</title>
-    <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ========== RESET & VARIABLES ========== */
         * {
             margin: 0;
             padding: 0;
@@ -45,7 +43,6 @@
             padding: 0 20px;
         }
 
-        /* ========== SHUFFLING BAR ========== */
         .shuffling-bar {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             color: white;
@@ -84,7 +81,6 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ========== HEADER ========== */
         header {
             background: linear-gradient(135deg, var(--primary), var(--dark));
             color: var(--white);
@@ -178,17 +174,14 @@
                 height: 28px;
                 max-width: 120px;
             }
-            
             .logo h1 {
                 font-size: 18px;
             }
-            
             .cart-icon {
                 font-size: 20px;
             }
         }
 
-        /* ========== HERO SECTION ========== */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
@@ -211,7 +204,6 @@
             margin: 0 auto;
         }
 
-        /* ========== PRODUCTS GRID ========== */
         .section-title {
             text-align: center;
             font-size: 32px;
@@ -245,7 +237,6 @@
             }
         }
 
-        /* ========== PRODUCT CARD ========== */
         .product-card {
             background: var(--white);
             border-radius: var(--radius);
@@ -379,27 +370,22 @@
                 gap: 10px;
                 padding: 0 5px;
             }
-            
             .product-name {
                 font-size: 13px;
                 height: 34px;
             }
-            
             .product-price {
                 font-size: 15px;
             }
-            
             .original-price {
                 font-size: 11px;
             }
-            
             .delivery-badge {
                 font-size: 9px;
                 padding: 2px 5px;
             }
         }
 
-        /* ========== PRODUCT PAGE ========== */
         .product-page {
             min-height: 100vh;
             background: var(--white);
@@ -448,61 +434,11 @@
             background: #f5f5f5;
         }
 
-        .main-image-slider {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            cursor: grab;
-        }
-
-        .main-image-slider:active {
-            cursor: grabbing;
-        }
-
-        .main-image-slider::-webkit-scrollbar {
-            display: none;
-        }
-
-        .main-image-slide {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            height: 100%;
-            position: relative;
-        }
-
-        .main-image-slide img {
+        #mainImage {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .zoom-icon {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 20;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            font-size: 22px;
-            color: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .zoom-icon:hover {
-            background: white;
-            transform: scale(1.1);
+            transition: opacity 0.3s ease;
         }
 
         .slider-arrow {
@@ -531,6 +467,30 @@
 
         .slider-arrow.left { left: 10px; }
         .slider-arrow.right { right: 10px; }
+
+        .zoom-icon {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-size: 22px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .zoom-icon:hover {
+            background: white;
+            transform: scale(1.1);
+        }
 
         .image-thumbnails {
             display: flex;
@@ -834,7 +794,6 @@
             transform: translateY(-2px);
         }
 
-        /* ========== ORDER FORM ========== */
         .order-section {
             background: var(--white);
             border-radius: var(--radius);
@@ -921,7 +880,6 @@
             transform: translateY(-2px);
         }
 
-        /* ========== MODAL ========== */
         .modal {
             position: fixed;
             top: 0;
@@ -977,7 +935,6 @@
             }
         }
 
-        /* ========== TOAST NOTIFICATION ========== */
         .toast-notification {
             position: fixed;
             bottom: 30px;
@@ -999,7 +956,6 @@
             display: flex;
         }
 
-        /* ========== SUCCESS MESSAGE ========== */
         .success-message {
             background: linear-gradient(135deg, #4CAF50, #45a049);
             color: white;
@@ -1022,7 +978,6 @@
             }
         }
 
-        /* ========== CART SIDEBAR ========== */
         .cart-sidebar {
             position: fixed;
             top: 0;
@@ -1182,7 +1137,6 @@
             cursor: pointer;
         }
 
-        /* ========== WHATSAPP BUTTON ========== */
         .whatsapp-button {
             position: fixed;
             bottom: 20px;
@@ -1205,7 +1159,6 @@
             transform: scale(1.1);
         }
 
-        /* ========== FOOTER ========== */
         footer {
             background: linear-gradient(135deg, var(--primary), var(--dark));
             color: var(--white);
@@ -1243,23 +1196,18 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
             .product-info-detail h1 {
                 font-size: 24px;
             }
-            
             .product-price-detail {
                 font-size: 28px;
             }
-            
             .form-grid {
                 grid-template-columns: 1fr;
             }
-            
             .form-group.full-width {
                 grid-column: span 1;
             }
-            
             .submit-order-btn {
                 grid-column: span 1;
             }
@@ -1269,43 +1217,34 @@
             .hero h2 {
                 font-size: 28px;
             }
-            
             .cart-sidebar {
                 width: 100%;
                 left: -100%;
             }
-            
             .product-actions-detail {
                 flex-direction: column;
             }
-            
             .size-fields {
                 grid-template-columns: 1fr;
             }
-            
             .shuffling-item {
                 font-size: 12px;
                 padding: 0 10px;
             }
-            
             .thumbnail {
                 width: 50px;
             }
-            
             .slider-arrow {
                 width: 35px;
                 height: 35px;
                 font-size: 16px;
             }
-            
             .order-section {
                 padding: 20px;
             }
-            
             .order-section h2 {
                 font-size: 20px;
             }
-            
             .zoom-icon {
                 width: 40px;
                 height: 40px;
@@ -1317,28 +1256,22 @@
             .hero h2 {
                 font-size: 22px;
             }
-            
             .product-info-detail h1 {
                 font-size: 20px;
             }
-            
             .product-price-detail {
                 font-size: 24px;
             }
-            
             .toast-notification {
                 width: 90%;
                 text-align: center;
             }
-            
             .modal-content {
                 padding: 25px 15px;
             }
-            
             .modal-content h3 {
                 font-size: 18px;
             }
-            
             .whatsapp-button {
                 width: 50px;
                 height: 50px;
@@ -1350,7 +1283,6 @@
     </style> 
 </head>
 <body>
-    <!-- شريط متحرك -->
     <div class="shuffling-bar" id="shufflingBar">
         <div class="shuffling-content">
             <div class="shuffling-item"><i class="fas fa-truck"></i> التوصيل فابوووور قلب قيس عاد خلص</div>
@@ -1381,7 +1313,6 @@
 
     <main id="mainContent"></main>
 
-    <!-- سلة التسوق الجانبية -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h3>🛒 سلة التسوق</h3>
@@ -1397,40 +1328,32 @@
         </div>
     </div>
 
-    <!-- نموذج إتمام الشراء من السلة -->
     <div class="cart-checkout-form" id="cartCheckoutForm">
         <div class="checkout-content">
             <span class="close-checkout" onclick="closeCartCheckout()">&times;</span>
             <h2>📝 إتمام الطلب</h2>
-            
             <div class="checkout-items" id="checkoutItems"></div>
-            
             <div class="order-section" style="margin-top: 0; padding: 0; box-shadow: none;">
                 <div class="free-delivery">
                     <i class="fas fa-truck"></i> التوصيل مجاني قلب قيس عاد خلص
                 </div>
-                
                 <div class="form-grid">
                     <div class="form-group">
                         <label>الاسم الكامل *</label>
                         <input type="text" id="checkoutName" placeholder="مثال: أحمد العلوي">
                     </div>
-                    
                     <div class="form-group">
                         <label>رقم الهاتف *</label>
                         <input type="tel" id="checkoutPhone" placeholder="06 XX XX XX XX">
                     </div>
-                    
                     <div class="form-group">
                         <label>المدينة *</label>
                         <input type="text" id="checkoutCity" placeholder="مثال: الدار البيضاء">
                     </div>
-                    
                     <div class="form-group full-width">
                         <label>العنوان بالضبط *</label>
                         <input type="text" id="checkoutAddress" placeholder="الحي، الشارع، رقم...">
                     </div>
-                    
                     <button class="submit-order-btn" onclick="submitCartOrder()">
                         تأكيد الطلب
                     </button>
@@ -1439,10 +1362,8 @@
         </div>
     </div>
 
-    <!-- Modal -->
     <div id="modal" style="display: none;"></div>
 
-    <!-- Fullscreen Image Modal -->
     <div class="fullscreen-overlay" id="fullscreenOverlay">
         <span class="close-fullscreen" onclick="closeFullscreen()">&times;</span>
         <div class="fullscreen-arrow left" onclick="fullscreenPrevImage()">‹</div>
@@ -1450,13 +1371,11 @@
         <img src="" alt="Fullscreen" class="fullscreen-image" id="fullscreenImage">
     </div>
 
-    <!-- إشعار Toast -->
     <div class="toast-notification" id="toastNotification">
         <i class="fas fa-check-circle"></i>
         <span id="toastMessage">تمت الإضافة إلى السلة</span>
     </div>
 
-    <!-- واتساب -->
     <a href="https://wa.me/212604971625?text=مرحباً%20أريد%20الاستفسار%20عن%20المنتجات" class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -1712,220 +1631,8 @@
         let currentProduct = null;
         let selectedColor = '';
         let selectedSize = '';
-
-        // ============================================
-        // معرض الصور المحسن - تنقل سلس بين الصور
-        // ============================================
-        
-        let imageSlider = null;
         let currentImageIndex = 0;
         let fullscreenCurrentIndex = 0;
-        let isDragging = false;
-        let startX = 0;
-        let currentX = 0;
-
-        // تهيئة معرض الصور
-        function initImageSlider() {
-            imageSlider = document.getElementById('imageSlider');
-            if (!imageSlider) return;
-            
-            // إعادة تعيين المؤشر الحالي
-            currentImageIndex = 0;
-            
-            // ضبط موضع البداية
-            imageSlider.scrollLeft = 0;
-            
-            // أحداث الماوس للسحب (للكمبيوتر)
-            imageSlider.addEventListener('mousedown', startDrag);
-            imageSlider.addEventListener('mousemove', duringDrag);
-            imageSlider.addEventListener('mouseup', endDrag);
-            imageSlider.addEventListener('mouseleave', endDrag);
-            
-            // أحداث اللمس للجوال
-            imageSlider.addEventListener('touchstart', handleTouchStart, { passive: false });
-            imageSlider.addEventListener('touchmove', handleTouchMove, { passive: false });
-            imageSlider.addEventListener('touchend', handleTouchEnd);
-            
-            // منع السلوك الافتراضي للسحب
-            imageSlider.addEventListener('dragstart', (e) => e.preventDefault());
-        }
-
-        // بدء السحب بالماوس
-        function startDrag(e) {
-            isDragging = true;
-            startX = e.pageX - imageSlider.offsetLeft;
-            currentX = imageSlider.scrollLeft;
-            imageSlider.style.cursor = 'grabbing';
-            imageSlider.style.scrollBehavior = 'auto';
-            e.preventDefault();
-        }
-
-        // أثناء السحب بالماوس
-        function duringDrag(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - imageSlider.offsetLeft;
-            const walk = (x - startX) * 1.5;
-            imageSlider.scrollLeft = currentX - walk;
-        }
-
-        // إنهاء السحب بالماوس
-        function endDrag() {
-            if (!isDragging) return;
-            isDragging = false;
-            imageSlider.style.cursor = 'grab';
-            imageSlider.style.scrollBehavior = 'smooth';
-            
-            // تحديد أقرب صورة بعد السحب
-            setTimeout(() => {
-                const slideWidth = imageSlider.clientWidth;
-                const newIndex = Math.round(imageSlider.scrollLeft / slideWidth);
-                if (newIndex !== currentImageIndex && newIndex >= 0 && newIndex < currentProduct.images.length) {
-                    currentImageIndex = newIndex;
-                    updateActiveThumbnail(currentImageIndex);
-                }
-            }, 50);
-        }
-
-        // بدأ اللمس (للهاتف)
-        function handleTouchStart(e) {
-            isDragging = true;
-            startX = e.touches[0].pageX - imageSlider.offsetLeft;
-            currentX = imageSlider.scrollLeft;
-            imageSlider.style.scrollBehavior = 'auto';
-            e.preventDefault();
-        }
-
-        // أثناء اللمس (للهاتف)
-        function handleTouchMove(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.touches[0].pageX - imageSlider.offsetLeft;
-            const walk = (x - startX) * 1.5;
-            imageSlider.scrollLeft = currentX - walk;
-        }
-
-        // إنهاء اللمس (للهاتف)
-        function handleTouchEnd(e) {
-            if (!isDragging) return;
-            isDragging = false;
-            imageSlider.style.scrollBehavior = 'smooth';
-            
-            // تحديد أقرب صورة بعد السحب
-            setTimeout(() => {
-                const slideWidth = imageSlider.clientWidth;
-                const newIndex = Math.round(imageSlider.scrollLeft / slideWidth);
-                if (newIndex !== currentImageIndex && newIndex >= 0 && newIndex < currentProduct.images.length) {
-                    currentImageIndex = newIndex;
-                    updateActiveThumbnail(currentImageIndex);
-                }
-            }, 50);
-        }
-
-        // التنقل بين الصور بالأسهم
-        function slideImage(direction) {
-            if (!imageSlider) {
-                imageSlider = document.getElementById('imageSlider');
-                if (!imageSlider) return;
-            }
-            
-            if (!currentProduct) return;
-            
-            const slideWidth = imageSlider.clientWidth;
-            let newIndex = currentImageIndex + direction;
-            
-            // التأكد من عدم تجاوز الحدود
-            if (newIndex < 0) newIndex = 0;
-            if (newIndex >= currentProduct.images.length) newIndex = currentProduct.images.length - 1;
-            
-            // تحديث المؤشر الحالي
-            currentImageIndex = newIndex;
-            
-            // تمرير سلس إلى الصورة المطلوبة
-            imageSlider.style.scrollBehavior = 'smooth';
-            imageSlider.scrollTo({
-                left: currentImageIndex * slideWidth,
-                behavior: 'smooth'
-            });
-            
-            // تحديث الصورة المصغرة النشطة
-            updateActiveThumbnail(currentImageIndex);
-        }
-
-        // الذهاب إلى صورة محددة (من التصغيرات)
-        function goToSlide(index) {
-            if (!imageSlider) {
-                imageSlider = document.getElementById('imageSlider');
-                if (!imageSlider) return;
-            }
-            
-            if (!currentProduct) return;
-            
-            // التأكد من أن الرقم المطلوب ضمن الحدود
-            if (index < 0) index = 0;
-            if (index >= currentProduct.images.length) index = currentProduct.images.length - 1;
-            
-            // تحديث المؤشر الحالي
-            currentImageIndex = index;
-            
-            const slideWidth = imageSlider.clientWidth;
-            
-            // تمرير سلس إلى الصورة المطلوبة
-            imageSlider.style.scrollBehavior = 'smooth';
-            imageSlider.scrollTo({
-                left: currentImageIndex * slideWidth,
-                behavior: 'smooth'
-            });
-            
-            // تحديث الصورة المصغرة النشطة
-            updateActiveThumbnail(currentImageIndex);
-        }
-
-        // تحديث الصورة المصغرة النشطة
-        function updateActiveThumbnail(index) {
-            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-                if (i === index) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
-                }
-            });
-        }
-
-        // فتح الصورة بالكامل
-        function openFullscreenFromCurrent() {
-            fullscreenCurrentIndex = currentImageIndex;
-            openFullscreen(currentProduct.images[currentImageIndex]);
-        }
-
-        function openFullscreen(imageSrc) {
-            const overlay = document.getElementById('fullscreenOverlay');
-            const fullscreenImage = document.getElementById('fullscreenImage');
-            fullscreenImage.src = imageSrc;
-            overlay.classList.add('active');
-        }
-
-        function closeFullscreen() {
-            document.getElementById('fullscreenOverlay').classList.remove('active');
-        }
-
-        function fullscreenPrevImage() {
-            if (!currentProduct) return;
-            fullscreenCurrentIndex--;
-            if (fullscreenCurrentIndex < 0) {
-                fullscreenCurrentIndex = currentProduct.images.length - 1;
-            }
-            document.getElementById('fullscreenImage').src = currentProduct.images[fullscreenCurrentIndex];
-        }
-
-        function fullscreenNextImage() {
-            if (!currentProduct) return;
-            fullscreenCurrentIndex++;
-            if (fullscreenCurrentIndex >= currentProduct.images.length) {
-                fullscreenCurrentIndex = 0;
-            }
-            document.getElementById('fullscreenImage').src = currentProduct.images[fullscreenCurrentIndex];
-        }
 
         // ============================================
         // عرض الصفحة الرئيسية
@@ -2011,18 +1718,14 @@
 
             const mainContent = document.getElementById('mainContent');
             
-            const imageSlides = product.images.map((img, index) => 
-                `<div class="main-image-slide" data-index="${index}">
-                    <img src="${img}" alt="${product.name} - صورة ${index + 1}">
-                </div>`
-            ).join('');
-
+            // إنشاء التصغيرات
             const thumbnails = product.images.map((img, index) => 
-                `<div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})">
+                `<div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeImage(${index})">
                     <img src="${img}" alt="صورة ${index + 1}">
                 </div>`
             ).join('');
 
+            // إنشاء خيارات الألوان
             const colorOptions = product.colors.map(color => {
                 const isDisabled = color.inStock === false;
                 const colorName = color.name;
@@ -2033,6 +1736,7 @@
                     title="${colorName}"></div>`;
             }).join('');
 
+            // إنشاء خيارات القياسات
             const sizeOptions = product.sizes.map(size => 
                 `<option value="${size}">${size.toUpperCase()}</option>`
             ).join('');
@@ -2068,16 +1772,14 @@
                         <div class="product-detail">
                             <div class="product-gallery">
                                 <div class="main-image-container">
-                                    <div class="main-image-slider" id="imageSlider">
-                                        ${imageSlides}
-                                    </div>
-                                    <div class="slider-arrow left" onclick="slideImage(-1)">
+                                    <img src="${product.images[0]}" alt="${product.name}" id="mainImage">
+                                    <div class="slider-arrow left" onclick="previousImage()">
                                         <i class="fas fa-chevron-right"></i>
                                     </div>
-                                    <div class="slider-arrow right" onclick="slideImage(1)">
+                                    <div class="slider-arrow right" onclick="nextImage()">
                                         <i class="fas fa-chevron-left"></i>
                                     </div>
-                                    <div class="zoom-icon" onclick="openFullscreenFromCurrent()">
+                                    <div class="zoom-icon" onclick="openFullscreen()">
                                         <i class="fas fa-expand"></i>
                                     </div>
                                 </div>
@@ -2153,11 +1855,117 @@
                 </div>
             `;
 
-            setTimeout(() => {
-                initImageSlider();
-            }, 100);
-
             window.scrollTo(0, 0);
+        }
+
+        // ============================================
+        // دوال التنقل بين الصور - تم إصلاحها بالكامل
+        // ============================================
+        
+        // السهم الأيسر - الصورة السابقة
+        function previousImage() {
+            if (!currentProduct) return;
+            
+            currentImageIndex--;
+            if (currentImageIndex < 0) {
+                currentImageIndex = currentProduct.images.length - 1;
+            }
+            
+            updateMainImage();
+        }
+
+        // السهم الأيمن - الصورة التالية
+        function nextImage() {
+            if (!currentProduct) return;
+            
+            currentImageIndex++;
+            if (currentImageIndex >= currentProduct.images.length) {
+                currentImageIndex = 0;
+            }
+            
+            updateMainImage();
+        }
+
+        // تغيير الصورة عند الضغط على الصور المصغرة
+        function changeImage(index) {
+            currentImageIndex = index;
+            updateMainImage();
+        }
+
+        // تحديث الصورة الرئيسية والتصغيرات
+        function updateMainImage() {
+            if (!currentProduct) return;
+            
+            // تحديث الصورة الرئيسية
+            const mainImage = document.getElementById('mainImage');
+            if (mainImage) {
+                mainImage.src = currentProduct.images[currentImageIndex];
+            }
+            
+            // تحديث التصغيرات النشطة
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                if (i === currentImageIndex) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        // دعم التمرير بالاصبع
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // سحب لليسار - الصورة التالية
+                nextImage();
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                // سحب لليمين - الصورة السابقة
+                previousImage();
+            }
+        }
+
+        // فتح الصورة بالكامل
+        function openFullscreen() {
+            fullscreenCurrentIndex = currentImageIndex;
+            const overlay = document.getElementById('fullscreenOverlay');
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            fullscreenImage.src = currentProduct.images[currentImageIndex];
+            overlay.classList.add('active');
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenOverlay').classList.remove('active');
+        }
+
+        function fullscreenPrevImage() {
+            if (!currentProduct) return;
+            fullscreenCurrentIndex--;
+            if (fullscreenCurrentIndex < 0) {
+                fullscreenCurrentIndex = currentProduct.images.length - 1;
+            }
+            document.getElementById('fullscreenImage').src = currentProduct.images[fullscreenCurrentIndex];
+        }
+
+        function fullscreenNextImage() {
+            if (!currentProduct) return;
+            fullscreenCurrentIndex++;
+            if (fullscreenCurrentIndex >= currentProduct.images.length) {
+                fullscreenCurrentIndex = 0;
+            }
+            document.getElementById('fullscreenImage').src = currentProduct.images[fullscreenCurrentIndex];
         }
 
         // ============================================
