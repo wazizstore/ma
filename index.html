@@ -100,6 +100,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo h1 {
@@ -110,6 +111,29 @@
 
         .logo span {
             color: var(--accent);
+        }
+
+        .header-center-image {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+        }
+
+        .center-logo {
+            height: 50px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: none;
+            transition: transform 0.3s ease;
+        }
+
+        .center-logo:hover {
+            transform: scale(1.05);
         }
 
         .cart-icon {
@@ -140,6 +164,28 @@
             position: absolute;
             top: -8px;
             left: -8px;
+        }
+
+        @media (max-width: 768px) {
+            .center-logo {
+                height: 35px;
+                max-width: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .center-logo {
+                height: 28px;
+                max-width: 120px;
+            }
+            
+            .logo h1 {
+                font-size: 18px;
+            }
+            
+            .cart-icon {
+                font-size: 20px;
+            }
         }
 
         /* ========== HERO SECTION ========== */
@@ -184,7 +230,6 @@
             margin: 15px auto 0;
         }
 
-        /* ===== تحسين عرض المنتجات للهاتف - منتجان في كل صف بحجم كبير ===== */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -193,7 +238,6 @@
             padding: 0 8px;
         }
 
-        /* للشاشات الأكبر */
         @media (min-width: 768px) {
             .products-grid {
                 gap: 20px;
@@ -241,7 +285,6 @@
             transform: scale(1.05);
         }
 
-        /* ========== OUT OF STOCK BADGE ========== */
         .out-of-stock-badge {
             position: absolute;
             top: 8px;
@@ -331,7 +374,6 @@
             width: fit-content;
         }
 
-        /* تحسين للهاتف */
         @media (max-width: 480px) {
             .products-grid {
                 gap: 10px;
@@ -357,7 +399,7 @@
             }
         }
 
-        /* ========== PRODUCT PAGE (FULL SCREEN) ========== */
+        /* ========== PRODUCT PAGE ========== */
         .product-page {
             min-height: 100vh;
             background: var(--white);
@@ -391,7 +433,6 @@
             margin-bottom: 40px;
         }
 
-        /* ===== معرض الصور المحسن مع تمرير كامل ===== */
         .product-gallery {
             display: flex;
             flex-direction: column;
@@ -440,7 +481,6 @@
             object-fit: cover;
         }
 
-        /* زر التكبير */
         .zoom-icon {
             position: absolute;
             bottom: 15px;
@@ -526,7 +566,6 @@
             object-fit: cover;
         }
 
-        /* ===== Fullscreen Image Modal ===== */
         .fullscreen-overlay {
             position: fixed;
             top: 0;
@@ -687,6 +726,7 @@
             text-shadow: 0 0 5px white;
         }
 
+        /* الألوان الأساسية */
         .color-option.green { background: #4CAF50; }
         .color-option.black { background: #000000; }
         .color-option.white { background: #FFFFFF; border: 1px solid #ddd; }
@@ -698,6 +738,12 @@
         .color-option.marron-clair { background: #D2B48C; }
         .color-option.argent { background: #C0C0C0; }
         .color-option.vert { background: #4CAF50; }
+        
+        /* الألوان الجديدة */
+        .color-option.beige { background: #F5F5DC; }
+        .color-option.pink { background: #FFC0CB; }
+        .color-option.lightbrown { background: #D2B48C; }
+        .color-option.blue { background: #0000FF; }
 
         .size-select {
             width: 100%;
@@ -1084,7 +1130,6 @@
             padding: 30px 0;
         }
 
-        /* ========== CART CHECKOUT FORM ========== */
         .cart-checkout-form {
             position: fixed;
             top: 0;
@@ -1196,7 +1241,6 @@
             font-size: 12px;
         }
 
-        /* ========== RESPONSIVE ========== */
         @media (max-width: 992px) {
             .product-detail {
                 grid-template-columns: 1fr;
@@ -1306,60 +1350,7 @@
                 right: 15px;
             }
         }
-  /* ========== تحسينات الهيدر ========== */
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-
-.header-center-image {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 5;
-}
-
-.center-logo {
-    height: 50px;
-    width: auto;
-    max-width: 200px;
-    object-fit: contain;
-   filter: none;
-    transition: transform 0.3s ease;
-}
-
-.center-logo:hover {
-    transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-    .center-logo {
-        height: 35px;
-        max-width: 150px;
-    }
-}
-
-@media (max-width: 480px) {
-    .center-logo {
-        height: 28px;
-        max-width: 120px;
-    }
-    
-    .logo h1 {
-        font-size: 18px;
-    }
-    
-    .cart-icon {
-        font-size: 20px;
-    }
-}
     </style> 
-    
 </head>
 <body>
     <!-- شريط متحرك -->
@@ -1374,22 +1365,22 @@
         </div>
     </div>
 
-  <header>
-    <div class="container">
-        <div class="header-content">
-            <div class="logo">
-                <h1><span>waziz</span> shop</h1>
-            </div>
-            <div class="header-center-image">
-                <img src="Untitled design (3002).png" alt="Investment Categories" class="center-logo">
-            </div>
-            <div class="cart-icon" onclick="toggleCart()">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count" id="cartCount">0</span>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><span>waziz</span> shop</h1>
+                </div>
+                <div class="header-center-image">
+                    <img src="Untitled design (3002).png" alt="Investment Categories" class="center-logo">
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <main id="mainContent"></main>
 
@@ -1498,7 +1489,7 @@
     </footer>
 
     <script>
-              // ============================================
+        // ============================================
         // المنتجات
         // ============================================
         const products = [
@@ -1642,7 +1633,6 @@
                 description: "Veste Polaire Homme maroc",
                 images: [
                     "Untitled design (35).png",
-                    
                 ],
                 colors: [
                     { name: "Argent", class: "argent", inStock: true },
@@ -1688,36 +1678,36 @@
                 sizes: ["m", "l", "xl"],
                 inStock: false
             },
- {
-    id: 11,
-    name: "pack ramadan",
-    price: "199",
-    originalPrice: "249",
-    description: "مع أجواء رمضان الروحانية، قدّم أجمل هدية ليك أو لأحبابك بباك متكامل يجمع بين الأناقة والقيمة الدينية 📖 المصحف الشريف 🕌 سجادة صلاة مريحة 📿 مسبحة أنيقة",
-    images: [
-        "1770708714_img-3079.jpeg",
-        "1770708717_img-3076.jpeg", 
-        "1770708717_img-3078.jpeg",
-        "1770708718_img-3072.jpeg",
-        "1770708718_img-3075.jpeg",
-        "1770708719_img-3070.jpeg",
-        "1770708719_img-3071.jpeg"
-    ],
-    colors: [
-        { name: "باج", class: "beige", inStock: true },
-        { name: "بني غامق", class: "brown", inStock: true },
-        { name: "وردي", class: "pink", inStock: true },
-        { name: "أخضر", class: "green", inStock: true },
-        { name: "أحمر", class: "red", inStock: true },
-        { name: "بني فاتح", class: "lightbrown", inStock: true },
-        { name: "أزرق", class: "blue", inStock: true }
-    ],
-    sizes: [], // مصفوفة فارغة لإخفاء القياسات
-    noSizes: true, // خاصية مخصصة لإخفاء قسم القياسات بالكامل
-    inStock: true
-}
-        ]
-            ;
+            {
+                id: 11,
+                name: "pack ramadan",
+                price: "199",
+                originalPrice: "249",
+                description: "مع أجواء رمضان الروحانية، قدّم أجمل هدية ليك أو لأحبابك بباك متكامل يجمع بين الأناقة والقيمة الدينية 📖 المصحف الشريف 🕌 سجادة صلاة مريحة 📿 مسبحة أنيقة",
+                images: [
+                    "1770708714_img-3079.jpeg",
+                    "1770708717_img-3076.jpeg", 
+                    "1770708717_img-3078.jpeg",
+                    "1770708718_img-3072.jpeg",
+                    "1770708718_img-3075.jpeg",
+                    "1770708719_img-3070.jpeg",
+                    "1770708719_img-3071.jpeg"
+                ],
+                colors: [
+                    { name: "باج", class: "beige", inStock: true },
+                    { name: "بني غامق", class: "brown", inStock: true },
+                    { name: "وردي", class: "pink", inStock: true },
+                    { name: "أخضر", class: "green", inStock: true },
+                    { name: "أحمر", class: "red", inStock: true },
+                    { name: "بني فاتح", class: "lightbrown", inStock: true },
+                    { name: "أزرق", class: "blue", inStock: true }
+                ],
+                sizes: [],
+                noSizes: true,
+                inStock: true
+            }
+        ];
+
         // ============================================
         // متغيرات عامة
         // ============================================
@@ -1813,35 +1803,52 @@
 
             const mainContent = document.getElementById('mainContent');
             
-            // إنشاء شرائح الصور
             const imageSlides = product.images.map((img, index) => 
                 `<div class="main-image-slide" data-index="${index}">
                     <img src="${img}" alt="${product.name} - صورة ${index + 1}">
                 </div>`
             ).join('');
 
-            // إنشاء التصغيرات
             const thumbnails = product.images.map((img, index) => 
                 `<div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})">
                     <img src="${img}" alt="صورة ${index + 1}">
                 </div>`
             ).join('');
 
-            // إنشاء خيارات الألوان
             const colorOptions = product.colors.map(color => {
                 const isDisabled = color.inStock === false;
-                const colorName = typeof color === 'string' ? color : color.name;
-                const colorClass = typeof color === 'string' ? getColorClass(color) : color.class;
+                const colorName = color.name;
+                const colorClass = color.class;
                 
                 return `<div class="color-option ${colorClass} ${isDisabled ? 'disabled' : ''}" 
                     onclick="${isDisabled ? `showColorOutOfStock('${colorName}')` : `selectColor('${colorName}', this)`}" 
                     title="${colorName}"></div>`;
             }).join('');
 
-            // إنشاء خيارات القياسات
             const sizeOptions = product.sizes.map(size => 
                 `<option value="${size}">${size.toUpperCase()}</option>`
             ).join('');
+
+            // تحديد ما إذا كان سيتم عرض قسم القياسات
+            const sizeSectionHtml = product.noSizes ? '' : `
+                <div class="size-section">
+                    <h3>اختر القياس</h3>
+                    <select class="size-select" id="productSize">
+                        <option value="">اختر قياس...</option>
+                        ${sizeOptions}
+                    </select>
+
+                    <div class="unknown-size">
+                        <input type="checkbox" id="unknownSizeCheck" onchange="toggleSizeFields()">
+                        <label for="unknownSizeCheck">لا أعرف قياسي</label>
+                    </div>
+
+                    <div class="size-fields" id="sizeFields">
+                        <input type="number" id="height" placeholder="الطول (سم)" onchange="updateCustomSize()">
+                        <input type="number" id="weight" placeholder="الوزن (كغم)" onchange="updateCustomSize()">
+                    </div>
+                </div>
+            `;
 
             mainContent.innerHTML = `
                 <div class="product-page">
@@ -1888,23 +1895,7 @@
                                     </div>
                                 </div>
 
-                                <div class="size-section">
-                                    <h3>اختر القياس</h3>
-                                    <select class="size-select" id="productSize">
-                                        <option value="">اختر قياس...</option>
-                                        ${sizeOptions}
-                                    </select>
-
-                                    <div class="unknown-size">
-                                        <input type="checkbox" id="unknownSizeCheck" onchange="toggleSizeFields()">
-                                        <label for="unknownSizeCheck">لا أعرف قياسي</label>
-                                    </div>
-
-                                    <div class="size-fields" id="sizeFields">
-                                        <input type="number" id="height" placeholder="الطول (سم)" onchange="updateCustomSize()">
-                                        <input type="number" id="weight" placeholder="الوزن (كغم)" onchange="updateCustomSize()">
-                                    </div>
-                                </div>
+                                ${sizeSectionHtml}
 
                                 <div class="product-actions-detail">
                                     <button class="add-to-cart-detail" onclick="addToCart()">
@@ -1954,7 +1945,6 @@
                 </div>
             `;
 
-            // تهيئة الـ slider
             setTimeout(() => {
                 initImageSlider();
             }, 100);
@@ -1976,10 +1966,22 @@
             imageSlider.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
             });
+            
+            imageSlider.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        slideImage(1);
+                    } else {
+                        slideImage(-1);
+                    }
+                }
+            });
         }
 
         function handleSliderScroll() {
-            if (!imageSlider) return;
+            if (!imageSlider || !currentProduct) return;
             
             const slideWidth = imageSlider.clientWidth;
             const scrollPosition = imageSlider.scrollLeft;
@@ -1991,9 +1993,6 @@
             }
         }
 
-        // ============================================
-        // دوال التنقل بين الصور
-        // ============================================
         function slideImage(direction) {
             if (!imageSlider) {
                 imageSlider = document.getElementById('imageSlider');
@@ -2042,9 +2041,6 @@
             });
         }
 
-        // ============================================
-        // Fullscreen Image
-        // ============================================
         function openFullscreenFromCurrent() {
             fullscreenCurrentIndex = currentImageIndex;
             openFullscreen(currentProduct.images[currentImageIndex]);
@@ -2079,9 +2075,6 @@
             document.getElementById('fullscreenImage').src = currentProduct.images[fullscreenCurrentIndex];
         }
 
-        // ============================================
-        // دوال الألوان
-        // ============================================
         function getColorClass(colorName) {
             const colorMap = {
                 'أخضر': 'green',
@@ -2096,7 +2089,11 @@
                 'Argent': 'argent',
                 'Vert': 'vert',
                 'Blanc': 'white',
-                'Noir': 'black'
+                'Noir': 'black',
+                'باج': 'beige',
+                'وردي': 'pink',
+                'بني فاتح': 'lightbrown',
+                'أزرق': 'blue'
             };
             return colorMap[colorName] || 'black';
         }
@@ -2114,66 +2111,67 @@
         function showColorOutOfStock(colorName) {
             const availableColors = currentProduct.colors
                 .filter(c => c.inStock !== false)
-                .map(c => typeof c === 'string' ? c : c.name)
+                .map(c => c.name)
                 .join('، ');
             
             showModal('نفذ اللون', `لقد نفذت كمية اللون ${colorName}، المتبقي فقط ${availableColors}.`);
         }
 
-        // ============================================
-        // دوال القياسات
-        // ============================================
         function toggleSizeFields() {
             const checkbox = document.getElementById('unknownSizeCheck');
             const sizeFields = document.getElementById('sizeFields');
             const sizeSelect = document.getElementById('productSize');
 
-            if (checkbox.checked) {
+            if (checkbox && checkbox.checked) {
                 sizeFields.classList.add('active');
                 sizeSelect.disabled = true;
                 selectedSize = '';
-            } else {
+            } else if (checkbox) {
                 sizeFields.classList.remove('active');
                 sizeSelect.disabled = false;
             }
         }
 
         function updateCustomSize() {
-            const height = document.getElementById('height').value;
-            const weight = document.getElementById('weight').value;
+            const height = document.getElementById('height')?.value;
+            const weight = document.getElementById('weight')?.value;
             if (height && weight) {
                 selectedSize = `الطول: ${height} سم - الوزن: ${weight} كغم`;
             }
         }
 
         function validateSelection() {
-            const sizeSelect = document.getElementById('productSize');
-            const unknownCheck = document.getElementById('unknownSizeCheck');
-            
-            // المنتج 4 (Dodone nike) لا يحتاج اختيار لون
-            if (currentProduct.id !== 4) {
-                if (!selectedColor) {
-                    showToast('يرجى اختيار اللون');
-                    return false;
-                }
+            // التحقق من اختيار اللون
+            if (!selectedColor) {
+                showToast('يرجى اختيار اللون');
+                return false;
             }
 
-            if (unknownCheck && unknownCheck.checked) {
-                const height = document.getElementById('height').value;
-                const weight = document.getElementById('weight').value;
-                if (!height || !weight) {
-                    showToast('يرجى إدخال الطول والوزن');
-                    return false;
+            // التحقق من القياس فقط إذا كان المنتج يتطلب ذلك
+            if (!currentProduct.noSizes) {
+                const sizeSelect = document.getElementById('productSize');
+                const unknownCheck = document.getElementById('unknownSizeCheck');
+                
+                if (unknownCheck && unknownCheck.checked) {
+                    const height = document.getElementById('height')?.value;
+                    const weight = document.getElementById('weight')?.value;
+                    if (!height || !weight) {
+                        showToast('يرجى إدخال الطول والوزن');
+                        return false;
+                    }
+                } else {
+                    if (!sizeSelect || !sizeSelect.value) {
+                        showToast('يرجى اختيار القياس');
+                        return false;
+                    }
+                    selectedSize = sizeSelect.value;
                 }
-                return true;
             } else {
-                if (!sizeSelect || !sizeSelect.value) {
-                    showToast('يرجى اختيار القياس');
-                    return false;
-                }
-                selectedSize = sizeSelect.value;
-                return true;
+                // للمنتجات بدون قياسات، استخدم قيمة افتراضية
+                selectedSize = 'قياس واحد';
             }
+            
+            return true;
         }
 
         function addToCart() {
@@ -2183,7 +2181,7 @@
                 id: currentProduct.id,
                 name: currentProduct.name,
                 price: currentProduct.price,
-                color: selectedColor || 'أسود', // إذا لم يختر لون، استخدم أسود افتراضي
+                color: selectedColor,
                 size: selectedSize
             });
 
@@ -2207,13 +2205,12 @@
                 return;
             }
 
-            // التحقق من اللون فقط للمنتجات التي تحتاج لون (باستثناء المنتج 4)
-            if (currentProduct.id !== 4 && !selectedColor) {
+            if (!selectedColor) {
                 showToast('يرجى اختيار اللون من الأعلى');
                 return;
             }
 
-            if (!selectedSize) {
+            if (!selectedSize && !currentProduct.noSizes) {
                 showToast('يرجى اختيار القياس من الأعلى');
                 return;
             }
@@ -2229,10 +2226,12 @@
             message += `🛒 **تفاصيل الطلب:**\n`;
             message += `┣━━ المنتج: ${currentProduct.name}\n`;
             message += `┣━━ السعر: ${currentProduct.price} درهم\n`;
-            if (currentProduct.id !== 4) {
-                message += `┣━━ اللون: ${selectedColor}\n`;
+            message += `┣━━ اللون: ${selectedColor}\n`;
+            if (!currentProduct.noSizes) {
+                message += `┗━━ القياس: ${selectedSize}\n\n`;
+            } else {
+                message += `┗━━ (بدون قياس)\n\n`;
             }
-            message += `┗━━ القياس: ${selectedSize}\n\n`;
             message += `━━━━━━━━━━━━━━━━━━━━━\n`;
             message += `⏱️ **تاريخ الطلب:** ${new Date().toLocaleString('ar-MA')}\n`;
             message += `━━━━━━━━━━━━━━━━━━━━━`;
@@ -2324,7 +2323,7 @@
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-details">
-                                ${item.color ? `اللون: ${item.color} | ` : ''}${item.size}
+                                اللون: ${item.color} ${item.size !== 'قياس واحد' ? `| ${item.size}` : ''}
                             </div>
                         </div>
                         <div class="cart-item-price">${item.price} درهم</div>
@@ -2361,7 +2360,7 @@
                     <div class="checkout-item">
                         <div>
                             <strong>${item.name}</strong><br>
-                            <small>${item.color ? `اللون: ${item.color} | ` : ''}${item.size}</small>
+                            <small>اللون: ${item.color} ${item.size !== 'قياس واحد' ? `| ${item.size}` : ''}</small>
                         </div>
                         <div>${item.price} درهم</div>
                     </div>
@@ -2403,8 +2402,12 @@
                 total += parseInt(item.price);
                 message += `┣━━ المنتج ${index + 1}: ${item.name}\n`;
                 message += `┃   ┣━━ السعر: ${item.price} درهم\n`;
-                if (item.color) message += `┃   ┣━━ اللون: ${item.color}\n`;
-                message += `┃   ┗━━ القياس: ${item.size}\n`;
+                message += `┃   ┣━━ اللون: ${item.color}\n`;
+                if (item.size !== 'قياس واحد') {
+                    message += `┃   ┗━━ القياس: ${item.size}\n`;
+                } else {
+                    message += `┃   ┗━━ (بدون قياس)\n`;
+                }
             });
 
             message += `┗━━ **المجموع الكلي: ${total} درهم**\n\n`;
@@ -2451,49 +2454,13 @@
             }
         }
 
-        // ============================================
-        // تهيئة الصفحة
-        // ============================================
         document.addEventListener('DOMContentLoaded', () => {
             renderHomePage();
             
             setInterval(() => {
                 document.getElementById('cartCount').textContent = cart.length;
             }, 1000);
-        });// تعديل عرض صفحة المنتج لإخفاء القياسات عندما لا تكون مطلوبة
-const originalViewProduct = viewProduct;
-viewProduct = function(productId) {
-    const product = products.find(p => p.id === productId);
-    
-    // استدعاء الدالة الأصلية أولاً
-    originalViewProduct(productId);
-    
-    // إذا كان المنتج لا يحتاج قياسات، قم بإخفاء قسم القياسات
-    setTimeout(() => {
-        if (product.noSizes) {
-            const sizeSection = document.querySelector('.size-section');
-            if (sizeSection) {
-                sizeSection.style.display = 'none';
-            }
-        }
-    }, 200);
-}
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
