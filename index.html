@@ -25,27 +25,7 @@
             --radius: 15px;
             --transition: all 0.3s ease;
         }
-/* تحسين عرض الصور */
-.product-image {
-    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite linear;
-}
 
-@keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
-
-/* عندما تتحمل الصورة، أزل التأثير */
-.product-image img {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.product-image img.loaded {
-    opacity: 1;
-}
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -2310,7 +2290,7 @@
                     const orderSection = document.getElementById('orderSection');
                     const successMessage = document.createElement('div');
                     successMessage.className = 'success-message';
-                    successMessage.innerHTML = '✅ لقد تم الطلب , سوف نتصل بك اليوم أو غدا لكي نؤكد طلبك فالمرجو أن تترك هاتفك بجانبك , لكي إذا اتصلنا بك تجيبنا ونرسل لك طلبك , الذي يستغرق من يوم إلى أربعة أيام , وغالبا سيصلك من يوم إلى يومين , رمضان مبارك سعيد <span class="close-success" onclick="renderHomePage()">&times;</span>';
+                    successMessage.innerHTML = '✅ مرحبا خي(ة) المهم رآه تم تسجيل الطلب ديالك المهم بالنسبة التوصيل كيكون 1 حتال 5 ايام على حسب المدين ديالك المهم غدا او اليوم رآه غتصوني عليك لبنت ديال الكونفيرما لي غدي تدوز ليك الكوموند ديالك لشركة التوصيل ياله اخي مرحبا أو مبارك عواشرك خي لعزيز <span class="close-success" onclick="renderHomePage()">&times;</span>';
                     
                     orderSection.innerHTML = '';
                     orderSection.appendChild(successMessage);
@@ -2484,7 +2464,8 @@
                 if (response.ok) {
                     const checkoutContent = document.querySelector('.checkout-content');
                     const successMessage = document.createElement('div');
-                    successMessage.className = 'success-message'; ' لقد تم الطلب , سوف نتصل بك اليوم أو غدا لكي نؤكد طلبك فالمرجو أن تترك هاتفك بجانبك , لكي إذا اتصلنا بك تجيبنا ونرسل لك طلبك , الذي يستغرق من يوم إلى أربعة أيام , وغالبا سيصلك من يوم إلى يومين , رمضان مبارك سعيد <span class="close-success" onclick="renderHomePage()">&times;</span>';
+                    successMessage.className = 'success-message';
+                    successMessage.innerHTML = '✅ مرحبا خي(ة) المهم رآه تم تسجيل الطلب ديالك المهم بالنسبة التوصيل كيكون 1 حتال 5 ايام على حسب المدين ديالك المهم غدا او اليوم رآه غتصوني عليك لبنت ديال الكونفيرما لي غدي تدوز ليك الكوموند ديالك لشركة التوصيل ياله اخي مرحبا أو مبارك عواشرك خي لعزيز <span class="close-success" onclick="renderHomePage()">&times;</span>';
                     
                     checkoutContent.innerHTML = '';
                     checkoutContent.appendChild(successMessage);
@@ -2509,9 +2490,6 @@
                 document.getElementById('cartCount').textContent = cart.length;
             }, 1000);
         });
-
     </script>
 </body>
 </html>
-
-
