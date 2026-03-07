@@ -965,6 +965,21 @@
             font-size: 18px;
             margin: 20px 0;
             animation: fadeIn 0.5s ease;
+            position: relative;
+        }
+
+        .close-success {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .close-success:hover {
+            transform: scale(1.2);
         }
 
         @keyframes fadeIn {
@@ -1864,6 +1879,11 @@
                                     <input type="text" id="orderAddress" placeholder="الحي، الشارع، رقم...">
                                 </div>
                                 
+                                <div class="form-group">
+                                    <label>الكمية</label>
+                                    <input type="number" id="orderQuantity" min="1" value="1" style="width: 100%; padding: 12px; border: 2px solid var(--light-gray); border-radius: var(--radius);">
+                                </div>
+                                
                                 <button class="submit-order-btn" onclick="submitOrder()">
                                     تأكيد الطلب
                                 </button>
@@ -2093,6 +2113,7 @@
             const phone = document.getElementById('orderPhone').value.trim();
             const city = document.getElementById('orderCity').value.trim();
             const address = document.getElementById('orderAddress').value.trim();
+            const quantity = document.getElementById('orderQuantity')?.value || 1;
 
             if (!fullName || !phone || !city || !address) {
                 showToast('يرجى ملء جميع الحقول الإجبارية');
@@ -2120,6 +2141,7 @@
             message += `🛒 **تفاصيل الطلب:**\n`;
             message += `┣━━ المنتج: ${currentProduct.name}\n`;
             message += `┣━━ السعر: ${currentProduct.price} درهم\n`;
+            message += `┣━━ الكمية: ${quantity}\n`;
             message += `┣━━ اللون: ${selectedColor}\n`;
             if (!currentProduct.noSizes) {
                 message += `┗━━ القياس: ${selectedSize}\n\n`;
@@ -2149,14 +2171,10 @@
                     const orderSection = document.getElementById('orderSection');
                     const successMessage = document.createElement('div');
                     successMessage.className = 'success-message';
-                    successMessage.innerHTML = '✅ مرحبا خي(ة) المهم رآه تم تسجيل الطلب ديالك المهم بالنسبة التوصيل كيكون 1 حتال 5 ايام على حسب المدين ديالك المهم غدا او اليوم رآه غتصوني عليك لبنت ديال الكونفيرما لي غدي تدوز ليك الكوموند ديالك لشركة التوصيل ياله اخي مرحبا أو مبارك عواشرك خي لعزيز';
+                    successMessage.innerHTML = '✅ مرحبا خي(ة) المهم رآه تم تسجيل الطلب ديالك المهم بالنسبة التوصيل كيكون 1 حتال 5 ايام على حسب المدين ديالك المهم غدا او اليوم رآه غتصوني عليك لبنت ديال الكونفيرما لي غدي تدوز ليك الكوموند ديالك لشركة التوصيل ياله اخي مرحبا أو مبارك عواشرك خي لعزيز <span class="close-success" onclick="renderHomePage()">&times;</span>';
                     
                     orderSection.innerHTML = '';
                     orderSection.appendChild(successMessage);
-
-                    setTimeout(() => {
-                        renderHomePage();
-                    }, 8000);
                 } else {
                     showToast('حدث خطأ في إرسال الطلب');
                 }
@@ -2328,18 +2346,13 @@
                     const checkoutContent = document.querySelector('.checkout-content');
                     const successMessage = document.createElement('div');
                     successMessage.className = 'success-message';
-                    successMessage.innerHTML = '✅ مرحبا خي(ة) المهم رآه تم تسجيل الطلب ديالك المهم بالنسبة التوصيل كيكون 1 حتال 5 ايام على حسب المدين ديالك المهم غدا او اليوم رآه غتصوني عليك لبنت ديال الكونفيرما لي غدي تدوز ليك الكوموند ديالك لشركة التوصيل ياله اخي مرحبا أو مبارك عواشرك خي لعزيز';
+                    successMessage.innerHTML = '✅ مرحبا خي(ة) المهم رآه تم تسجيل الطلب ديالك المهم بالنسبة التوصيل كيكون 1 حتال 5 ايام على حسب المدين ديالك المهم غدا او اليوم رآه غتصوني عليك لبنت ديال الكونفيرما لي غدي تدوز ليك الكوموند ديالك لشركة التوصيل ياله اخي مرحبا أو مبارك عواشرك خي لعزيز <span class="close-success" onclick="renderHomePage()">&times;</span>';
                     
                     checkoutContent.innerHTML = '';
                     checkoutContent.appendChild(successMessage);
                     
                     cart = [];
                     document.getElementById('cartCount').textContent = '0';
-                    
-                    setTimeout(() => {
-                        closeCartCheckout();
-                        renderHomePage();
-                    }, 8000);
                 } else {
                     showToast('حدث خطأ في إرسال الطلب');
                 }
@@ -2361,10 +2374,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
