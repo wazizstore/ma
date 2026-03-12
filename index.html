@@ -2153,18 +2153,31 @@
             }
         }
 
-      function updateCustomSize() {
+     function updateCustomSize() {
     const height = document.getElementById('height')?.value;
     const weight = document.getElementById('weight')?.value;
     
     if (height && weight) {
-        // تحديد المقاس تلقائياً
+        // تحديد المقاس تلقائياً حسب المنتج الحالي
         const autoSize = getSizeFromMeasurements(height, weight);
         
         if (autoSize) {
             selectedSize = autoSize;
-            // عرض المقاس المحدد للمستخدم (اختياري)
-            showToast(`✅ تم تحديد المقاس: ${autoSize}`);
+            
+            // تحديث حقل القياس المحدد في الصفحة
+            const sizeSelect = document.getElementById('productSize');
+            if (sizeSelect) {
+                // البحث عن الخيار المطابق
+                const option = Array.from(sizeSelect.options).find(
+                    opt => opt.value.toUpperCase() === autoSize.toUpperCase()
+                );
+                if (option) {
+                    sizeSelect.value = option.value;
+                }
+            }
+            
+            // إظهار رسالة للمستخدم
+            showToast(`✅ تم تحديد المقاس: ${autoSize.toUpperCase()}`);
         } else {
             selectedSize = `الطول: ${height} سم - الوزن: ${weight} كغم`;
         }
@@ -2548,55 +2561,92 @@ function showToast(message) {
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
-        // ============================================
-// دالة تحديد المقاس تلقائياً بناءً على الطول والوزن
+      // ============================================
+// دالة تحديد المقاس تلقائياً بناءً على الطول والوزن والمقاسات المتوفرة
 // ============================================
 function getSizeFromMeasurements(height, weight) {
     // تحويل القيم إلى أرقام
     const h = parseInt(height);
     const w = parseInt(weight);
     
-    if (isNaN(h) || isNaN(w)) return null;
+    if (isNaN(h) || isNaN(w) || !currentProduct) return null;
     
-    // جدول المقاسات
-    if (h >= 165 && h <= 175 && w >= 62 && w <= 70) return "M";
-    if (h >= 170 && h <= 180 && w >= 70 && w <= 78) return "L";
-    if (h >= 175 && h <= 185 && w >= 78 && w <= 86) return "XL";
-    if (h >= 180 && h <= 190 && w >= 86 && w <= 95) return "XXL";
-    
-    // إذا كان أكبر من كل المقاسات
-    if (h > 190 || w > 95) return "XXL";
-    
-    // إذا كان أصغر من كل المقاسات
-    if (h < 165 || w < 62) return "M";
-    
-    // البحث عن أقرب مقاس
-    const sizes = [
+    // جدول المقاسات الأساسي
+    const sizeChart = [
         { name: "M", hMin: 165, hMax: 175, wMin: 62, wMax: 70 },
         { name: "L", hMin: 170, hMax: 180, wMin: 70, wMax: 78 },
         { name: "XL", hMin: 175, hMax: 185, wMin: 78, wMax: 86 },
         { name: "XXL", hMin: 180, hMax: 190, wMin: 86, wMax: 95 }
     ];
     
-    let bestMatch = null;
-    let smallestDiff = Infinity;
+    // تحديد المقاس المناسب من الجدول
+    let recommendedSize = null;
     
-    sizes.forEach(size => {
-        const hDiff = Math.abs(h - ((size.hMin + size.hMax) / 2));
-        const wDiff = Math.abs(w - ((size.wMin + size.wMax) / 2));
-        const totalDiff = hDiff + wDiff;
+    for (let size of sizeChart) {
+        if (h >= size.hMin && h <= size.hMax && w >= size.wMin && w <= size.wMax) {
+            recommendedSize = size.name;
+            break;
+        }
+    }
+    
+    // إذا لم يتم العثور على مقاس مناسب، ابحث عن الأقرب
+    if (!recommendedSize) {
+        let closestSize = null;
+        let smallestDiff = Infinity;
         
-        if (totalDiff < smallestDiff) {
-            smallestDiff = totalDiff;
-            bestMatch = size.name;
+        sizeChart.forEach(size => {
+            const hDiff = Math.abs(h - ((size.hMin + size.hMax) / 2));
+            const wDiff = Math.abs(w - ((size.wMin + size.wMax) / 2));
+            const totalDiff = hDiff + wDiff;
+            
+            if (totalDiff < smallestDiff) {
+                smallestDiff = totalDiff;
+                closestSize = size.name;
+            }
+        });
+        
+        recommendedSize = closestSize;
+    }
+    
+    // التحقق من توفر المقاس في المنتج الحالي
+    if (!currentProduct.sizes || currentProduct.sizes.length === 0) {
+        return recommendedSize;
+    }
+    
+    // تحويل المقاسات إلى حروف كبيرة للمقارنة
+    const availableSizes = currentProduct.sizes.map(s => s.toUpperCase());
+    
+    // إذا كان المقاس الموصى به متوفر، استخدمه
+    if (availableSizes.includes(recommendedSize)) {
+        return recommendedSize;
+    }
+    
+    // إذا لم يكن متوفر، ابحث عن أقرب مقاس متوفر
+    const sizeOrder = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"];
+    const recIndex = sizeOrder.indexOf(recommendedSize);
+    
+    if (recIndex === -1) return availableSizes[0] || "M";
+    
+    // ابحث عن أقرب مقاس متوفر (أكبر أو أصغر)
+    let bestMatch = availableSizes[0];
+    let bestDiff = Infinity;
+    
+    availableSizes.forEach(size => {
+        const sizeIndex = sizeOrder.indexOf(size.toUpperCase());
+        if (sizeIndex !== -1) {
+            const diff = Math.abs(recIndex - sizeIndex);
+            if (diff < bestDiff) {
+                bestDiff = diff;
+                bestMatch = size;
+            }
         }
     });
     
     return bestMatch;
-}
-    </script>
+}    </script>
 </body>
 </html>
+
 
 
 
