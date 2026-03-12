@@ -2153,13 +2153,23 @@
             }
         }
 
-        function updateCustomSize() {
-            const height = document.getElementById('height')?.value;
-            const weight = document.getElementById('weight')?.value;
-            if (height && weight) {
-                selectedSize = `الطول: ${height} سم - الوزن: ${weight} كغم`;
-            }
+      function updateCustomSize() {
+    const height = document.getElementById('height')?.value;
+    const weight = document.getElementById('weight')?.value;
+    
+    if (height && weight) {
+        // تحديد المقاس تلقائياً
+        const autoSize = getSizeFromMeasurements(height, weight);
+        
+        if (autoSize) {
+            selectedSize = autoSize;
+            // عرض المقاس المحدد للمستخدم (اختياري)
+            showToast(`✅ تم تحديد المقاس: ${autoSize}`);
+        } else {
+            selectedSize = `الطول: ${height} سم - الوزن: ${weight} كغم`;
         }
+    }
+}
 
         function validateSelection() {
             // التحقق من اختيار اللون
@@ -2538,9 +2548,56 @@ function showToast(message) {
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
+        // ============================================
+// دالة تحديد المقاس تلقائياً بناءً على الطول والوزن
+// ============================================
+function getSizeFromMeasurements(height, weight) {
+    // تحويل القيم إلى أرقام
+    const h = parseInt(height);
+    const w = parseInt(weight);
+    
+    if (isNaN(h) || isNaN(w)) return null;
+    
+    // جدول المقاسات
+    if (h >= 165 && h <= 175 && w >= 62 && w <= 70) return "M";
+    if (h >= 170 && h <= 180 && w >= 70 && w <= 78) return "L";
+    if (h >= 175 && h <= 185 && w >= 78 && w <= 86) return "XL";
+    if (h >= 180 && h <= 190 && w >= 86 && w <= 95) return "XXL";
+    
+    // إذا كان أكبر من كل المقاسات
+    if (h > 190 || w > 95) return "XXL";
+    
+    // إذا كان أصغر من كل المقاسات
+    if (h < 165 || w < 62) return "M";
+    
+    // البحث عن أقرب مقاس
+    const sizes = [
+        { name: "M", hMin: 165, hMax: 175, wMin: 62, wMax: 70 },
+        { name: "L", hMin: 170, hMax: 180, wMin: 70, wMax: 78 },
+        { name: "XL", hMin: 175, hMax: 185, wMin: 78, wMax: 86 },
+        { name: "XXL", hMin: 180, hMax: 190, wMin: 86, wMax: 95 }
+    ];
+    
+    let bestMatch = null;
+    let smallestDiff = Infinity;
+    
+    sizes.forEach(size => {
+        const hDiff = Math.abs(h - ((size.hMin + size.hMax) / 2));
+        const wDiff = Math.abs(w - ((size.wMin + size.wMax) / 2));
+        const totalDiff = hDiff + wDiff;
+        
+        if (totalDiff < smallestDiff) {
+            smallestDiff = totalDiff;
+            bestMatch = size.name;
+        }
+    });
+    
+    return bestMatch;
+}
     </script>
 </body>
 </html>
+
 
 
 
