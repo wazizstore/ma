@@ -787,10 +787,30 @@
             transform: scale(1.15);
         }
 
-        .color-option.selected {
-            border-color: var(--accent);
-            transform: scale(1.1);
-        }
+     /* تحسين ظهور اللون المختار */
+.color-option.selected {
+    border-color: var(--accent);
+    transform: scale(1.1);
+    position: relative;
+}
+
+/* إضافة علامة صح على اللون المختار */
+.color-option.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+
+/* تحسين ظهور اللون الأبيض المختار */
+.color-option.white.selected::after {
+    color: #000000;  /* علامة سوداء على الأبيض */
+}
 
         .color-option.disabled {
             opacity: 0.5;
