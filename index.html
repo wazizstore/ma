@@ -845,6 +845,8 @@
         .color-option.pink { background: #FFC0CB; }
         .color-option.lightbrown { background: #D2B48C; }
         .color-option.blue { background: #0000FF; }
+        .color-option.darkblue { background: #000080; }
+.color-option.lightblue { background: #87CEEB; }
 .color-option.grey { 
     background: #A0A0A0;
     border: 2px solid #D0D0D0;}
@@ -1616,7 +1618,30 @@
         // المنتجات
         // ============================================
         const products = [ 
-            
+            {
+    id: 15,
+    name: "ساعة رجالية Casio",
+    price: "199",
+    originalPrice: "230",
+    description: "✅ مصنوعة من مواد قوية مقاومة للصدمات والتآكل ✅ أناقة 💼 + مقاومة للماء 💧 + جودة عالية 🔋 ✅ مثالية للرجال اللي يبغون الأناقة والعملية في ساعة وحدة",
+    images: [
+        "casio1.jpg",
+        "casio2.jpg",
+        "casio3.jpg",
+        "casio4.jpg",
+        "casio5.jpg"
+    ],
+    colors: [
+        { name: "أزرق غامق", class: "darkblue", inStock: true },
+        { name: "أزرق فاتح", class: "lightblue", inStock: true },
+        { name: "أبيض", class: "white", inStock: true },
+        { name: "أسود", class: "black", inStock: true },
+        { name: "أخضر", class: "green", inStock: true }
+    ],
+    sizes: [],  // لا يوجد مقاسات
+    noSizes: true,  // إخفاء قسم القياسات
+    inStock: true
+}
             {
                 id: 6,
                 name: "Sweet nike",
@@ -1634,7 +1659,7 @@
                     { name: "Noir", class: "black", inStock: true }
                 ],
                 sizes: ["m", "l", "xl"],
-                inStock: false
+                inStock: true
             },
                                   {
                 id: 10,
@@ -1671,7 +1696,7 @@
                     { name: "Blanc", class: "white", inStock: true }
                 ],
                 sizes: ["m", "l", "xl", "xxl"],
-                inStock: false
+                inStock: true
             },
             
                {
@@ -1693,7 +1718,7 @@
        
     ],
     sizes: ["m", "l", "xl"],
-    inStock: false
+    inStock: true
 },     
             {
     id: 14,
@@ -1712,7 +1737,7 @@
         { name: "أسود", class: "black", inStock: true }
     ],
     sizes: ["m", "l", "xl"],
-    inStock: false
+    inStock: true
 },
             {
     id: 12,
@@ -1757,22 +1782,6 @@
                 inStock: false
             },
          
-            {
-                id: 4,
-                name: "JACKETE NIKE DOUBLE FACE",
-                price: "260",
-                originalPrice: "350",
-                description: "Dodone nike أصلية بتصميم عصري ومريح - جودة عالية وخامة ممتازة",
-                images: [
-                     "WhatsApp Image 2026-03-13 at 20.41.11.jpeg",
-                    "WhatsApp Image 2026-03-03 at 20.41.11.jpeg"
-                ],
-                colors: [
-                    { name: "أسود", class: "black", inStock: true }
-                ],
-                sizes: ["m", "l", "xl", "Xxl"],
-                inStock: false
-            },
                 
         ];
 
