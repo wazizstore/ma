@@ -2235,39 +2235,40 @@
     }
 }
 
-        function validateSelection() {
-            // التحقق من اختيار اللون
-            if (!selectedColor) {
-                showToast('يرجى اختيار اللون');
+      function validateSelection() {
+    // التحقق من الألوان فقط إذا كان المنتج يحتوي على ألوان
+    if (!currentProduct.noColors && currentProduct.colors && currentProduct.colors.length > 0) {
+        if (!selectedColor) {
+            showToast('يرجى اختيار اللون');
+            return false;
+        }
+    }
+
+    // التحقق من القياسات فقط إذا كان المنتج يتطلب ذلك
+    if (!currentProduct.noSizes) {
+        const sizeSelect = document.getElementById('productSize');
+        const unknownCheck = document.getElementById('unknownSizeCheck');
+        
+        if (unknownCheck && unknownCheck.checked) {
+            const height = document.getElementById('height')?.value;
+            const weight = document.getElementById('weight')?.value;
+            if (!height || !weight) {
+                showToast('يرجى إدخال الطول والوزن');
                 return false;
             }
-
-            // التحقق من القياس فقط إذا كان المنتج يتطلب ذلك
-            if (!currentProduct.noSizes) {
-                const sizeSelect = document.getElementById('productSize');
-                const unknownCheck = document.getElementById('unknownSizeCheck');
-                
-                if (unknownCheck && unknownCheck.checked) {
-                    const height = document.getElementById('height')?.value;
-                    const weight = document.getElementById('weight')?.value;
-                    if (!height || !weight) {
-                        showToast('يرجى إدخال الطول والوزن');
-                        return false;
-                    }
-                } else {
-                    if (!sizeSelect || !sizeSelect.value) {
-                        showToast('يرجى اختيار القياس');
-                        return false;
-                    }
-                    selectedSize = sizeSelect.value;
-                }
-            } else {
-                // للمنتجات بدون قياسات، استخدم قيمة افتراضية
-                selectedSize = 'قياس واحد';
+        } else {
+            if (!sizeSelect || !sizeSelect.value) {
+                showToast('يرجى اختيار القياس');
+                return false;
             }
-            
-            return true;
+            selectedSize = sizeSelect.value;
         }
+    } else {
+        selectedSize = 'قياس واحد';
+    }
+    
+    return true;
+}
 
         function addToCart() {
             if (!validateSelection()) return;
@@ -2301,7 +2302,10 @@
                 return;
             }
 
-            if (!selectedColor) {
+            if (!selectedColo
+                
+                
+                r) {
                 showToast('يرجى اختيار اللون من الأعلى');
                 return;
             }
