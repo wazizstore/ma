@@ -2235,16 +2235,19 @@
     }
 }
 
-      function validateSelection() {
+    function validateSelection() {
     // التحقق من الألوان فقط إذا كان المنتج يحتوي على ألوان
     if (!currentProduct.noColors && currentProduct.colors && currentProduct.colors.length > 0) {
-        if (!selectedColor) {
-            showToast('يرجى اختيار اللون');
-            return false;
-        }
+                  // التحقق من اللون فقط إذا كان المنتج يحتوي على ألوان
+            if (!currentProduct.noColors && currentProduct.colors && currentProduct.colors.length > 0) {
+                if (!selectedColor) {
+                    showToast('يرجى اختيار اللون من الأعلى');
+                    return;
+                }
+            }
     }
 
-    // التحقق من القياسات فقط إذا كان المنتج يتطلب ذلك
+    // التحقق من القياس فقط إذا كان المنتج يتطلب ذلك
     if (!currentProduct.noSizes) {
         const sizeSelect = document.getElementById('productSize');
         const unknownCheck = document.getElementById('unknownSizeCheck');
@@ -2264,6 +2267,7 @@
             selectedSize = sizeSelect.value;
         }
     } else {
+        // للمنتجات بدون قياسات، استخدم قيمة افتراضية
         selectedSize = 'قياس واحد';
     }
     
