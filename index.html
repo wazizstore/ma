@@ -1619,21 +1619,20 @@
         // المنتجات
         // ============================================
         const products = [ 
-            {
+   {
     id: 16,
     name: "باك رجالي",
     price: "199",
     originalPrice: "300",
-    description: "✅باك رجالي جديد متكامل⚡ ✅يتكون الباك من ساعتين رجالية 🌺 ✅ريحة فخمة تدوم طويل🌺🌺 ✅بزطام كبير جودة عالية🥇🥇",
+    description: "✅ باك رجالي جديد متكامل ⚡ ✅ يتكون الباك من ساعتين رجالية 🌺 ✅ ريحة فخمة تدوم طويل 🌺🌺 ✅ بزطام كبير جودة عالية 🥇🥇",
     images: [
         "unnamed (5).webp",
         "unnamed (6).webp"
-       
     ],
-     colors: [],
-    sizes: [],  // لا يوجد مقاسات
-   nocolors: false,  //إخفاء قسم القياسات 
-   noSizes: false,  // إخفاء قسم القياسات
+    colors: [],
+    sizes: [],
+    noSizes: true,
+    noColors: true,
     inStock: true
 },
             {
@@ -1985,12 +1984,14 @@
                                     <i class="fas fa-truck"></i> توصيل مجاني - الدفع عند الاستلام
                                 </div>
 
-                                <div class="color-section">
-                                    <h3>اختر اللون</h3>
-                                    <div class="color-options" id="colorOptions">
-                                        ${colorOptions}
-                                    </div>
-                                </div>
+                            ${!product.noColors ? `
+<div class="color-section">
+    <h3>اختر اللون</h3>
+    <div class="color-options" id="colorOptions">
+        ${colorOptions}
+    </div>
+</div>
+` : ''}
 
                                 ${sizeSectionHtml}
 
