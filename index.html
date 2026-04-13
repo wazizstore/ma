@@ -1,510 +1,783 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0a">
-<title>waziz shop | أناقتك تبدأ هنا</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>waziz shop | أناقتك تبدأ هنا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #0a0a0a;
+            --ink2: #181818;
+            --sand: #f4efe8;
+            --sand2: #ece6dc;
+            --gold: #b8966e;
+            --gold2: #d4b896;
+            --gold-pale: #f0e6d6;
+            --white: #fff;
+            --muted: #87877e;
+            --muted2: #b5b5ac;
+            --red: #c0392b;
+            --green: #27ae60;
+            --r1: 6px;
+            --r2: 14px;
+            --r3: 22px;
+            --sh1: 0 1px 4px rgba(0, 0, 0, .06);
+            --sh2: 0 4px 24px rgba(0, 0, 0, .08);
+            --sh3: 0 12px 48px rgba(0, 0, 0, .14);
+            --t: .28s cubic-bezier(.25, .46, .45, .94);
+            --tf: .16s cubic-bezier(.25, .46, .45, .94);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--sand);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            border: none;
+            background: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background: rgba(10, 10, 10, .95);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(184, 150, 110, .14);
+        }
+
+        .hdr {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 18px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            cursor: pointer;
+        }
+
+        .logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            font-style: italic;
+            color: var(--white);
+            letter-spacing: .02em;
+        }
+
+        .logo-main span {
+            color: var(--gold);
+        }
+
+        .logo-sub {
+            font-size: 8.5px;
+            color: var(--muted);
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .hdr-actions {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .hdr-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 15px;
+            border-radius: 50%;
+            transition: background var(--tf);
+        }
+
+        .hdr-btn:hover {
+            background: rgba(255, 255, 255, .08);
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            background: var(--ink);
+            overflow: hidden;
+            padding: 64px 20px 52px;
+            text-align: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 55% at 50% 120%, rgba(184, 150, 110, .17) 0%, transparent 70%),
+                        radial-gradient(ellipse 38% 38% at 82% 2%, rgba(184, 150, 110, .07) 0%, transparent 60%);
+        }
+
+        .hero-grain {
+            position: absolute;
+            inset: 0;
+            opacity: .35;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+        }
+
+        .hero-c {
+            position: relative;
+            z-index: 1;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .hero-eye {
+            font-size: 9.5px;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 5.5vw, 52px);
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .hero h2 em {
+            font-style: italic;
+            color: var(--gold2);
+        }
+
+        .hero-line {
+            width: 44px;
+            height: 1px;
+            background: var(--gold);
+            margin: 18px auto;
+        }
+
+        .hero-sub {
+            font-size: 13px;
+            color: var(--muted2);
+            font-weight: 300;
+        }
+
+        /* CATEGORY BAR */
+        .cat-bar-wrap {
+            background: var(--white);
+            border-bottom: 1px solid rgba(0, 0, 0, .06);
+            position: sticky;
+            top: 60px;
+            z-index: 800;
+        }
+
+        .cat-bar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            height: 52px;
+            scrollbar-width: none;
+        }
+
+        .cat-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-btn {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--muted);
+            background: var(--sand2);
+            border: 1.5px solid transparent;
+            transition: all var(--tf);
+            white-space: nowrap;
+        }
+
+        .cat-btn i {
+            font-size: 11px;
+        }
+
+        .cat-btn:hover {
+            color: var(--ink);
+            background: var(--sand);
+        }
+
+        .cat-btn.active {
+            background: var(--ink);
+            color: var(--white);
+            border-color: var(--ink);
+        }
+
+        .cat-btn.active i {
+            color: var(--gold);
+        }
+
+        /* PRODUCTS GRID */
+        .sec-hdr {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 0 18px;
+        }
+
+        .sec-kicker {
+            font-size: 9.5px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .sec-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(20px, 3.5vw, 28px);
+            font-weight: 400;
+            color: var(--ink);
+        }
+
+        .sec-count {
+            font-size: 11.5px;
+            color: var(--muted);
+            background: var(--sand2);
+            padding: 3px 11px;
+            border-radius: 99px;
+            font-weight: 500;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 0 56px;
+        }
+
+        @media (min-width: 580px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+        }
+
+        @media (min-width: 860px) {
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 18px;
+            }
+        }
+
+        .pcard {
+            background: var(--white);
+            border-radius: var(--r2);
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, .05);
+            position: relative;
+            transition: transform var(--t), box-shadow var(--t);
+        }
+
+        .pcard:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sh3);
+        }
+
+        .pcard-img {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            background: var(--sand2);
+        }
+
+        .pcard-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .55s cubic-bezier(.25, .46, .45, .94);
+        }
+
+        .pcard:hover .pcard-img img {
+            transform: scale(1.06);
+        }
+
+        .pcard-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 3px 8px;
+            border-radius: 99px;
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: .03em;
+        }
+
+        .b-sale {
+            background: var(--ink);
+            color: var(--gold);
+        }
+
+        .b-oos {
+            background: rgba(192, 57, 43, .88);
+            color: #fff;
+            backdrop-filter: blur(4px);
+        }
+
+        .b-cat {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(10, 10, 10, .75);
+            color: var(--gold2);
+            padding: 2px 7px;
+            border-radius: 99px;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: .04em;
+            backdrop-filter: blur(6px);
+        }
+
+        .oos-lay {
+            position: absolute;
+            inset: 0;
+            background: rgba(244, 239, 232, .62);
+            backdrop-filter: blur(1.5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .oos-lay span {
+            background: rgba(192, 57, 43, .88);
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 99px;
+            font-size: 11.5px;
+            font-weight: 700;
+        }
+
+        .pcard-body {
+            padding: 10px 12px 13px;
+        }
+
+        .pcard-name {
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 7px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 34px;
+        }
+
+        .pcard-price {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 7px;
+        }
+
+        .pp-main {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .pp-main small {
+            font-size: 9.5px;
+            font-weight: 500;
+        }
+
+        .pp-old {
+            font-size: 10.5px;
+            color: var(--muted2);
+            text-decoration: line-through;
+        }
+
+        .pcard-ship {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 9.5px;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .pcard-ship i {
+            font-size: 8.5px;
+        }
+
+        /* ALERT */
+        .alert-ov {
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: rgba(0, 0, 0, .38);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--t);
+        }
+
+        .alert-ov.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .alert-card {
+            background: var(--white);
+            border-radius: var(--r3);
+            padding: 26px 22px;
+            max-width: 290px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--sh3);
+            transform: scale(.93);
+            transition: transform var(--t);
+        }
+
+        .alert-ov.open .alert-card {
+            transform: scale(1);
+        }
+
+        .alert-icon {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .alert-title {
+            font-size: 15.5px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .alert-msg {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .alert-ok {
+            padding: 9px 26px;
+            background: var(--ink);
+            color: var(--white);
+            border-radius: var(--r2);
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background var(--tf);
+        }
+
+        .alert-ok:hover {
+            background: var(--ink2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            color: rgba(255, 255, 255, .68);
+            padding: 34px 20px 22px;
+        }
+
+        .footer-in {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .fb .logo-main {
+            font-size: 21px;
+            margin-bottom: 6px;
+        }
+
+        .fb p {
+            font-size: 11.5px;
+            line-height: 1.7;
+            max-width: 190px;
+        }
+
+        .fc h4 {
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 11px;
+        }
+
+        .fc p {
+            font-size: 12.5px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .footer-bot {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 16px;
+            text-align: center;
+            font-size: 10.5px;
+            color: rgba(255, 255, 255, .3);
+        }
+
+        @media (max-width: 480px) {
+            .footer-in {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+            .fb p {
+                max-width: 100%;
+            }
+            .fc p {
+                justify-content: center;
+            }
+            .hero {
+                padding: 50px 16px 40px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <div class="marquee-item"><i class="fas fa-truck"></i> التوصيل فابوووور قلب قيس عاد خلص</div>
-    <div class="marquee-item"><span class="mdot"></span></div>
-    <div class="marquee-item"><i class="fas fa-money-bill-wave"></i> الدفع عند التسليم</div>
-    <div class="marquee-item"><span class="mdot"></span></div>
-    <div class="marquee-item"><i class="fas fa-bolt"></i> توصيل سريع لجميع مدن المغرب</div>
-    <div class="marquee-item"><span class="mdot"></span></div>
-    <div class="marquee-item"><i class="fas fa-truck"></i> التوصيل فابوووور قلب قيس عاد خلص</div>
-    <div class="marquee-item"><span class="mdot"></span></div>
-    <div class="marquee-item"><i class="fas fa-money-bill-wave"></i> الدفع عند التسليم</div>
-    <div class="marquee-item"><span class="mdot"></span></div>
-    <div class="marquee-item"><i class="fas fa-bolt"></i> توصيل سريع لجميع مدن المغرب</div>
-    <div class="marquee-item"><span class="mdot"></span></div>
-  </div>
-</div>
-
 <!-- HEADER -->
 <header>
-  <div class="hdr">
-    <div class="logo" onclick="goHome()">
-      <div class="logo-main"><span>waziz</span> shop</div>
-      <div class="logo-sub">fashion · style · quality</div>
+    <div class="hdr">
+        <div class="logo" onclick="window.location.href='index.html'">
+            <div class="logo-main"><span>waziz</span> shop</div>
+            <div class="logo-sub">fashion · style · quality</div>
+        </div>
+        <div class="hdr-actions">
+            <button class="hdr-btn" onclick="window.location.href='cart.html'" aria-label="السلة">
+                <i class="fas fa-bag-shopping"></i>
+            </button>
+        </div>
     </div>
-    <div class="hdr-actions">
-      <button class="hdr-btn" onclick="toggleCart()" aria-label="السلة">
-        <i class="fas fa-bag-shopping"></i>
-        <span class="cart-badge" id="cartBadge">0</span>
-      </button>
-    </div>
-  </div>
 </header>
 
-<!-- HOME PAGE -->
-<div id="homePage">
-  <section class="hero">
+<!-- HERO SECTION -->
+<section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-grain"></div>
     <div class="hero-c">
-      <p class="hero-eye">الموسم الجديد · 2026</p>
-      <h2>أناقتك<br><em>تبدأ هنا</em></h2>
-      <div class="hero-line"></div>
-      <p class="hero-sub">توصيل مجاني · دفع عند الاستلام · جودة عالية</p>
+        <p class="hero-eye">الموسم الجديد · 2026</p>
+        <h2>أناقتك<br><em>تبدأ هنا</em></h2>
+        <div class="hero-line"></div>
+        <p class="hero-sub">توصيل مجاني · دفع عند الاستلام · جودة عالية</p>
     </div>
-  </section>
+</section>
 
-  <!-- CATEGORY FILTER BAR -->
-  <div class="cat-bar-wrap">
+<!-- CATEGORY BAR -->
+<div class="cat-bar-wrap">
     <div class="cat-bar">
-      <button class="cat-btn active" data-cat="all" onclick="filterCat('all',this)">
-        <i class="fas fa-border-all"></i> الكل
-      </button>
-      <button class="cat-btn" data-cat="clothes" onclick="filterCat('clothes',this)">
-        <i class="fas fa-tshirt"></i> الملابس
-      </button>
-      <button class="cat-btn" data-cat="electronics" onclick="filterCat('electronics',this)">
-        <i class="fas fa-microchip"></i> الإلكترونيات
-      </button>
-      <button class="cat-btn" data-cat="bags" onclick="filterCat('bags',this)">
-        <i class="fas fa-bag-shopping"></i> الحقائب
-      </button>
-      <button class="cat-btn" data-cat="watches" onclick="filterCat('watches',this)">
-        <i class="fas fa-clock"></i> الساعات
-      </button>
+        <button class="cat-btn active" data-cat="all" onclick="filterProducts('all', this)">
+            <i class="fas fa-border-all"></i> الكل
+        </button>
+        <button class="cat-btn" data-cat="clothes" onclick="filterProducts('clothes', this)">
+            <i class="fas fa-tshirt"></i> الملابس
+        </button>
+        <button class="cat-btn" data-cat="watches" onclick="filterProducts('watches', this)">
+            <i class="fas fa-clock"></i> الساعات
+        </button>
     </div>
-  </div>
+</div>
 
-  <div class="wrap">
+<!-- PRODUCTS SECTION -->
+<div class="container">
     <div class="sec-hdr">
-      <div>
-        <p class="sec-kicker">تشكيلتنا</p>
-        <h2 class="sec-title">المنتجات</h2>
-      </div>
-      <span class="sec-count" id="productCount"></span>
+        <div>
+            <p class="sec-kicker">تشكيلتنا</p>
+            <h2 class="sec-title">المنتجات</h2>
+        </div>
+        <span class="sec-count" id="productCount"></span>
     </div>
     <div class="grid" id="productsGrid"></div>
-  </div>
-</div>
-
-<!-- PRODUCT PAGE (يتم ملؤه ديناميكياً عند النقر على منتج) -->
-<div id="productPage" style="display:none">
-  <div class="pback-bar">
-    <div class="pback-inner">
-      <button class="back-btn" onclick="goHome()">
-        <i class="fas fa-arrow-right"></i><span>العودة</span>
-      </button>
-      <span class="bcrumb-sep">›</span>
-      <span class="bcrumb-cur" id="breadcrumbName">المنتج</span>
-    </div>
-  </div>
-  <div class="playout" id="productLayout"></div>
-</div>
-
-<!-- CART DRAWER -->
-<div class="cart-ov" id="cartOv" onclick="toggleCart()"></div>
-<div class="cart-dr" id="cartDr">
-  <div class="dr-hdr">
-    <div class="dr-title"><i class="fas fa-bag-shopping"></i> سلة التسوق</div>
-    <button class="dr-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
-  </div>
-  <div class="dr-body" id="drBody"></div>
-  <div class="dr-footer" id="drFooter" style="display:none">
-    <div class="dr-tot">
-      <span class="dr-tot-lbl">المجموع الكلي</span>
-      <span class="dr-tot-amt" id="drTotal">0 درهم</span>
-    </div>
-    <button class="dr-checkout" onclick="openCheckout()"><i class="fas fa-lock"></i> إتمام الطلب</button>
-  </div>
-</div>
-
-<!-- CHECKOUT MODAL -->
-<div class="mod-ov" id="checkoutMod">
-  <div class="mod-sheet">
-    <div class="mod-handle"></div>
-    <div class="mod-hdr">
-      <span class="mod-title">📝 تأكيد الطلب</span>
-      <button class="mod-xbtn" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="mod-body" id="checkoutBody"></div>
-  </div>
 </div>
 
 <!-- ALERT MODAL -->
 <div class="alert-ov" id="alertOv">
-  <div class="alert-card">
-    <div class="alert-icon" id="alertIcon">⚠️</div>
-    <div class="alert-title" id="alertTitle"></div>
-    <div class="alert-msg" id="alertMsg"></div>
-    <button class="alert-ok" onclick="closeAlert()">حسناً</button>
-  </div>
+    <div class="alert-card">
+        <div class="alert-icon" id="alertIcon">⚠️</div>
+        <div class="alert-title" id="alertTitle"></div>
+        <div class="alert-msg" id="alertMsg"></div>
+        <button class="alert-ok" onclick="closeAlert()">حسناً</button>
+    </div>
 </div>
-
-<!-- FULLSCREEN GALLERY -->
-<div class="fullscr" id="fullscr">
-  <button class="fs-close" onclick="closeFull()"><i class="fas fa-times"></i></button>
-  <button class="fs-arr prev" onclick="fsNav(-1)"><i class="fas fa-chevron-right"></i></button>
-  <button class="fs-arr next" onclick="fsNav(1)"><i class="fas fa-chevron-left"></i></button>
-  <img src="" alt="" id="fsImg">
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-in">
-    <div class="fb">
-      <div class="logo-main" style="margin-bottom:6px"><span>waziz</span> shop</div>
-      <p>متجرك الأول للموضة — أناقة، جودة، وتوصيل سريع لباب دارك.</p>
+    <div class="footer-in">
+        <div class="fb">
+            <div class="logo-main" style="margin-bottom:6px"><span>waziz</span> shop</div>
+            <p>متجرك الأول للموضة — أناقة، جودة، وتوصيل سريع لباب دارك.</p>
+        </div>
+        <div class="fc">
+            <h4>تواصل معنا</h4>
+            <p><i class="fas fa-phone" style="color:var(--gold)"></i> 0635208269</p>
+            <p><i class="fas fa-location-dot" style="color:var(--gold)"></i> الدار البيضاء، المغرب</p>
+        </div>
     </div>
-    <div class="fc">
-      <h4>تواصل معنا</h4>
-      <p><i class="fas fa-phone" style="color:var(--gold)"></i> 0635208269</p>
-      <p><i class="fas fa-location-dot" style="color:var(--gold)"></i> الدار البيضاء، المغرب</p>
-    </div>
-  </div>
-  <div class="footer-bot">© 2026 waziz shop — جميع الحقوق محفوظة</div>
+    <div class="footer-bot">© 2026 waziz shop — جميع الحقوق محفوظة</div>
 </footer>
 
 <script>
-/* ════════════════════════════════════════════════════════════════
-   🧥 منتجات الملابس — نفس الأسماء والمسارات بالضبط
-════════════════════════════════════════════════════════════════ */
-const CLOTHES = [
-  {
-    id: 12,
-    name: "Ensemble likra mkhtat",
-    price: "219", originalPrice: "259",
-    description: "اونصوبل ليكرا توب مليح",
-    cat: "clothes",
-    images: ["Untitled design (6).webp","Untitled design (7).webp"],
-    colors: [{name:"أسود",class:"black",inStock:true},{name:"أبيض",class:"white",inStock:true}],
-    sizes: ["m","l","xl"], inStock: true
-  },
-  {
-    id: 18,
-    name: "Ensemble t-shirt en SARWAL rido",
-    price: "219", originalPrice: "299",
-    description: "Ensemble t-shirt en SARWAL rido - جودة عالية وتصميم عصري",
-    cat: "clothes",
-    images: ["photo_2026-03-27_23-27-34.webp","photo_2026-03-27_23-27-39.webp","photo_2026-03-27_23-27-47.webp"],
-    colors: [{name:"أسود",class:"black",inStock:true},{name:"أبيض",class:"white",inStock:false},{name:"بني",class:"brown",inStock:false},{name:"أزرق",class:"blue",inStock:false}],
-    sizes: ["m","l","xl"], inStock: true
-  },
-  {
-    id: 17,
-    name: "ENSEMBLE RIDO BLA JIB (SHOMIS & chort)",
-    price: "199", originalPrice: "299",
-    description: "SHOMIS & chort",
-    cat: "clothes",
-    images: ["Gemini_Generated_Image_tkom7utkom7utkom.webp","Gemini_Generated_Image_3o2t5k3o2t5k3o2t.webp","Gemini_Generated_Image_viswvyviswvyvisw.webp"],
-    colors: [{name:"أسود",class:"black",inStock:true},{name:"أبيض",class:"white",inStock:true},{name:"بني",class:"brown",inStock:true},{name:"فضي",class:"argent",inStock:true}],
-    sizes: ["m","l","xl"], inStock: true
-  },
-  {
-    id: 10,
-    name: "Ensemble swid",
-    price: "219", originalPrice: "249",
-    description: "اونصومبل توب غليض تاع البرد .",
-    cat: "clothes",
-    images: ["WhatsApp Image 2026-03-02 at 02.46.23.webp","WhatsApp Image 2026-03-02 at 02.49.27.webp"],
-    colors: [{name:"أسود",class:"black",inStock:false},{name:"أبيض",class:"white",inStock:true}],
-    sizes: ["m","l","xl"], inStock: true
-  },
-  {
-    id: 6,
-    name: "Sweet nike",
-    price: "199", originalPrice: "299",
-    description: "المليح ثوب مونطوني مقطن.",
-    cat: "clothes",
-    images: ["Gemini_Generated_Image_o3s4y2o3s4y2o3s4.webp","Gemini_Generated_Image_rk9k64rk9k64rk9k.webp","Gemini_Generated_Image_dhbtp9dhbtp9dhbt.webp","Gemini_Generated_Image_3vprbh3vprbh3vpr.webp"],
-    colors: [{name:"Vert",class:"vert",inStock:true},{name:"Noir",class:"black",inStock:false}],
-    sizes: ["m","l","xl"], inStock: false
-  },
-  {
-    id: 9,
-    name: "Ensemble Rédou b sensla",
-    price: "229", originalPrice: "299",
-    description: "اونصومبل توب غليض تاع البرد بالسنسلة مزيانة فيه جياب.",
-    cat: "clothes",
-    images: ["1760905019_IMG_0375.webp","Untitled design (29).webp","Untitled design (30).webp"],
-    colors: [{name:"Noir",class:"black",inStock:true},{name:"Marron clair",class:"marron-clair",inStock:true},{name:"Blanc",class:"white",inStock:true}],
-    sizes: ["m","l","xl","xxl"], inStock: true
-  },
-  {
-    id: 13,
-    name: "Ensemble rido shomis et srwal",
-    price: "199", originalPrice: "259",
-    description: "Ensemble rido shomis et srwal",
-    cat: "clothes",
-    images: ["1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (2).webp","1754474745_WhatsApp Image 2025-08-05 at 23.47.53.webp","1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (1).webp"],
-    colors: [{name:"أسود",class:"black",inStock:true},{name:"أبيض",class:"white",inStock:true},{name:"بني",class:"brown",inStock:true}],
-    sizes: ["m","l","xl"], inStock: true
-  },
-  {
-    id: 14,
-    name: "Ensemble sweet likra simple",
-    price: "219", originalPrice: "299",
-    description: "سويت ليكرا مليح.",
-    cat: "clothes",
-    images: ["3.webp","1.webp","2.webp"],
-    colors: [{name:"رمادي",class:"grey",inStock:true},{name:"أبيض",class:"white",inStock:true},{name:"أسود",class:"black",inStock:true}],
-    sizes: ["m","l","xl"], inStock: true
-  },
-  {
-    id: 1,
-    name: "Ensemble nike",
-    price: "219", originalPrice: "299",
-    description: "اونسومبل NIKE صيفي لرجال 💥 التوب مونطوني مقطن",
-    cat: "clothes",
-    images: ["1757028183_instagram-1756553237064.webp","1757028183_IMG_20250830_122844_404 (1).webp"],
-    colors: [{name:"أخضر",class:"green",inStock:true},{name:"أسود",class:"black",inStock:true}],
-    sizes: ["m","l","xl"], inStock: false
-  }
-];
+    // المنتجات (نفس البيانات من الكود القديم)
+    const products = [
+        { id: 12, name: "Ensemble likra mkhtat", price: "219", originalPrice: "259", description: "اونصوبل ليكرا توب مليح", cat: "clothes", images: ["Untitled design (6).webp", "Untitled design (7).webp"], sizes: ["m","l","xl"], inStock: true },
+        { id: 18, name: "Ensemble t-shirt en SARWAL rido", price: "219", originalPrice: "299", description: "Ensemble t-shirt en SARWAL rido - جودة عالية وتصميم عصري", cat: "clothes", images: ["photo_2026-03-27_23-27-34.webp", "photo_2026-03-27_23-27-39.webp", "photo_2026-03-27_23-27-47.webp"], sizes: ["m","l","xl"], inStock: true },
+        { id: 17, name: "ENSEMBLE RIDO BLA JIB (SHOMIS & chort)", price: "199", originalPrice: "299", description: "SHOMIS & chort", cat: "clothes", images: ["Gemini_Generated_Image_tkom7utkom7utkom.webp", "Gemini_Generated_Image_3o2t5k3o2t5k3o2t.webp", "Gemini_Generated_Image_viswvyviswvyvisw.webp"], sizes: ["m","l","xl"], inStock: true },
+        { id: 10, name: "Ensemble swid", price: "219", originalPrice: "249", description: "اونصومبل توب غليض تاع البرد .", cat: "clothes", images: ["WhatsApp Image 2026-03-02 at 02.46.23.webp", "WhatsApp Image 2026-03-02 at 02.49.27.webp"], sizes: ["m","l","xl"], inStock: true },
+        { id: 6, name: "Sweet nike", price: "199", originalPrice: "299", description: "المليح ثوب مونطوني مقطن.", cat: "clothes", images: ["Gemini_Generated_Image_o3s4y2o3s4y2o3s4.webp", "Gemini_Generated_Image_rk9k64rk9k64rk9k.webp", "Gemini_Generated_Image_dhbtp9dhbtp9dhbt.webp", "Gemini_Generated_Image_3vprbh3vprbh3vpr.webp"], sizes: ["m","l","xl"], inStock: false },
+        { id: 9, name: "Ensemble Rédou b sensla", price: "229", originalPrice: "299", description: "اونصومبل توب غليض تاع البرد بالسنسلة مزيانة فيه جياب.", cat: "clothes", images: ["1760905019_IMG_0375.webp", "Untitled design (29).webp", "Untitled design (30).webp"], sizes: ["m","l","xl","xxl"], inStock: true },
+        { id: 13, name: "Ensemble rido shomis et srwal", price: "199", originalPrice: "259", description: "Ensemble rido shomis et srwal", cat: "clothes", images: ["1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (2).webp", "1754474745_WhatsApp Image 2025-08-05 at 23.47.53.webp", "1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (1).webp"], sizes: ["m","l","xl"], inStock: true },
+        { id: 14, name: "Ensemble sweet likra simple", price: "219", originalPrice: "299", description: "سويت ليكرا مليح.", cat: "clothes", images: ["3.webp", "1.webp", "2.webp"], sizes: ["m","l","xl"], inStock: true },
+        { id: 1, name: "Ensemble nike", price: "219", originalPrice: "299", description: "اونسومبل NIKE صيفي لرجال 💥 التوب مونطوني مقطن", cat: "clothes", images: ["1757028183_instagram-1756553237064.webp", "1757028183_IMG_20250830_122844_404 (1).webp"], sizes: ["m","l","xl"], inStock: false },
+        { id: 15, name: "ساعة رجالية Casio", price: "199", originalPrice: "230", description: "✅ مصنوعة من مواد قوية مقاومة للصدمات والتآكل ✅ أناقة 💼 + مقاومة للماء 💧 + جودة عالية 🔋 ✅ مثالية للرجال", cat: "watches", images: ["photo_2025-10-25_21-42-52 (5).webp", "photo_2026-03-20_16-48-35.webp", "photo_2025-10-25_21-42-52 (2).webp", "photo_2025-10-25_21-42-52 (3).webp", "photo_2025-10-25_21-42-52 (4).webp"], sizes: [], inStock: true }
+    ];
 
-/* ════════════════════════════════════════════════════════════════
-   ⌚ الإلكترونيات والساعات
-════════════════════════════════════════════════════════════════ */
-const ELECTRONICS = [
-  {
-    id: 15,
-    name: "ساعة رجالية Casio",
-    price: "199", originalPrice: "230",
-    description: "✅ مصنوعة من مواد قوية مقاومة للصدمات والتآكل ✅ أناقة 💼 + مقاومة للماء 💧 + جودة عالية 🔋 ✅ مثالية للرجال",
-    cat: "watches",
-    images: ["photo_2025-10-25_21-42-52 (5).webp","photo_2026-03-20_16-48-35.webp","photo_2025-10-25_21-42-52 (2).webp","photo_2025-10-25_21-42-52 (3).webp","photo_2025-10-25_21-42-52 (4).webp"],
-    colors: [{name:"أزرق غامق",class:"darkblue",inStock:true},{name:"أزرق فاتح",class:"lightblue",inStock:true},{name:"أبيض",class:"white",inStock:true},{name:"أسود",class:"black",inStock:true},{name:"أخضر",class:"green",inStock:true}],
-    sizes: [], noSizes: true, inStock: true
-  }
-];
+    let currentCategory = 'all';
 
-const BAGS = [];
+    function filterProducts(category, btn) {
+        currentCategory = category;
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderProducts();
+    }
 
-const products = [...CLOTHES, ...ELECTRONICS, ...BAGS];
+    function renderProducts() {
+        const filtered = currentCategory === 'all' 
+            ? products 
+            : products.filter(p => p.cat === currentCategory);
+        
+        const grid = document.getElementById('productsGrid');
+        const productCount = document.getElementById('productCount');
+        
+        productCount.textContent = filtered.length + ' منتج';
+        grid.innerHTML = '';
+        
+        const catLabels = { clothes: 'ملابس', watches: 'ساعات' };
+        
+        filtered.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'pcard';
+            const disc = Math.round((1 - +p.price / +p.originalPrice) * 100);
+            const catLbl = catLabels[p.cat] || '';
+            
+            card.innerHTML = `
+                <div class="pcard-img">
+                    <img src="${p.images[0]}" alt="${p.name}" loading="lazy" width="300" height="300" decoding="async">
+                    ${disc > 0 ? `<span class="pcard-badge b-sale">-${disc}%</span>` : ''}
+                    ${!p.inStock ? `<span class="pcard-badge b-oos" style="top:8px;left:auto;right:8px">نفذ</span><div class="oos-lay"><span>نفذت الكمية</span></div>` : ''}
+                    ${catLbl ? `<span class="b-cat">${catLbl}</span>` : ''}
+                </div>
+                <div class="pcard-body">
+                    <div class="pcard-name">${p.name}</div>
+                    <div class="pcard-price">
+                        <span class="pp-main">${p.price} <small>درهم</small></span>
+                        <span class="pp-old">${p.originalPrice} درهم</span>
+                    </div>
+                    <span class="pcard-ship"><i class="fas fa-truck"></i> توصيل مجاني</span>
+                </div>
+            `;
+            
+            if (p.inStock) {
+                card.onclick = () => {
+                    window.location.href = `product.html?id=${p.id}`;
+                };
+            } else {
+                card.onclick = () => showAlert('⚠️', 'نفذت الكمية', 'نأسف، هذا المنتج غير متوفر حالياً.');
+            }
+            
+            grid.appendChild(card);
+        });
+    }
 
-/* ════════════════════════════════════════════════════════════════
-   STATE & DOM ELEMENTS
-════════════════════════════════════════════════════════════════ */
-let cart = [], currentProduct = null, selectedColor = '', selectedSize = '';
-let currentImgIdx = 0, fsImgIdx = 0, cartOpen = false;
-let activeCategory = 'all';
+    function showAlert(icon, title, msg) {
+        document.getElementById('alertIcon').textContent = icon;
+        document.getElementById('alertTitle').textContent = title;
+        document.getElementById('alertMsg').textContent = msg;
+        document.getElementById('alertOv').classList.add('open');
+    }
 
-/* ════════════════════════════════════════════════════════════════
-   INIT
-════════════════════════════════════════════════════════════════ */
-document.addEventListener('DOMContentLoaded', () => { renderGrid(); updateBadge(); });
+    function closeAlert() {
+        document.getElementById('alertOv').classList.remove('open');
+    }
 
-/* ════════════════════════════════════════════════════════════════
-   HOME & FILTER
-════════════════════════════════════════════════════════════════ */
-function filterCat(cat, btn) {
-  activeCategory = cat;
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderGrid();
-}
+    document.addEventListener('DOMContentLoaded', () => {
+        renderProducts();
+    });
 
-function goHome() {
-  document.getElementById('homePage').style.display = 'block';
-  document.getElementById('productPage').style.display = 'none';
-  document.getElementById('productPage').classList.remove('visible');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function renderGrid() {
-  const filtered = activeCategory === 'all'
-    ? products
-    : products.filter(p => p.cat === activeCategory);
-  document.getElementById('productCount').textContent = filtered.length + ' منتج';
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = '';
-  const catLabels = { clothes:'ملابس', electronics:'إلكترونيات', bags:'حقائب', watches:'ساعات' };
-  filtered.forEach((p, i) => {
-    const card = document.createElement('div');
-    card.className = 'pcard';
-    card.style.animationDelay = Math.min(i * 0.05, 0.4) + 's';
-    const disc = Math.round((1 - +p.price / +p.originalPrice) * 100);
-    const catLbl = catLabels[p.cat] || '';
-    card.innerHTML = `
-      <div class="pcard-img">
-        <img src="${p.images[0]}" alt="${p.name}" loading="lazy" width="300" height="300" decoding="async">
-        ${disc > 0 ? `<span class="pcard-badge b-sale">-${disc}%</span>` : ''}
-        ${!p.inStock ? `<span class="pcard-badge b-oos" style="top:8px;left:auto;right:8px">نفذ</span><div class="oos-lay"><span>نفذت الكمية</span></div>` : ''}
-        ${catLbl ? `<span class="b-cat">${catLbl}</span>` : ''}
-      </div>
-      <div class="pcard-body">
-        <div class="pcard-name">${p.name}</div>
-        <div class="pcard-price">
-          <span class="pp-main">${p.price} <small style="font-size:9.5px;font-weight:500">درهم</small></span>
-          <span class="pp-old">${p.originalPrice} درهم</span>
-        </div>
-        <span class="pcard-ship"><i class="fas fa-truck"></i> توصيل مجاني</span>
-      </div>`;
-    card.onclick = p.inStock
-      ? () => openProduct(p.id)
-      : () => showAlert('⚠️', 'نفذت الكمية', 'نأسف، هذا المنتج غير متوفر حالياً.');
-    grid.appendChild(card);
-  });
-}
-
-/* ════════════════════════════════════════════════════════════════
-   OPEN PRODUCT — التوجيه إلى صفحة المنتج داخل نفس الصفحة
-   مع إبقاء إمكانية التعديل لاحقاً لتحويلها إلى product-details.html
-════════════════════════════════════════════════════════════════ */
-function openProduct(id) {
-  const p = products.find(x => x.id === id);
-  if (!p) return;
-  currentProduct = p; selectedColor = ''; selectedSize = ''; currentImgIdx = 0;
-  document.getElementById('breadcrumbName').textContent = p.name;
-  buildProduct(p);
-  document.getElementById('homePage').style.display = 'none';
-  document.getElementById('productPage').style.display = 'block';
-  requestAnimationFrame(() => document.getElementById('productPage').classList.add('visible'));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function buildProduct(p) {
-  const disc = Math.round((1 - +p.price / +p.originalPrice) * 100);
-  const saved = +p.originalPrice - +p.price;
-  const thumbs = p.images.map((img, i) => `<button class="gthumb ${i===0?'active':''}" onclick="setImg(${i})"><img src="${img}" alt="" loading="lazy" decoding="async"></button>`).join('');
-  const dots = p.images.map((_, i) => `<button class="gdot ${i===0?'active':''}" onclick="setImg(${i})"></button>`).join('');
-  const avCols = p.colors.filter(c => c.inStock).map(c => c.name).join('، ');
-  const colHTML = (p.noColors || !p.colors.length) ? '' : `
-    <div class="odiv"></div>
-    <div class="olabel">اللون <span id="colLbl"></span></div>
-    <div class="swatches">${p.colors.map(c => `<div class="swatch sw-${c.class} ${!c.inStock?'oos':''}" title="${c.name}" onclick="${c.inStock?`pickColor('${c.name}',this)`:`showAlert('⚠️','نفذ اللون','لون ${c.name} غير متوفر. المتاح: ${avCols}')`}"></div>`).join('')}</div>`;
-  const szHTML = (!p.noSizes && p.sizes.length) ? `
-    <div class="odiv"></div>
-    <div class="olabel">القياس <span id="szLbl"></span></div>
-    <div class="sizes">${p.sizes.map(s=>`<button class="szb" data-size="${s}" onclick="pickSize('${s}',this)">${s.toUpperCase()}</button>`).join('')}</div>
-    <label class="meas-tog"><input type="checkbox" id="measCb" onchange="togMeas()"><span>لا أعرف قياسي — <strong>احسب قياسك</strong></span></label>
-    <div class="meas-fields" id="measFields">
-      <div><label>الطول (سم)</label><input type="number" id="hInput" placeholder="175" oninput="calcSz()"></div>
-      <div><label>الوزن (كغم)</label><input type="number" id="wInput" placeholder="75" oninput="calcSz()"></div>
-      <div class="meas-res" id="measRes"></div>
-    </div>` : '';
-
-  document.getElementById('productLayout').innerHTML = `
-    <div>
-      <div class="gallery-main">
-        <img src="${p.images[0]}" id="mainImg" alt="${p.name}" decoding="async">
-        ${p.images.length>1?`<button class="garr prev" onclick="navImg(-1)"><i class="fas fa-chevron-right"></i></button><button class="garr next" onclick="navImg(1)"><i class="fas fa-chevron-left"></i></button>`:''}
-        <button class="gzoom" onclick="openFull()"><i class="fas fa-expand"></i></button>
-        <div class="gdots">${dots}</div>
-      </div>
-      ${p.images.length>1?`<div class="gthumbs">${thumbs}</div>`:''}
-    </div>
-    <div>
-      <p class="ptag"><i class="fas fa-star"></i> وصل حديثاً</p>
-      <h1 class="ptitle">${p.name}</h1>
-      <div class="ppricing">
-        <span class="pp-big">${p.price} <small>درهم</small></span>
-        <span class="pp-cross">${p.originalPrice} درهم</span>
-        ${disc>0?`<span class="pp-save">وفّر ${saved} درهم</span>`:''}
-      </div>
-      <div class="deliv-strip"><i class="fas fa-truck-fast"></i><span>توصيل مجاني — الدفع عند الاستلام</span></div>
-      <p class="pdesc">${p.description}</p>
-      ${colHTML}${szHTML}
-      <div class="odiv"></div>
-      <div class="trust">
-        <div class="ti"><i class="fas fa-shield-halved"></i><span>شراء آمن</span></div>
-        <div class="ti"><i class="fas fa-rotate-left"></i><span>ضمان الجودة</span></div>
-        <div class="ti"><i class="fas fa-headset"></i><span>دعم 24/7</span></div>
-        <div class="ti"><i class="fas fa-truck"></i><span>توصيل سريع</span></div>
-      </div>
-      <div class="pactions">
-        <button class="btn-cart" onclick="addCart()"><i class="fas fa-bag-shopping"></i> السلة</button>
-        <button class="btn-order" onclick="goOrder()"><i class="fas fa-bolt"></i> اطلب الآن</button>
-      </div>
-      <div class="ocard" id="ocard">
-        <div class="ocard-hdr"><i class="fas fa-lock"></i><div><h3>إتمام الطلب</h3><p>ادفع عند الاستلام · توصيل مجاني</p></div></div>
-        <div class="ocard-body">
-          <div class="frow">
-            <div class="ff"><label>الاسم الكامل</label><input type="text" id="oName" placeholder="أحمد العلوي"></div>
-            <div class="ff"><label>رقم الهاتف</label><input type="tel" id="oPhone" placeholder="06XXXXXXXX"></div>
-          </div>
-          <div class="frow">
-            <div class="ff"><label>المدينة</label><input type="text" id="oCity" placeholder="الدار البيضاء"></div>
-            <div class="ff"><label>الكمية</label><div class="qty-wrap"><button class="qty-btn" onclick="chgQty(-1)">−</button><input type="number" id="oQty" value="1" min="1"><button class="qty-btn" onclick="chgQty(1)">+</button></div></div>
-          </div>
-          <div class="ff"><label>العنوان الكامل</label><input type="text" id="oAddr" placeholder="الحي، الشارع، رقم المنزل..."></div>
-          <button class="sub-btn" id="singleBtn" onclick="submitSingle()"><i class="fas fa-check-circle"></i> تأكيد الطلب — ${p.price} درهم</button>
-        </div>
-      </div>
-    </div>`;
-}
-
-/* ════════════════════════════════════════════════════════════════
-   GALLERY CONTROLS
-════════════════════════════════════════════════════════════════ */
-function setImg(idx) {
-  if (!currentProduct) return;
-  currentImgIdx = idx;
-  const img = document.getElementById('mainImg');
-  if (!img) return;
-  img.classList.add('fading');
-  setTimeout(() => { img.src = currentProduct.images[idx]; img.classList.remove('fading'); }, 200);
-  document.querySelectorAll('.gthumb').forEach((t, i) => t.classList.toggle('active', i === idx));
-  document.querySelectorAll('.gdot').forEach((d, i) => d.classList.toggle('active', i === idx));
-}
-function navImg(dir) { if (!currentProduct) return; setImg((currentImgIdx + dir + currentProduct.images.length) % currentProduct.images.length); }
-function openFull() { if (!currentProduct) return; fsImgIdx = currentImgIdx; document.getElementById('fsImg').src = currentProduct.images[fsImgIdx]; document.getElementById('fullscr').classList.add('open'); }
-function closeFull() { document.getElementById('fullscr').classList.remove('open'); }
-function fsNav(dir) { if (!currentProduct) return; fsImgIdx = (fsImgIdx + dir + currentProduct.images.length) % currentProduct.images.length; document.getElementById('fsImg').src = currentProduct.images[fsImgIdx]; }
-
-/* ════════════════════════════════════════════════════════════════
-   COLOR & SIZE
-════════════════════════════════════════════════════════════════ */
-function pickColor(name, el) { selectedColor = name; document.querySelectorAll('.swatch').forEach(s => s.classList.remove('sel')); el.classList.add('sel'); const lb = document.getElementById('colLbl'); if (lb) lb.textContent = name; }
-function pickSize(sz, btn) { selectedSize = sz; document.querySelectorAll('.szb').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); const lb = document.getElementById('szLbl'); if (lb) lb.textContent = sz.toUpperCase(); }
-function togMeas() { const cb = document.getElementById('measCb'), f = document.getElementById('measFields'); if (!f) return; f.classList.toggle('show', cb.checked); if (!cb.checked) { document.querySelectorAll('.szb').forEach(b => b.disabled = false); selectedSize = ''; } else { document.querySelectorAll('.szb').forEach(b => { b.classList.remove('sel'); b.disabled = true; }); selectedSize = ''; const lb = document.getElementById('szLbl'); if (lb) lb.textContent = ''; } }
-function calcSz() { const h = parseInt(document.getElementById('hInput')?.value), w = parseInt(document.getElementById('wInput')?.value), res = document.getElementById('measRes'); if (!h || !w || !res) return; const sz = getSz(h, w); if (sz) { selectedSize = sz; res.textContent = `✓ قياسك المقترح: ${sz.toUpperCase()}`; res.classList.add('show'); const lb = document.getElementById('szLbl'); if (lb) lb.textContent = sz.toUpperCase(); } }
-function getSz(h, w) { const ch = [{name:"M",hMin:165,hMax:175,wMin:62,wMax:70},{name:"L",hMin:170,hMax:180,wMin:70,wMax:78},{name:"XL",hMin:175,hMax:185,wMin:78,wMax:86},{name:"XXL",hMin:180,hMax:190,wMin:86,wMax:95}]; let rec = null; for (const s of ch) { if (h >= s.hMin && h <= s.hMax && w >= s.wMin && w <= s.wMax) { rec = s.name; break; } } if (!rec) { let best = null, mn = Infinity; ch.forEach(s => { const d = Math.abs(h-(s.hMin+s.hMax)/2)+Math.abs(w-(s.wMin+s.wMax)/2); if (d < mn) { mn = d; best = s.name; } }); rec = best; } if (!currentProduct?.sizes?.length) return rec; const av = currentProduct.sizes.map(s => s.toUpperCase()); if (av.includes(rec)) return rec; const ord = ["XS","S","M","L","XL","XXL","XXXL"]; const ri = ord.indexOf(rec); let bm = av[0], bd = Infinity; av.forEach(s => { const idx = ord.indexOf(s.toUpperCase()); if (idx !== -1) { const d = Math.abs(ri-idx); if (d < bd) { bd = d; bm = s; } } }); return bm; }
-function chgQty(d) { const i = document.getElementById('oQty'); if (i) i.value = Math.max(1, parseInt(i.value||1)+d); }
-function goOrder() { if (!valSel()) return; document.getElementById('ocard')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-function valSel() { if (!currentProduct.noColors && currentProduct.colors?.length && !selectedColor) { toast('يرجى اختيار اللون', 'err'); return false; } if (!currentProduct.noSizes && currentProduct.sizes?.length) { const cb = document.getElementById('measCb'); if (cb?.checked) { const h = document.getElementById('hInput')?.value, w = document.getElementById('wInput')?.value; if (!h||!w) { toast('يرجى إدخال الطول والوزن','err'); return false; } } else if (!selectedSize) { toast('يرجى اختيار القياس','err'); return false; } } else { selectedSize = 'قياس واحد'; } return true; }
-function valPhone(p) { return /^(06|07)\d{8}$/.test(p.replace(/\s/g,'')); }
-
-/* ════════════════════════════════════════════════════════════════
-   CART
-════════════════════════════════════════════════════════════════ */
-function addCart() { if (!valSel()) return; cart.push({ id: currentProduct.id, name: currentProduct.name, price: currentProduct.price, color: selectedColor, size: selectedSize, img: currentProduct.images[0] }); updateBadge(); toast('✓ تمت الإضافة إلى السلة', 'ok'); const b = document.getElementById('cartBadge'); b.classList.add('bump'); setTimeout(() => b.classList.remove('bump'), 300); }
-function updateBadge() { document.getElementById('cartBadge').textContent = cart.length; }
-function toggleCart() { cartOpen = !cartOpen; document.getElementById('cartDr').classList.toggle('open', cartOpen); document.getElementById('cartOv').classList.toggle('open', cartOpen); if (cartOpen) renderCart(); }
-function renderCart() { const body = document.getElementById('drBody'), footer = document.getElementById('drFooter'); if (!cart.length) { body.innerHTML = `<div class="dr-empty"><i class="fas fa-bag-shopping"></i><p>سلتك فارغة حالياً<br><small>أضف منتجات لتبدأ التسوق</small></p></div>`; footer.style.display = 'none'; return; } let html = '', total = 0; cart.forEach((item, idx) => { total += parseInt(item.price); html += `<div class="cline"><div class="cline-img"><img src="${item.img}" alt="" loading="lazy" decoding="async"></div><div class="cline-info"><div class="cline-name">${item.name}</div><div class="cline-meta">${item.color?item.color+' · ':''}${item.size}</div></div><span class="cline-price">${item.price} د</span><button class="cline-rm" onclick="rmCart(${idx})"><i class="fas fa-times"></i></button></div>`; }); body.innerHTML = html; document.getElementById('drTotal').textContent = total + ' درهم'; footer.style.display = 'block'; }
-function rmCart(idx) { cart.splice(idx, 1); updateBadge(); renderCart(); }
-
-/* ════════════════════════════════════════════════════════════════
-   CHECKOUT
-════════════════════════════════════════════════════════════════ */
-function openCheckout() { if (!cart.length) { toast('السلة فارغة', 'err'); return; } let total = 0, sumHTML = '<div class="co-sum">'; cart.forEach(i => { total += parseInt(i.price); const n = i.name.length>28 ? i.name.slice(0,28)+'…' : i.name; sumHTML += `<div class="co-item"><span>${n}</span><span>${i.price} د</span></div>`; }); sumHTML += `<div class="co-tot"><span>المجموع</span><span>${total} درهم</span></div></div>`; document.getElementById('checkoutBody').innerHTML = `${sumHTML}<div class="frow"><div class="ff"><label>الاسم</label><input type="text" id="cName" placeholder="أحمد العلوي"></div><div class="ff"><label>الهاتف</label><input type="tel" id="cPhone" placeholder="06XXXXXXXX"></div></div><div class="frow"><div class="ff"><label>المدينة</label><input type="text" id="cCity" placeholder="الدار البيضاء"></div><div class="ff"><label>المجموع</label><input type="text" value="${total} درهم" disabled style="font-weight:800;color:var(--gold);background:var(--gold-pale);border-color:transparent"></div></div><div class="ff"><label>العنوان</label><input type="text" id="cAddr" placeholder="الحي، الشارع..."></div><button class="sub-btn" id="cartBtn" onclick="submitCart()"><i class="fas fa-check-circle"></i> تأكيد الطلب</button>`; document.getElementById('checkoutMod').classList.add('open'); }
-function closeCheckout() { document.getElementById('checkoutMod').classList.remove('open'); }
-
-const TG_TOKEN = '8387473741:AAGHOI-oS7HXYFPSKfBmzotZ2PGCGNxhJiU';
-const TG_CHAT = '6781508116';
-async function tg(msg) { const r = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ chat_id: TG_CHAT, text: msg }) }); return r.ok; }
-async function submitSingle() { const name=document.getElementById('oName')?.value.trim(), phone=document.getElementById('oPhone')?.value.trim(), city=document.getElementById('oCity')?.value.trim(), addr=document.getElementById('oAddr')?.value.trim(), qty=document.getElementById('oQty')?.value||1; if (!name||!phone||!city||!addr) { toast('يرجى ملء جميع الحقول','err'); return; } if (!valPhone(phone)) { toast('رقم الهاتف غير صحيح','err'); document.getElementById('oPhone').classList.add('err'); return; } document.getElementById('oPhone').classList.remove('err'); if (!currentProduct.noColors&&currentProduct.colors?.length&&!selectedColor) { toast('يرجى اختيار اللون','err'); return; } if (!selectedSize&&!currentProduct.noSizes&&currentProduct.sizes?.length) { toast('يرجى اختيار القياس','err'); return; } const p = currentProduct; const msg = `🛍️ طلب جديد\n👤 ${name}\n📱 ${phone}\n🏙️ ${city}\n📍 ${addr}\n\n📦 ${p.name}\n💰 ${p.price} درهم\n📊 الكمية: ${qty}\n🎨 اللون: ${selectedColor||'غير محدد'}\n📐 ${p.noSizes?'بدون قياس':selectedSize}`; const btn = document.getElementById('singleBtn'); if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...'; } try { const ok = await tg(msg); if (ok) { document.getElementById('ocard').innerHTML = `<div class="osuccess"><div class="suc-icon"><i class="fas fa-check"></i></div><h3>تم استلام طلبك! 🎉</h3><p>شكراً <strong>${name}</strong>، سنتصل بك قريباً على <strong>${phone}</strong> لتأكيد الطلب.</p><button class="suc-back" onclick="goHome()"><i class="fas fa-arrow-right"></i> متابعة التسوق</button></div>`; } else { toast('حدث خطأ، حاول مجدداً','err'); if(btn){btn.disabled=false;btn.innerHTML=`<i class="fas fa-check-circle"></i> تأكيد الطلب — ${p.price} درهم`;} } } catch { toast('خطأ في الاتصال','err'); if(btn){btn.disabled=false;btn.innerHTML=`<i class="fas fa-check-circle"></i> تأكيد الطلب — ${p.price} درهم`;} } }
-async function submitCart() { const name=document.getElementById('cName')?.value.trim(), phone=document.getElementById('cPhone')?.value.trim(), city=document.getElementById('cCity')?.value.trim(), addr=document.getElementById('cAddr')?.value.trim(); if (!name||!phone||!city||!addr) { toast('يرجى ملء جميع الحقول','err'); return; } if (!valPhone(phone)) { toast('رقم الهاتف غير صحيح','err'); document.getElementById('cPhone').classList.add('err'); return; } document.getElementById('cPhone').classList.remove('err'); let msg = `🛒 طلب من السلة\n👤 ${name}\n📱 ${phone}\n🏙️ ${city}\n📍 ${addr}\n\n📋 المنتجات:\n`, total = 0; cart.forEach((i, idx) => { total += parseInt(i.price); msg += `${idx+1}. ${i.name} · ${i.color||''} · ${i.size} · ${i.price} درهم\n`; }); msg += `\n💰 المجموع: ${total} درهم`; const btn = document.getElementById('cartBtn'); if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...'; } try { const ok = await tg(msg); if (ok) { document.getElementById('checkoutBody').innerHTML = `<div class="osuccess"><div class="suc-icon"><i class="fas fa-check"></i></div><h3>تم استلام طلبك! 🎉</h3><p>شكراً <strong>${name}</strong>، سنتصل بك على <strong>${phone}</strong> قريباً.</p><button class="suc-back" onclick="closeCheckout();goHome()"><i class="fas fa-arrow-right"></i> متابعة التسوق</button></div>`; cart = []; updateBadge(); } else { toast('حدث خطأ، حاول مجدداً','err'); if(btn){btn.disabled=false;btn.innerHTML='<i class="fas fa-check-circle"></i> تأكيد الطلب';} } } catch { toast('خطأ في الاتصال','err'); if(btn){btn.disabled=false;btn.innerHTML='<i class="fas fa-check-circle"></i> تأكيد الطلب';} } }
-
-/* ════════════════════════════════════════════════════════════════
-   UI HELPERS
-════════════════════════════════════════════════════════════════ */
-let _tt; function toast(msg, type='') { const t=document.getElementById('toast'); t.textContent=msg; t.className='toast show'+(type?' '+type:''); clearTimeout(_tt); _tt=setTimeout(()=>t.classList.remove('show'),2600); }
-function showAlert(icon,title,msg) { document.getElementById('alertIcon').textContent=icon; document.getElementById('alertTitle').textContent=title; document.getElementById('alertMsg').textContent=msg; document.getElementById('alertOv').classList.add('open'); }
-function closeAlert() { document.getElementById('alertOv').classList.remove('open'); }
-
-let _tx = 0;
-document.addEventListener('touchstart', e => { _tx = e.touches[0].clientX; }, { passive: true });
-document.addEventListener('touchend', e => { const d = _tx - e.changedTouches[0].clientX; if (Math.abs(d)>44&&currentProduct) d>0?navImg(1):navImg(-1); }, { passive: true });
-document.addEventListener('keydown', e => { if (document.getElementById('fullscr').classList.contains('open')) { if(e.key==='ArrowLeft')fsNav(1); if(e.key==='ArrowRight')fsNav(-1); if(e.key==='Escape')closeFull(); return; } if (e.key==='Escape') { closeAlert(); closeCheckout(); } });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeAlert();
+    });
 </script>
 </body>
 </html>
