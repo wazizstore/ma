@@ -17,7 +17,6 @@
 <!-- MARQUEE -->
 <div class="marquee-bar" aria-hidden="true">
   <div class="marquee-track">
-    <!-- نسخة 1 — المحتوى الأصلي -->
     <span class="marquee-item"><i class="fas fa-truck"></i>&nbsp;التوصيل مجاني 🚚</span>
     <span class="marquee-item"><span class="mdot"></span></span>
     <span class="marquee-item"><i class="fas fa-handshake"></i>&nbsp;الدفع عند الاستلام 🤝</span>
@@ -28,7 +27,12 @@
     <span class="marquee-item"><span class="mdot"></span></span>
     <span class="marquee-item"><i class="fas fa-bolt"></i>&nbsp;توصيل سريع لجميع المدن</span>
     <span class="marquee-item"><span class="mdot"></span></span>
-    <!-- نسخة 2 — طبق الأصل (تجعل الحلقة لا تنقطع) -->
+    <span class="marquee-item"><i class="fas fa-star"></i>&nbsp;منتجات أصلية 100%</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-gift"></i>&nbsp;عروض حصرية كل أسبوع</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-headset"></i>&nbsp;خدمة عملاء متواصلة</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
     <span class="marquee-item"><i class="fas fa-truck"></i>&nbsp;التوصيل مجاني 🚚</span>
     <span class="marquee-item"><span class="mdot"></span></span>
     <span class="marquee-item"><i class="fas fa-handshake"></i>&nbsp;الدفع عند الاستلام 🤝</span>
@@ -38,8 +42,16 @@
     <span class="marquee-item"><i class="fas fa-shield-halved"></i>&nbsp;جودة مضمونة ✅</span>
     <span class="marquee-item"><span class="mdot"></span></span>
     <span class="marquee-item"><i class="fas fa-bolt"></i>&nbsp;توصيل سريع لجميع المدن</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-star"></i>&nbsp;منتجات أصلية 100%</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-gift"></i>&nbsp;عروض حصرية كل أسبوع</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-headset"></i>&nbsp;خدمة عملاء متواصلة</span>
     <span class="marquee-item"><span class="mdot"></span></span>
   </div>
+</div>
+
 </div>
 
 
@@ -72,8 +84,8 @@
     <div class="drawer-divider"></div>
     <a href="shop.html?cat=clothes"><i class="fas fa-tshirt"></i> الملابس</a>
     <a href="shop.html?cat=watches"><i class="fas fa-clock"></i> الساعات</a>
-    <a href="shop.html?cat=bags"><i class="fas fa-bag-shopping"></i> الحقائب</a>
-    <a href="shop.html?cat=electronics"><i class="fas fa-microchip"></i> الإلكترونيات</a>
+    <a href="shop.html?cat=bags"><i class="fas fa-briefcase"></i> الحقائب الرجالية</a>
+    <a href="shop.html?cat=home"><i class="fas fa-house-chimney"></i> معدات المنزل</a>
   </div>
   <div class="drawer-footer"><p>© 2026 waziz shop</p></div>
 </nav>
@@ -91,10 +103,10 @@
       <i class="fas fa-clock"></i> الساعات
     </button>
     <button class="cat-pill" data-cat="bags" onclick="filterCat('bags',this)">
-      <i class="fas fa-bag-shopping"></i> الحقائب
+      <i class="fas fa-briefcase"></i> الحقائب الرجالية
     </button>
-    <button class="cat-pill" data-cat="electronics" onclick="filterCat('electronics',this)">
-      <i class="fas fa-microchip"></i> الإلكترونيات
+    <button class="cat-pill" data-cat="home" onclick="filterCat('home',this)">
+      <i class="fas fa-house-chimney"></i> معدات المنزل
     </button>
     <span class="cat-count" id="catCount"></span>
   </div>
@@ -177,12 +189,13 @@ const catMeta = {
   all:         { kicker:'تشكيلتنا',    title:'جميع المنتجات' },
   clothes:     { kicker:'الملابس',      title:'تشكيلة الملابس' },
   watches:     { kicker:'الساعات',      title:'تشكيلة الساعات' },
-  bags:        { kicker:'الحقائب',      title:'تشكيلة الحقائب' },
-  electronics: { kicker:'الإلكترونيات', title:'التقنية والإلكترونيات' }
+  bags:  { kicker:'الحقائب الرجالية', title:'الحقائب الرجالية' },
+  home:  { kicker:'معدات المنزل',       title:'أدوات ومعدات المنزل' }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   updateBadge();
+  initShopReveal();
   // Read ?cat= from URL
   const params = new URLSearchParams(window.location.search);
   const cat = params.get('cat');
@@ -223,13 +236,13 @@ function renderGrid() {
   const grid = document.getElementById('shopGrid');
   grid.innerHTML = '';
 
-  const catLabels = { clothes:'ملابس', watches:'ساعات', bags:'حقائب', electronics:'إلكترونيات' };
+  const catLabels = { clothes:'ملابس', watches:'ساعات', bags:'حقائب', home:'منزل' };
 
   filtered.forEach((p, i) => {
     const disc = Math.round((1 - +p.price / +p.originalPrice) * 100);
     const card = document.createElement('div');
-    card.className = 'pcard';
-    card.style.animationDelay = Math.min(i * 0.05, 0.38) + 's';
+    const delay = (i % 4) + 1;
+    card.className = `pcard reveal-scale reveal-delay-${delay}`;
     card.innerHTML = `
       <div class="pcard-img">
         <img src="${p.images[0]}" alt="${p.name}" loading="lazy" width="300" height="300" decoding="async">
@@ -253,6 +266,30 @@ function renderGrid() {
     if (img.complete) img.classList.add('loaded');
     grid.appendChild(card);
   });
+
+  // Trigger observer on newly added cards
+  observeShop();
+}
+
+/* IntersectionObserver for shop page */
+let shopObserver = null;
+function initShopReveal() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal-scale').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  shopObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        shopObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+}
+function observeShop() {
+  if (!shopObserver) return;
+  document.querySelectorAll('.reveal-scale:not(.visible)').forEach(el => shopObserver.observe(el));
 }
 
 /* MENU */
