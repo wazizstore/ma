@@ -247,7 +247,7 @@ const WATCHES = [
 ════════════════════════════════════════ */
 const BAGS = [ 
 {
-  id: 15,
+  id: 19,
   name: "حقيبة ظهر مضادة للسرقة USB",
   price: 199,
   originalPrice: 230,
