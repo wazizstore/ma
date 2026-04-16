@@ -331,21 +331,6 @@
   </div>
 </div>
 
-<!-- ④ FEATURED — varied categories + "عرض المزيد" -->
-<div class="wrap">
-  <div class="sec-head reveal">
-    <div>
-      <p class="sec-kicker">الأكثر مبيعاً</p>
-      <h2 class="sec-title">منتجات مختارة</h2>
-    </div>
-  </div>
-  <div class="grid" id="featuredGrid"></div>
-  <div class="more-wrap reveal">
-    <a href="shop.html" class="more-btn">
-      <i class="fas fa-border-all"></i> عرض جميع المنتجات
-    </a>
-  </div>
-</div>
 
 <!-- CART DRAWER -->
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
@@ -413,7 +398,7 @@ let cartOpen = false, menuOpen = false;
 document.addEventListener('DOMContentLoaded', () => {
   updateBadge();
   updateCategoryCounts();
-  renderFeatured();
+ 
   initReveal();
 });
 
