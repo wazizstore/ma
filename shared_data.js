@@ -39,7 +39,7 @@ const CLOTHES = [
     price: "219", originalPrice: "259",
     description: "اونصوبل ليكرا توب مليح",
     cat: "clothes",
-    images: ["0e49d360-c7ce-4d15-87cc-2687b1511d3f.jfif","photo_2026-04-19_13-42-32.jpg"],
+    images: ["Untitled design (63).png","Untitled design (65).png"],
     colors: [
       {name:"أسود", class:"black", inStock:true},
       {name:"أبيض", class:"white", inStock:false}
