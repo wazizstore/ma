@@ -4,7 +4,7 @@ const ELECTRONICS = [{
   price: 199,
   originalPrice: 230,
   description: "7 ألوان, وشاحن USB , خزان مياه قوي 600 مل يمكنك ضبط سرعة الرياح والتحكم بما يناسبك",
-  cat: "electronics",
+  cat: "home",
   images: [
     "1X8jzYJwRgyOlpuhinq48qebrFdKjZG6bsek7Qdw (1).jpg",
     "tJPPPVdCfuNpmzz3m1f78blaxPn0Sedyx3ZgfCG6.jpg",
@@ -14,7 +14,7 @@ const ELECTRONICS = [{
   sizes: [],
   noSizes: true,
   inStock: true
-}];
+},];
 /* ════════════════════════════════════════════════════════════════
    shared_data.js  —  WAZIZ SHOP
    ────────────────────────────────────────────────────────────────
@@ -259,4 +259,4 @@ const BAGS = [
 /* ════════════════════════════════════════════════════════════
    دمج الكل — لا تعدّل هذا السطر أبداً
 ════════════════════════════════════════════════════════════ */
-const products = [...CLOTHES, ...WATCHES, ...BAGS, ...electronics];
+const products = [...CLOTHES, ...WATCHES, ...BAGS, ...ELECTRONICS];
