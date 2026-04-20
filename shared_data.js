@@ -4,7 +4,7 @@ const ELECTRONICS = [{
   price: 199,
   originalPrice: 230,
   description: "7 ألوان, وشاحن USB , خزان مياه قوي 600 مل يمكنك ضبط سرعة الرياح والتحكم بما يناسبك",
-  cat: "ELECTRONICS",
+  cat: "electronics",
   images: [
     "1X8jzYJwRgyOlpuhinq48qebrFdKjZG6bsek7Qdw (1).jpg",
     "tJPPPVdCfuNpmzz3m1f78blaxPn0Sedyx3ZgfCG6.jpg",
