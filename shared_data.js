@@ -14,7 +14,7 @@ const ELECTRONICS = [{
   sizes: [],
   noSizes: true,
   inStock: true
-}
+}];
 /* ════════════════════════════════════════════════════════════════
    shared_data.js  —  WAZIZ SHOP
    ────────────────────────────────────────────────────────────────
@@ -49,8 +49,7 @@ const ELECTRONICS = [{
    🧥  CLOTHES — الملابس
    أضف / احذف منتجات الملابس هنا
 ════════════════════════════════════════ */
-const CLOTHES = [
-  {
+const CLOTHES = [{
     id: 12,
     name: "Ensemble nike",
     price: "219", originalPrice: "259",
@@ -254,7 +253,7 @@ const BAGS = [
     sizes: [], noSizes: true, inStock: true
   }
   */
-];
+
 
 
 /* ════════════════════════════════════════════════════════════
