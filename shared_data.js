@@ -1,4 +1,25 @@
-/* ════════════════════════════════════════════════════════════════
+
+/* ════════════════════════════════════════
+   🔌  ELECTRONICS — الإلكترونيات
+   أضف / احذف إلكترونيات هنا
+════════════════════════════════════════ */
+const ELECTRONICS = [{
+  id: 20,
+  name: "جهاز ترطيب الهواء المحمول",
+  price: 199,
+  originalPrice: 230,
+  description: "7 ألوان, وشاحن USB , خزان مياه قوي 600 مل يمكنك ضبط سرعة الرياح والتحكم بما يناسبك",
+  cat: "electronics",
+  images: [
+    "1X8jzYJwRgyOlpuhinq48qebrFdKjZG6bsek7Qdw (1).jpg",
+    "tJPPPVdCfuNpmzz3m1f78blaxPn0Sedyx3ZgfCG6.jpg",
+    "gFbbyMd9n6vClVVe2a12YMwkeiidUF1KBPfploni.jpg"
+  ],
+  colors: [],
+  sizes: [],
+  noSizes: true,
+  inStock: true
+}];/* ════════════════════════════════════════════════════════════════
    shared_data.js  —  WAZIZ SHOP
    ────────────────────────────────────────────────────────────────
    هذا الملف هو المكان الوحيد الذي تعدّل فيه المنتجات.
@@ -268,24 +289,7 @@ const BAGS = [
    🔌  ELECTRONICS — الإلكترونيات
    أضف / احذف إلكترونيات هنا
 ════════════════════════════════════════ */
-const ELECTRONICS = [
-  {
-    id: 20,
-    name: "جهاز ترطيب الهواء المحمول",
-    price: "199", originalPrice: "230",
-    description: "7 ألوان، شاحن USB، خزان مياه 600 مل، يمكنك ضبط سرعة الرياح والتحكم بما يناسبك",
-    cat: "electronics",
-    images: [
-      "1X8jzYJwRgyOlpuhinq48qebrFdKjZG6bsek7Qdw (1).jpg",
-      "tJPPPVdCfuNpmzz3m1f78blaxPn0Sedyx3ZgfCG6.jpg",
-      "gFbbyMd9n6vClVVe2a12YMwkeiidUF1KBPfploni.jpg"
-    ],
-    colors: [], noColors: true,
-    sizes: [], noSizes: true,
-    inStock: true
-  }
-  /* ↑↑↑ أضف إلكترونيات جديدة هنا ↑↑↑ */
-];
+
 
 
 /* ════════════════════════════════════════════════════════════
