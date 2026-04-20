@@ -1,25 +1,4 @@
-
-/* ════════════════════════════════════════
-   🔌  ELECTRONICS — الإلكترونيات
-   أضف / احذف إلكترونيات هنا
-════════════════════════════════════════ */
-const ELECTRONICS = [{
-  id: 20,
-  name: "جهاز ترطيب الهواء المحمول",
-  price: 199,
-  originalPrice: 230,
-  description: "7 ألوان, وشاحن USB , خزان مياه قوي 600 مل يمكنك ضبط سرعة الرياح والتحكم بما يناسبك",
-  cat: "electronics",
-  images: [
-    "1X8jzYJwRgyOlpuhinq48qebrFdKjZG6bsek7Qdw (1).jpg",
-    "tJPPPVdCfuNpmzz3m1f78blaxPn0Sedyx3ZgfCG6.jpg",
-    "gFbbyMd9n6vClVVe2a12YMwkeiidUF1KBPfploni.jpg"
-  ],
-  colors: [],
-  sizes: [],
-  noSizes: true,
-  inStock: true
-}];/* ════════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════════
    shared_data.js  —  WAZIZ SHOP
    ────────────────────────────────────────────────────────────────
    هذا الملف هو المكان الوحيد الذي تعدّل فيه المنتجات.
@@ -33,59 +12,36 @@ const ELECTRONICS = [{
      price:         "السعر الحالي",
      originalPrice: "السعر الأصلي (قبل الخصم)",
      description:   "وصف قصير",
-     cat:           "clothes" | "watches" | "bags" | "electronics",
+     cat:           "clothes" | "watches" | "bags" | "home",
      images:        ["صورة1.webp", "صورة2.webp", ...],
      colors: [
        { name:"الاسم", class:"black", inStock:true }
-       // الألوان: black, white, grey, red, green, vert,
-       //   blue, darkblue, lightblue, brown, marron,
-       //   marron-clair, lightbrown, argent, beige, pink
      ],
-     sizes:    ["m","l","xl"],  // [] = لا قياسات
-     noSizes:  true,            // أضفها فقط إذا لا قياسات
-     noColors: true,            // أضفها فقط إذا لا ألوان
-     inStock:  true             // false = نفد المخزون
+     sizes:    ["m","l","xl"],
+     noSizes:  true,
+     noColors: true,
+     inStock:  true
    }
 ════════════════════════════════════════════════════════════════ */
 
 
 /* ════════════════════════════════════════
    🧥  CLOTHES — الملابس
-   أضف / احذف منتجات الملابس هنا
 ════════════════════════════════════════ */
-const CLOTHES = [
-  {
+const CLOTHES = [{
     id: 12,
-    name: "Ensemble likra mkhtat",
+    name: "Ensemble nike",
     price: "219", originalPrice: "259",
     description: "اونصوبل ليكرا توب مليح",
     cat: "clothes",
-    images: ["Untitled design (6).webp","Untitled design (7).webp"],
+    images: ["Untitled design (63).png","Untitled design (65).png"],
     colors: [
       {name:"أسود", class:"black", inStock:true},
-      {name:"أبيض", class:"white", inStock:true}
+      {name:"أبيض", class:"white", inStock:false}
     ],
     sizes: ["m","l","xl"], inStock: true
   },
-  {
-    id: 18,
-    name: "Ensemble t-shirt en SARWAL rido",
-    price: "219", originalPrice: "299",
-    description: "Ensemble t-shirt en SARWAL rido - جودة عالية وتصميم عصري",
-    cat: "clothes",
-    images: [
-      "photo_2026-03-27_23-27-34.webp",
-      "photo_2026-03-27_23-27-39.webp",
-      "photo_2026-03-27_23-27-47.webp"
-    ],
-    colors: [
-      {name:"أسود", class:"black", inStock:true},
-      {name:"أبيض", class:"white", inStock:false},
-      {name:"بني",  class:"brown", inStock:false},
-      {name:"أزرق", class:"blue",  inStock:false}
-    ],
-    sizes: ["m","l","xl"], inStock: true
-  },
+ 
   {
     id: 17,
     name: "ENSEMBLE RIDO BLA JIB (SHOMIS & chort)",
@@ -105,59 +61,7 @@ const CLOTHES = [
     ],
     sizes: ["m","l","xl"], inStock: true
   },
-  {
-    id: 10,
-    name: "Ensemble swid",
-    price: "219", originalPrice: "249",
-    description: "اونصومبل توب غليض تاع البرد .",
-    cat: "clothes",
-    images: [
-      "WhatsApp Image 2026-03-02 at 02.46.23.webp",
-      "WhatsApp Image 2026-03-02 at 02.49.27.webp"
-    ],
-    colors: [
-      {name:"أسود", class:"black", inStock:false},
-      {name:"أبيض", class:"white", inStock:true}
-    ],
-    sizes: ["m","l","xl"], inStock: true
-  },
-  {
-    id: 6,
-    name: "Sweet nike",
-    price: "199", originalPrice: "299",
-    description: "المليح ثوب مونطوني مقطن.",
-    cat: "clothes",
-    images: [
-      "Gemini_Generated_Image_o3s4y2o3s4y2o3s4.webp",
-      "Gemini_Generated_Image_rk9k64rk9k64rk9k.webp",
-      "Gemini_Generated_Image_dhbtp9dhbtp9dhbt.webp",
-      "Gemini_Generated_Image_3vprbh3vprbh3vpr.webp"
-    ],
-    colors: [
-      {name:"Vert", class:"vert",  inStock:true},
-      {name:"Noir", class:"black", inStock:false}
-    ],
-    sizes: ["m","l","xl"], inStock: false
-  },
-  {
-    id: 9,
-    name: "Ensemble Rédou b sensla",
-    price: "229", originalPrice: "299",
-    description: "اونصومبل توب غليض تاع البرد بالسنسلة مزيانة فيه جياب.",
-    cat: "clothes",
-    images: [
-      "1760905019_IMG_0375.webp",
-      "Untitled design (29).webp",
-      "Untitled design (30).webp"
-    ],
-    colors: [
-      {name:"Noir",         class:"black",        inStock:true},
-      {name:"Marron clair", class:"marron-clair",  inStock:true},
-      {name:"Blanc",        class:"white",         inStock:true}
-    ],
-    sizes: ["m","l","xl","xxl"], inStock: true
-  },
-  {
+    {
     id: 13,
     name: "Ensemble rido shomis et srwal",
     price: "199", originalPrice: "259",
@@ -175,54 +79,47 @@ const CLOTHES = [
     ],
     sizes: ["m","l","xl"], inStock: true
   },
+ 
   {
-    id: 14,
-    name: "Ensemble sweet likra simple",
-    price: "219", originalPrice: "299",
-    description: "سويت ليكرا مليح.",
+    id: 10,
+    name: "Ensemble swid",
+    price: "219", originalPrice: "249",
+    description: "اونصومبل توب غليض تاع البرد .",
     cat: "clothes",
-    images: ["3.webp","1.webp","2.webp"],
+    images: [
+      "WhatsApp Image 2026-03-02 at 02.46.23.webp",
+      "WhatsApp Image 2026-03-02 at 02.49.27.webp"
+    ],
     colors: [
-      {name:"رمادي", class:"grey",  inStock:true},
-      {name:"أبيض",  class:"white", inStock:true},
-      {name:"أسود",  class:"black", inStock:true}
+      {name:"أسود", class:"black", inStock:false},
+      {name:"أبيض", class:"white", inStock:true}
     ],
     sizes: ["m","l","xl"], inStock: true
   },
+ 
   {
-    id: 1,
-    name: "Ensemble nike",
-    price: "219", originalPrice: "299",
-    description: "اونسومبل NIKE صيفي لرجال 💥 التوب مونطوني مقطن",
+    id: 9,
+    name: "Ensemble Rédou b sensla",
+    price: "229", originalPrice: "299",
+    description: "اونصومبل توب غليض تاع البرد بالسنسلة مزيانة فيه جياب.",
     cat: "clothes",
     images: [
-      "1757028183_instagram-1756553237064.webp",
-      "1757028183_IMG_20250830_122844_404 (1).webp"
+      "1760905019_IMG_0375.webp",
+      "Untitled design (29).webp",
+      "Untitled design (30).webp"
     ],
     colors: [
-      {name:"أخضر", class:"green", inStock:true},
-      {name:"أسود",  class:"black", inStock:true}
+      {name:"Noir",         class:"black",        inStock:true},
+      {name:"Marron clair", class:"marron-clair",  inStock:true},
+      {name:"Blanc",        class:"white",         inStock:true}
     ],
-    sizes: ["m","l","xl"], inStock: false
+    sizes: ["m","l","xl","xxl"], inStock: true
   }
-  /* ↑↑↑ أضف ملابس جديدة هنا ↑↑↑
-  ,{
-    id: 20,
-    name: "اسم المنتج",
-    price: "200", originalPrice: "280",
-    description: "وصف المنتج",
-    cat: "clothes",
-    images: ["img.webp"],
-    colors: [{name:"أسود",class:"black",inStock:true}],
-    sizes: ["m","l","xl"], inStock: true
-  }
-  */
 ];
 
 
 /* ════════════════════════════════════════
    ⌚  WATCHES — الساعات
-   أضف / احذف منتجات الساعات هنا
 ════════════════════════════════════════ */
 const WATCHES = [
   {
@@ -247,32 +144,19 @@ const WATCHES = [
     ],
     sizes: [], noSizes: true, inStock: true
   }
-  /* ↑↑↑ أضف ساعات جديدة هنا ↑↑↑
-  ,{
-    id: 30,
-    name: "ساعة كلاسيك",
-    price: "350", originalPrice: "450",
-    description: "وصف الساعة",
-    cat: "watches",
-    images: ["watch.webp"],
-    colors: [{name:"ذهبي",class:"argent",inStock:true}],
-    sizes: [], noSizes: true, inStock: true
-  }
-  */
 ];
 
 
 /* ════════════════════════════════════════
    👜  BAGS — الحقائب
-   أضف / احذف منتجات الحقائب هنا
 ════════════════════════════════════════ */
-const BAGS = [const BAGS = [ 
+const BAGS = [ 
 {
   id: 19,
   name: "حقيبة ظهر مضادة للسرقة USB",
   price: 199,
   originalPrice: 230,
-  description: "حقيبة عصرية متعددة الاستعمالات تجمع بين التصميم العملي والأمان العالي وتوفر سعة كبيرة وتنظيما ذكيا لجميع أغراضك حيث تحتوي على جيب رئيسي بسحاب آمن وفتحة واسعة تناسب أجهزة حتى 9.7 بوصة إضافة إلى عدة جيوب داخلية لتنظيم الهاتف والمفاتيح والمحفظة ومستحضرات التجميل مع جيوب خارجية بسحاب وجيب خلفي مخفي لمزيد من الأمان مما يجعلها مثالية للسفر والتنقل اليومي كما أنها مزودة بقفل رقمي مدمج مضاد للسرقة من نوع TSA لحماية ممتلكاتك ومنع الوصول السهل إليها من قبل الغرباء وهي مصنوعة من قماش عالي الجودة مقاوم للماء والخدوش يحافظ على مظهر الحقيبة ويحمي محتوياتك في مختلف الظروف وتأتي أيضا بمنفذ شحن USB مدمج يتيح لك شحن هاتفك بسهولة أثناء التنقل دون الحاجة لفتح الحقيبة مع ضرورة استخدام باور بنك داخلي ويوفر تصميمها راحة قصوى بفضل الوسادات الخلفية ثلاثية الأبعاد وأحزمة الكتف العريضة التي تقلل الضغط إلى جانب القماش المسامي الذي يساعد على الحفاظ على جفاف وراحة ظهرك حتى في الأجواء الحارة ويمكن استخدام هذه الحقيبة بعدة طرق كحقيبة ظهر أو حقيبة كتف أو حقيبة صدر أو حقيبة سفر أو عمل مما يجعلها مناسبة للعمل والدراسة والرياضة والأنشطة اليومية وهي متوفرة بأربعة ألوان عصرية لتختار منها ما يناسب أسلوبك",
+  description: "حقيبة عصرية متعددة الاستعمالات تجمع بين التصميم العملي والأمان العالي وتوفر سعة كبيرة وتنظيما ذكيا لجميع أغراضك...",
   cat: "bags",
   images: [
     "S8a9008ad7c564373819a9484fc75c508p.webp",
@@ -284,32 +168,33 @@ const BAGS = [const BAGS = [
   noSizes: true,
   inStock: true
 }
-  /* ↑↑↑ أضف حقائب جديدة هنا ↑↑↑
-  {
-    id: 50,
-    name: "حقيبة ظهر مضادة للسرقة USB",
-    price: "299", originalPrice: "399",
-    description: "حقيبة عصرية مضادة للسرقة مع منفذ USB",
-    cat: "bags",
-    images: ["bag1.webp","bag2.webp"],
-    colors: [
-      {name:"أسود",  class:"black", inStock:true},
-      {name:"رمادي", class:"grey",  inStock:true}
-    ],
-    sizes: [], noSizes: true, inStock: true
-  }
-  */
 ];
 
 
 /* ════════════════════════════════════════
-   🔌  ELECTRONICS — الإلكترونيات
-   أضف / احذف إلكترونيات هنا
+   🏠  HOME — الاجهزة
+   أضف / احذف منتجات الاجهزة هنا
 ════════════════════════════════════════ */
-
+const HOME = [{
+  id: 20,
+  name: "جهاز ترطيب الهواء المحمول",
+  price: 199,
+  originalPrice: 230,
+  description: "7 ألوان, وشاحن USB , خزان مياه قوي 600 مل يمكنك ضبط سرعة الرياح والتحكم بما يناسبك",
+  cat: "home",
+  images: [
+    "1X8jzYJwRgyOlpuhinq48qebrFdKjZG6bsek7Qdw (1).jpg",
+    "tJPPPVdCfuNpmzz3m1f78blaxPn0Sedyx3ZgfCG6.jpg",
+    "gFbbyMd9n6vClVVe2a12YMwkeiidUF1KBPfploni.jpg"
+  ],
+  colors: [],
+  sizes: [],
+  noSizes: true,
+  inStock: true
+}];
 
 
 /* ════════════════════════════════════════════════════════════
    دمج الكل — لا تعدّل هذا السطر أبداً
 ════════════════════════════════════════════════════════════ */
-const products = [...CLOTHES, ...WATCHES, ...BAGS, ...ELECTRONICS];
+const products = [...CLOTHES, ...WATCHES, ...BAGS, ...HOME];
