@@ -37,7 +37,7 @@ const CLOTHES = [{
     images: ["Untitled design (63).png","Untitled design (65).png"],
     colors: [
       {name:"أسود", class:"black", inStock:true},
-      {name:"أبيض", class:"white", inStock:false}
+      {name:"أبيض", class:"white", inStock:true}
     ],
     sizes: ["m","l","xl"], inStock: true
   },
