@@ -68,7 +68,7 @@ const CLOTHES = [{
     description: "Ensemble rido shomis et srwal",
     cat: "clothes",
     images: [
-      "1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (2).webp",
+      "Untitled design (9).jpg",
       "1754474745_WhatsApp Image 2025-08-05 at 23.47.53.webp",
       "1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (1).webp"
     ],
