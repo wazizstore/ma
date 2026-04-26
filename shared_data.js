@@ -44,7 +44,7 @@ const CLOTHES = [{
  
   {
     id: 17,
-    name: "ENSEMBLE RIDO BLA JIB (SHOMIS & chort)",
+    name: "ENSEMBLE (SHOMIS & chort)",
     price: "199", originalPrice: "299",
     description: "SHOMIS & chort",
     cat: "clothes",
@@ -62,15 +62,15 @@ const CLOTHES = [{
     sizes: ["m","l","xl"], inStock: true
   },
     {
-    id: 13,
-    name: "Ensemble rido shomis et srwal",
+    id: 13, 
+    name: "Ensemble shomis",
     price: "199", originalPrice: "259",
     description: "Ensemble rido shomis et srwal",
     cat: "clothes",
     images: [
-      "Untitled design (9).jpg",
-      "1754474745_WhatsApp Image 2025-08-05 at 23.47.53.webp",
-      "1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (1).webp"
+      "Untitled design (72).png",
+      "Untitled design (71).png",
+      "Untitled design (70).png"
     ],
     colors: [
       {name:"أسود", class:"black", inStock:true},
@@ -95,26 +95,8 @@ const CLOTHES = [{
       {name:"أبيض", class:"white", inStock:true}
     ],
     sizes: ["m","l","xl"], inStock: true
-  },
- 
-  {
-    id: 9,
-    name: "Ensemble Rédou b sensla",
-    price: "229", originalPrice: "299",
-    description: "اونصومبل توب غليض تاع البرد بالسنسلة مزيانة فيه جياب.",
-    cat: "clothes",
-    images: [
-      "1760905019_IMG_0375.webp",
-      "Untitled design (29).webp",
-      "Untitled design (30).webp"
-    ],
-    colors: [
-      {name:"Noir",         class:"black",        inStock:true},
-      {name:"Marron clair", class:"marron-clair",  inStock:true},
-      {name:"Blanc",        class:"white",         inStock:true}
-    ],
-    sizes: ["m","l","xl","xxl"], inStock: true
   }
+ 
 ];
 
 
