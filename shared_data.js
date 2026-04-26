@@ -64,7 +64,7 @@ const CLOTHES = [{
     {
     id: 13, 
     name: "Ensemble shomis",
-    price: "199", originalPrice: "259",
+    price: "219", originalPrice: "259",
     description: "Ensemble rido shomis et srwal",
     cat: "clothes",
     images: [
