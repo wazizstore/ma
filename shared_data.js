@@ -84,5 +84,5 @@ const products = [
     ],
     sizes: ["m","l","xl"],
     inStock: true
-  },
+  }
 ];
