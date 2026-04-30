@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>waziz shop | تحميل...</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ════════════ LOADING SPINNER ════════════ -->
+<div id="page-loader">
+  <div class="loader-logo"><span>waziz</span> shop</div>
+  <div class="loader-ring"></div>
+  <span class="loader-sub">جاري التحميل...</span>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><i class="fas fa-truck"></i>&nbsp;التوصيل مجاني 🚚</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-handshake"></i>&nbsp;الدفع عند الاستلام 🤝</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-tag"></i>&nbsp;تخفيضات تصل إلى 50% 🔥</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-shield-halved"></i>&nbsp;جودة مضمونة ✅</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-bolt"></i>&nbsp;توصيل سريع لجميع المدن</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-star"></i>&nbsp;منتجات أصلية 100%</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-gift"></i>&nbsp;عروض حصرية كل أسبوع</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-headset"></i>&nbsp;خدمة عملاء متواصلة</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-truck"></i>&nbsp;التوصيل مجاني 🚚</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-handshake"></i>&nbsp;الدفع عند الاستلام 🤝</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-tag"></i>&nbsp;تخفيضات تصل إلى 50% 🔥</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-shield-halved"></i>&nbsp;جودة مضمونة ✅</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-bolt"></i>&nbsp;توصيل سريع لجميع المدن</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-star"></i>&nbsp;منتجات أصلية 100%</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-gift"></i>&nbsp;عروض حصرية كل أسبوع</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+    <span class="marquee-item"><i class="fas fa-headset"></i>&nbsp;خدمة عملاء متواصلة</span>
+    <span class="marquee-item"><span class="mdot"></span></span>
+  </div>
+</div>
+
+</div>
+
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="nav-inner">
+    <button class="hamburger" id="menuBtn" aria-label="القائمة" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-main"><span>waziz</span> shop</div>
+      <div class="nav-logo-sub">fashion · style · quality</div>
+    </a>
+    <button class="cart-btn" onclick="toggleCart()" aria-label="السلة">
+      <i class="fas fa-bag-shopping"></i>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <div class="drawer-head">
+    <span class="drawer-head-logo"><span>waziz</span> shop</span>
+    <button class="drawer-x" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="drawer-nav">
+    <a href="index.html"><i class="fas fa-house"></i> الرئيسية</a>
+    <a href="shop.html"><i class="fas fa-border-all"></i> جميع المنتجات</a>
+    <div class="drawer-divider"></div>
+    <a href="shop.html?cat=clothes"><i class="fas fa-tshirt"></i> الملابس</a>
+    <a href="shop.html?cat=watches"><i class="fas fa-clock"></i> الساعات</a>
+    <a href="shop.html?cat=bags"><i class="fas fa-briefcase"></i> الحقائب الرجالية</a>
+    <a href="shop.html?cat=home"><i class="fas fa-house-chimney"></i> معدات المنزل</a>
+  </div>
+  <div class="drawer-footer"><p>© 2026 waziz shop</p></div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="pback-bar">
+  <div class="pback-inner">
+    <a href="shop.html" class="pback-btn"><i class="fas fa-arrow-right"></i> المتجر</a>
+    <span class="bcrumb-sep">›</span>
+    <span class="bcrumb-cur" id="bcrumbName">...</span>
+  </div>
+</div>
+
+<!-- PRODUCT CONTENT (hidden until loaded) -->
+<div id="product-content">
+  <div id="productLayout"></div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <div class="cart-head-title"><i class="fas fa-bag-shopping"></i> سلة التسوق</div>
+    <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-total">
+      <span class="cart-total-lbl">المجموع</span>
+      <span class="cart-total-amt" id="cartTotal">0 درهم</span>
+    </div>
+    <button class="cart-checkout-btn" onclick="openCheckout()"><i class="fas fa-lock"></i> إتمام الطلب</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-head">
+      <span class="modal-head-title">📝 تأكيد الطلب</span>
+      <button class="modal-x" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="checkoutBody"></div>
+  </div>
+</div>
+
+<!-- ALERT & FULLSCREEN & TOAST -->
+<div class="alert-ov" id="alertOv">
+  <div class="alert-card">
+    <div class="alert-ico" id="alertIco">⚠️</div>
+    <div class="alert-ttl" id="alertTtl"></div>
+    <div class="alert-msg" id="alertMsg"></div>
+    <button class="alert-ok" onclick="closeAlert()">حسناً</button>
+  </div>
+</div>
+
+<div class="fullscr" id="fullscr">
+  <button class="fs-close" onclick="closeFull()"><i class="fas fa-times"></i></button>
+  <button class="fs-arr prev" onclick="fsNav(-1)"><i class="fas fa-chevron-right"></i></button>
+  <button class="fs-arr next" onclick="fsNav(1)"><i class="fas fa-chevron-left"></i></button>
+  <img src="" alt="" id="fsImg">
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-in">
+    <div class="footer-brand">
+      <div class="nav-logo-main" style="margin-bottom:6px"><span>waziz</span> shop</div>
+      <p>متجرك الأول للأناقة — ملابس، ساعات، حقائب بأسعار لا تُقاوم.</p>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل معنا</h4>
+      <p><i class="fas fa-phone" style="color:var(--gold)"></i> 0635208269</p>
+      <p><i class="fas fa-location-dot" style="color:var(--gold)"></i> الدار البيضاء، المغرب</p>
+    </div>
+  </div>
+  <div class="footer-bot">© 2026 waziz shop — جميع الحقوق محفوظة</div>
+</footer>
+
+<script src="shared_data.js"></script>
+<script>
+/* ══════════════════════════════════
+   STATE
+══════════════════════════════════ */
+let cart = JSON.parse(sessionStorage.getItem('wz_cart') || '[]');
+let currentProduct = null;
+let selColor = '', selSize = '';
+let imgIdx = 0, fsIdx = 0;
+let cartOpen = false, menuOpen = false;
+// (image counters handled inline in buildProduct)
+
+/* ══════════════════════════════════
+   INIT — READ id FROM URL
+══════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  updateBadge();
+
+  const id = parseInt(new URLSearchParams(window.location.search).get('id'));
+  if (!id) { showNotFound(); return; }
+
+  const p = products.find(x => x.id === id);
+  if (!p)  { showNotFound(); return; }
+
+  document.title = `waziz shop | ${p.name}`;
+  document.getElementById('bcrumbName').textContent = p.name;
+
+  currentProduct = p;
+  buildProduct(p);
+});
+
+/* ══════════════════════════════════
+   LOADER
+══════════════════════════════════ */
+function hideLoader() {
+  const l = document.getElementById('page-loader');
+  if (l && !l.classList.contains('hidden')) l.classList.add('hidden');
+  const c = document.getElementById('product-content');
+  if (c) requestAnimationFrame(() => c.classList.add('visible'));
+}
+
+function onImgLoad() {
+  loadedImgs++;
+  if (loadedImgs >= totalImgs) hideLoader();
+}
+
+function showNotFound() {
+  hideLoader();
+  document.getElementById('productLayout').innerHTML = `
+    <div class="not-found">
+      <i class="fas fa-box-open"></i>
+      <h2>المنتج غير موجود</h2>
+      <p>عذراً، لم نعثر على هذا المنتج.</p>
+      <a href="shop.html"><i class="fas fa-arrow-right"></i> العودة للمتجر</a>
+    </div>`;
+}
+
+/* ══════════════════════════════════
+   BUILD PRODUCT PAGE
+══════════════════════════════════ */
+function buildProduct(p) {
+  const disc  = Math.round((1 - +p.price / +p.originalPrice) * 100);
+  const saved = +p.originalPrice - +p.price;
+
+  /* Gallery HTML */
+  const dots   = p.images.map((_,i) => `<button class="gdot ${i===0?'active':''}" onclick="gotoImg(${i})"></button>`).join('');
+  const thumbs = p.images.map((img,i) => `
+    <button class="gthumb ${i===0?'active':''}" onclick="gotoImg(${i})">
+      <img src="${img}" alt="" loading="lazy" decoding="async">
+    </button>`).join('');
+
+  /* Colors HTML */
+  const avCols = p.colors.filter(c=>c.inStock).map(c=>c.name).join('، ');
+  const colsHTML = (p.noColors || !p.colors.length) ? '' : `
+    <div class="odiv"></div>
+    <div class="olabel">اللون <span id="colLbl"></span></div>
+    <div class="swatches">
+      ${p.colors.map(c=>`
+        <div class="swatch sw-${c.class} ${!c.inStock?'oos-sw':''}" title="${c.name}"
+          onclick="${c.inStock
+            ? `pickColor('${c.name}',this)`
+            : `showAlert('⚠️','نفذ اللون','لون ${c.name} غير متوفر. المتاح: ${avCols}')`}">
+        </div>`).join('')}
+    </div>`;
+
+  /* Sizes HTML */
+  const sizesHTML = (!p.noSizes && p.sizes.length) ? `
+    <div class="odiv"></div>
+    <div class="olabel">القياس <span id="szLbl"></span></div>
+    <div class="sizes">
+      ${p.sizes.map(s=>`<button class="szb" data-sz="${s}" onclick="pickSize('${s}',this)">${s.toUpperCase()}</button>`).join('')}
+    </div>
+    <label class="meas-toggle">
+      <input type="checkbox" id="measCb" onchange="togMeas()">
+      <span>لا أعرف قياسي — <strong>احسب قياسك</strong></span>
+    </label>
+    <div class="meas-fields" id="measFields">
+      <div>
+        <label>الطول (سم)</label>
+        <input type="number" id="hIn" placeholder="175" oninput="calcSz()">
+      </div>
+      <div>
+        <label>الوزن (كغم)</label>
+        <input type="number" id="wIn" placeholder="75" oninput="calcSz()">
+      </div>
+      <div class="meas-res" id="measRes"></div>
+    </div>` : '';
+
+  document.getElementById('productLayout').innerHTML = `
+    <div class="playout">
+
+      <!-- GALLERY -->
+      <div>
+        <div class="gallery-main">
+          <img src="${p.images[0]}" id="mainImg" alt="${p.name}"
+               fetchpriority="high" decoding="async">
+          ${p.images.length>1 ? `
+            <button class="garr prev" onclick="navImg(-1)"><i class="fas fa-chevron-right"></i></button>
+            <button class="garr next" onclick="navImg(1)"><i class="fas fa-chevron-left"></i></button>` : ''}
+          <button class="gzoom" onclick="openFull()"><i class="fas fa-expand"></i></button>
+          <div class="gdots">${dots}</div>
+        </div>
+        ${p.images.length>1 ? `<div class="gthumbs">${thumbs}</div>` : ''}
+      </div>
+
+      <!-- INFO -->
+      <div>
+        <p class="ptag"><i class="fas fa-star"></i> وصل حديثاً</p>
+        <h1 class="ptitle">${p.name}</h1>
+
+        <div class="ppricing">
+          <span class="pp-big">${p.price} <small>درهم</small></span>
+          <span class="pp-cross">${p.originalPrice} درهم</span>
+          ${disc>0 ? `<span class="pp-save">وفّر ${saved} درهم</span>` : ''}
+        </div>
+
+        <div class="deliv-strip">
+          <i class="fas fa-truck-fast"></i>
+          <span>توصيل مجاني — الدفع عند الاستلام</span>
+        </div>
+
+        <p class="pdesc">${p.description}</p>
+
+        ${colsHTML}
+        ${sizesHTML}
+
+        <div class="odiv"></div>
+
+        <!-- Trust -->
+        <div class="trust">
+          <div class="ti"><i class="fas fa-shield-halved"></i><span>شراء آمن</span></div>
+          <div class="ti"><i class="fas fa-rotate-left"></i><span>ضمان الجودة</span></div>
+          <div class="ti"><i class="fas fa-headset"></i><span>دعم 24/7</span></div>
+          <div class="ti"><i class="fas fa-truck"></i><span>توصيل سريع</span></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pactions">
+          <button class="btn-cart-p" onclick="addToCart()">
+            <i class="fas fa-bag-shopping"></i> السلة
+          </button>
+          <button class="btn-order-p" onclick="scrollOrder()">
+            <i class="fas fa-bolt"></i> اطلب الآن
+          </button>
+        </div>
+
+        <!-- ORDER FORM -->
+        <div class="ocard" id="ocard">
+          <div class="ocard-head">
+            <i class="fas fa-lock"></i>
+            <div><h3>إتمام الطلب</h3><p>ادفع عند الاستلام · توصيل مجاني</p></div>
+          </div>
+          <div class="ocard-body">
+            <div class="form-row">
+              <div class="form-field"><label>الاسم الكامل</label><input type="text" id="oName" placeholder="أحمد العلوي"></div>
+              <div class="form-field"><label>رقم الهاتف</label><input type="tel" id="oPhone" placeholder="06XXXXXXXX"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-field"><label>المدينة</label><input type="text" id="oCity" placeholder="الدار البيضاء"></div>
+              <div class="form-field">
+                <label>الكمية</label>
+                <div class="qty-wrap">
+                  <button class="qty-btn" onclick="chgQty(-1)">−</button>
+                  <input type="number" id="oQty" value="1" min="1">
+                  <button class="qty-btn" onclick="chgQty(1)">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-field"><label>العنوان الكامل</label><input type="text" id="oAddr" placeholder="الحي، الشارع، رقم المنزل..."></div>
+            <button class="submit-btn" id="singleBtn" onclick="submitSingle()">
+              <i class="fas fa-check-circle"></i> تأكيد الطلب — ${p.price} درهم
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>`;
+
+  /* ══════════════════════════════════════════
+     IMAGE LOADING — انتظر على الأقل صورتين
+     قبل إخفاء الـ Spinner وفتح الصفحة
+  ══════════════════════════════════════════ */
+  const allImgs  = document.getElementById('productLayout').querySelectorAll('img');
+  const imgArray = Array.from(allImgs);
+
+  if (imgArray.length === 0) { hideLoader(); return; }
+
+  // كم صورة يجب تحميلها قبل الفتح؟
+  // min(2, عدد الصور الكلي) — أي لو المنتج صورة واحدة فقط تكفي
+  const REQUIRED = Math.min(2, imgArray.length);
+  let readyCount = 0;
+  let pageOpened = false;
+
+  function onOneLoaded(img) {
+    img.classList.add('il');
+    readyCount++;
+    // عند وصول العدد المطلوب → افتح الصفحة
+    if (!pageOpened && readyCount >= REQUIRED) {
+      pageOpened = true;
+      hideLoader();
+    }
+  }
+
+  imgArray.forEach(img => {
+    if (img.complete && img.naturalWidth > 0) {
+      onOneLoaded(img);
+    } else {
+      img.addEventListener('load',  () => onOneLoaded(img), { once: true });
+      img.addEventListener('error', () => onOneLoaded(img), { once: true }); // خطأ = نعدّه جاهزاً
+    }
+  });
+
+  // Safety net: لو الاتصال بطيء جداً → افتح بعد 6 ثواني على أبعد تقدير
+  setTimeout(() => { if (!pageOpened) { pageOpened = true; hideLoader(); } }, 6000);
+}
+
+
+/* ══════════════════════════════════
+   GALLERY
+══════════════════════════════════ */
+function gotoImg(idx) {
+  if (!currentProduct) return;
+  imgIdx = idx;
+  const img = document.getElementById('mainImg');
+  if (!img) return;
+  img.classList.add('fading');
+  img.classList.remove('il');
+  setTimeout(() => {
+    img.src = currentProduct.images[idx];
+    const done = () => { img.classList.remove('fading'); img.classList.add('il'); };
+    if (img.complete && img.naturalWidth > 0) { done(); return; }
+    img.onload  = done;
+    img.onerror = () => img.classList.remove('fading');
+  }, 150);
+  document.querySelectorAll('.gthumb').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.gdot').forEach((d,i)   => d.classList.toggle('active', i===idx));
+}
+function navImg(dir) {
+  if (!currentProduct) return;
+  gotoImg((imgIdx + dir + currentProduct.images.length) % currentProduct.images.length);
+}
+function openFull() {
+  if (!currentProduct) return;
+  fsIdx = imgIdx;
+  document.getElementById('fsImg').src = currentProduct.images[fsIdx];
+  document.getElementById('fullscr').classList.add('open');
+}
+function closeFull() { document.getElementById('fullscr').classList.remove('open'); }
+function fsNav(dir) {
+  if (!currentProduct) return;
+  fsIdx = (fsIdx + dir + currentProduct.images.length) % currentProduct.images.length;
+  document.getElementById('fsImg').src = currentProduct.images[fsIdx];
+}
+
+
+/* ══════════════════════════════════
+   COLOR & SIZE
+══════════════════════════════════ */
+function pickColor(name, el) {
+  selColor = name;
+  document.querySelectorAll('.swatch').forEach(s => s.classList.remove('sel'));
+  el.classList.add('sel');
+  const lb = document.getElementById('colLbl'); if(lb) lb.textContent = name;
+}
+function pickSize(sz, btn) {
+  selSize = sz;
+  document.querySelectorAll('.szb').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  const lb = document.getElementById('szLbl'); if(lb) lb.textContent = sz.toUpperCase();
+}
+function togMeas() {
+  const cb = document.getElementById('measCb');
+  const f  = document.getElementById('measFields');
+  if (!f) return;
+  f.classList.toggle('show', cb.checked);
+  if (!cb.checked) {
+    document.querySelectorAll('.szb').forEach(b => b.disabled = false);
+    selSize = '';
+  } else {
+    document.querySelectorAll('.szb').forEach(b => { b.classList.remove('sel'); b.disabled = true; });
+    selSize = '';
+    const lb = document.getElementById('szLbl'); if(lb) lb.textContent = '';
+  }
+}
+function calcSz() {
+  const h   = parseInt(document.getElementById('hIn')?.value);
+  const w   = parseInt(document.getElementById('wIn')?.value);
+  const res = document.getElementById('measRes');
+  if (!h||!w||!res) return;
+  const sz = getSz(h, w);
+  if (sz) {
+    selSize = sz;
+    res.textContent = `✓ قياسك المقترح: ${sz.toUpperCase()}`;
+    res.classList.add('show');
+    const lb = document.getElementById('szLbl'); if(lb) lb.textContent = sz.toUpperCase();
+  }
+}
+function getSz(h, w) {
+  const ch = [{n:"M",hA:165,hB:175,wA:62,wB:70},{n:"L",hA:170,hB:180,wA:70,wB:78},{n:"XL",hA:175,hB:185,wA:78,wB:86},{n:"XXL",hA:180,hB:190,wA:86,wB:95}];
+  let rec = null;
+  for (const s of ch) { if(h>=s.hA&&h<=s.hB&&w>=s.wA&&w<=s.wB){rec=s.n;break;} }
+  if (!rec) { let mn=Infinity; ch.forEach(s=>{const d=Math.abs(h-(s.hA+s.hB)/2)+Math.abs(w-(s.wA+s.wB)/2);if(d<mn){mn=d;rec=s.n;}}); }
+  if (!currentProduct?.sizes?.length) return rec;
+  const av = currentProduct.sizes.map(s=>s.toUpperCase());
+  if (av.includes(rec)) return rec;
+  const ord=["XS","S","M","L","XL","XXL","XXXL"]; const ri=ord.indexOf(rec);
+  let bm=av[0],bd=Infinity;
+  av.forEach(s=>{const idx=ord.indexOf(s.toUpperCase());if(idx!==-1){const d=Math.abs(ri-idx);if(d<bd){bd=d;bm=s;}}});
+  return bm;
+}
+function chgQty(d) { const i=document.getElementById('oQty'); if(i) i.value=Math.max(1,parseInt(i.value||1)+d); }
+function scrollOrder() { if(!valSel()) return; document.getElementById('ocard')?.scrollIntoView({behavior:'smooth',block:'start'}); }
+
+
+/* ══════════════════════════════════
+   VALIDATION
+══════════════════════════════════ */
+function valSel() {
+  if (!currentProduct.noColors && currentProduct.colors?.length && !selColor) {
+    showToast('يرجى اختيار اللون','err'); return false;
+  }
+  if (!currentProduct.noSizes && currentProduct.sizes?.length) {
+    const cb = document.getElementById('measCb');
+    if (cb?.checked) {
+      const h=document.getElementById('hIn')?.value, w=document.getElementById('wIn')?.value;
+      if(!h||!w){ showToast('يرجى إدخال الطول والوزن','err'); return false; }
+    } else if (!selSize) { showToast('يرجى اختيار القياس','err'); return false; }
+  } else { selSize = 'قياس واحد'; }
+  return true;
+}
+function valPhone(p) { return /^(06|07)\d{8}$/.test(p.replace(/\s/g,'')); }
+
+
+/* ══════════════════════════════════
+   CART
+══════════════════════════════════ */
+function saveCart() { sessionStorage.setItem('wz_cart', JSON.stringify(cart)); }
+function updateBadge() { document.getElementById('cartBadge').textContent = cart.length; }
+
+function addToCart() {
+  if (!valSel()) return;
+  const p = currentProduct;
+  cart.push({ id:p.id, name:p.name, price:p.price, color:selColor, size:selSize, img:p.images[0] });
+  saveCart(); updateBadge();
+  showToast('✓ تمت الإضافة إلى السلة','ok');
+  const b = document.getElementById('cartBadge'); b.classList.add('bump'); setTimeout(()=>b.classList.remove('bump'),300);
+}
+function toggleCart() {
+  cartOpen = !cartOpen;
+  document.getElementById('cartDrawer').classList.toggle('open',cartOpen);
+  document.getElementById('cartOverlay').classList.toggle('open',cartOpen);
+  if (cartOpen) renderCart();
+}
+function renderCart() {
+  const body=document.getElementById('cartBody'), foot=document.getElementById('cartFoot');
+  if (!cart.length) { body.innerHTML=`<div class="cart-empty"><i class="fas fa-bag-shopping"></i><p>سلتك فارغة</p></div>`; foot.style.display='none'; return; }
+  let html='', total=0;
+  cart.forEach((item,idx)=>{
+    total+=parseInt(item.price);
+    html+=`<div class="cart-line"><div class="cart-line-img"><img src="${item.img}" alt="" loading="lazy"></div><div class="cart-line-info"><div class="cart-line-name">${item.name}</div><div class="cart-line-meta">${item.color?item.color+' · ':''}${item.size}</div></div><span class="cart-line-price">${item.price} د</span><button class="cart-rm" onclick="rmCart(${idx})"><i class="fas fa-times"></i></button></div>`;
+  });
+  body.innerHTML=html; document.getElementById('cartTotal').textContent=total+' درهم'; foot.style.display='block';
+}
+function rmCart(idx) { cart.splice(idx,1); saveCart(); updateBadge(); renderCart(); }
+
+
+/* ══════════════════════════════════
+   CHECKOUT MODAL
+══════════════════════════════════ */
+function openCheckout() {
+  if(!cart.length){showToast('السلة فارغة','err');return;}
+  let total=0, rows='';
+  cart.forEach(i=>{total+=parseInt(i.price);rows+=`<div class="co-row"><span>${i.name.slice(0,26)}…</span><span>${i.price} د</span></div>`;});
+  document.getElementById('checkoutBody').innerHTML=`
+    <div class="co-sum">${rows}<div class="co-total"><span>المجموع</span><span>${total} درهم</span></div></div>
+    <div class="form-row">
+      <div class="form-field"><label>الاسم</label><input type="text" id="cName" placeholder="أحمد"></div>
+      <div class="form-field"><label>الهاتف</label><input type="tel" id="cPhone" placeholder="06XXXXXXXX"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label>المدينة</label><input type="text" id="cCity" placeholder="الدار البيضاء"></div>
+      <div class="form-field"><label>المجموع</label><input value="${total} درهم" disabled style="font-weight:800;color:var(--gold);background:var(--gold-pale);border-color:transparent"></div>
+    </div>
+    <div class="form-field"><label>العنوان</label><input type="text" id="cAddr" placeholder="الشارع، الحي..."></div>
+    <button class="submit-btn" id="cartSubmitBtn" onclick="submitCart()"><i class="fas fa-check-circle"></i> تأكيد الطلب</button>`;
+  document.getElementById('checkoutModal').classList.add('open');
+}
+function closeCheckout(){document.getElementById('checkoutModal').classList.remove('open');}
+
+
+/* ══════════════════════════════════
+   TELEGRAM
+══════════════════════════════════ */
+const TG_TOKEN='8387473741:AAGHOI-oS7HXYFPSKfBmzotZ2PGCGNxhJiU', TG_CHAT='6781508116';
+async function tg(msg) {
+  const r=await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TG_CHAT,text:msg})});
+  return r.ok;
+}
+
+async function submitSingle() {
+  const name=document.getElementById('oName')?.value.trim(), phone=document.getElementById('oPhone')?.value.trim(), city=document.getElementById('oCity')?.value.trim(), addr=document.getElementById('oAddr')?.value.trim(), qty=document.getElementById('oQty')?.value||1;
+  if(!name||!phone||!city||!addr){showToast('يرجى ملء جميع الحقول','err');return;}
+  if(!valPhone(phone)){showToast('رقم الهاتف غير صحيح — مثال: 0612345678','err');document.getElementById('oPhone').classList.add('err');return;}
+  document.getElementById('oPhone').classList.remove('err');
+  if(!currentProduct.noColors&&currentProduct.colors?.length&&!selColor){showToast('يرجى اختيار اللون','err');return;}
+  if(!selSize&&!currentProduct.noSizes&&currentProduct.sizes?.length){showToast('يرجى اختيار القياس','err');return;}
+  const p=currentProduct;
+  const msg=`🛍️ طلب جديد\n👤 ${name}\n📱 ${phone}\n🏙️ ${city}\n📍 ${addr}\n\n📦 ${p.name}\n💰 ${p.price} درهم\n📊 الكمية: ${qty}\n🎨 اللون: ${selColor||'غير محدد'}\n📐 ${p.noSizes?'بدون قياس':selSize}`;
+  const btn=document.getElementById('singleBtn');
+  if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';}
+  try {
+    if(await tg(msg)){
+      document.getElementById('ocard').innerHTML=`<div class="success-box"><div class="suc-ico"><i class="fas fa-check"></i></div><h3>تم استلام طلبك! 🎉</h3><p>شكراً <strong>${name}</strong>، سنتصل بك قريباً على <strong>${phone}</strong>.</p><a href="shop.html" class="suc-back"><i class="fas fa-arrow-right"></i> متابعة التسوق</a></div>`;
+    } else { showToast('حدث خطأ','err'); if(btn){btn.disabled=false;btn.innerHTML=`<i class="fas fa-check-circle"></i> تأكيد الطلب — ${p.price} درهم`;} }
+  } catch { showToast('خطأ في الاتصال','err'); if(btn){btn.disabled=false;btn.innerHTML=`<i class="fas fa-check-circle"></i> تأكيد الطلب — ${p.price} درهم`;} }
+}
+
+async function submitCart() {
+  const name=document.getElementById('cName')?.value.trim(), phone=document.getElementById('cPhone')?.value.trim(), city=document.getElementById('cCity')?.value.trim(), addr=document.getElementById('cAddr')?.value.trim();
+  if(!name||!phone||!city||!addr){showToast('يرجى ملء جميع الحقول','err');return;}
+  if(!valPhone(phone)){showToast('رقم الهاتف غير صحيح','err');document.getElementById('cPhone').classList.add('err');return;}
+  document.getElementById('cPhone').classList.remove('err');
+  let msg=`🛒 طلب من السلة\n👤 ${name}\n📱 ${phone}\n🏙️ ${city}\n📍 ${addr}\n\n📋 المنتجات:\n`,total=0;
+  cart.forEach((i,idx)=>{total+=parseInt(i.price);msg+=`${idx+1}. ${i.name} · ${i.color||''} · ${i.size} · ${i.price} درهم\n`;});
+  msg+=`\n💰 المجموع: ${total} درهم`;
+  const btn=document.getElementById('cartSubmitBtn');
+  if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';}
+  try {
+    if(await tg(msg)){
+      document.getElementById('checkoutBody').innerHTML=`<div class="success-box"><div class="suc-ico"><i class="fas fa-check"></i></div><h3>تم استلام طلبك! 🎉</h3><p>شكراً <strong>${name}</strong>.</p><button class="suc-back" onclick="closeCheckout()"><i class="fas fa-arrow-right"></i> متابعة التسوق</button></div>`;
+      cart=[];saveCart();updateBadge();
+    } else { showToast('حدث خطأ','err'); if(btn){btn.disabled=false;btn.innerHTML='<i class="fas fa-check-circle"></i> تأكيد الطلب';} }
+  } catch { showToast('خطأ في الاتصال','err'); if(btn){btn.disabled=false;btn.innerHTML='<i class="fas fa-check-circle"></i> تأكيد الطلب';} }
+}
+
+
+/* ══════════════════════════════════
+   MENU & HELPERS
+══════════════════════════════════ */
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById('navDrawer').classList.toggle('open',menuOpen);document.getElementById('navOverlay').classList.toggle('open',menuOpen);document.getElementById('menuBtn').classList.toggle('open',menuOpen);}
+function closeMenu(){menuOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('navOverlay').classList.remove('open');document.getElementById('menuBtn').classList.remove('open');}
+let _tt;
+function showToast(msg,type=''){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show'+(type?' '+type:'');clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),2600);}
+function showAlert(ico,ttl,msg){document.getElementById('alertIco').textContent=ico;document.getElementById('alertTtl').textContent=ttl;document.getElementById('alertMsg').textContent=msg;document.getElementById('alertOv').classList.add('open');}
+function closeAlert(){document.getElementById('alertOv').classList.remove('open');}
+
+/* Touch swipe */
+let _tx=0;
+document.addEventListener('touchstart',e=>{_tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const d=_tx-e.changedTouches[0].clientX;if(Math.abs(d)>44&&currentProduct) d>0?navImg(1):navImg(-1);},{passive:true});
+
+/* Keyboard */
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('fullscr').classList.contains('open')){
+    if(e.key==='ArrowLeft')fsNav(1); if(e.key==='ArrowRight')fsNav(-1); if(e.key==='Escape')closeFull(); return;
+  }
+  if(e.key==='Escape'){closeMenu();closeAlert();closeCheckout();}
+});
+</script>
+</body>
+</html>
