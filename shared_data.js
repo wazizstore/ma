@@ -27,7 +27,7 @@ const products = [
   {
     id: 17,
     name: "Ensemble ",
-    price: "219",
+    price: "199",
     originalPrice: "299",
     description: "طقم أنيق يتكون من قميص وبنطلون، مناسب للمناسبات والاستخدام اليومي. خامات فاخرة وتفصيل محترف.",
     cat: "clothes",
