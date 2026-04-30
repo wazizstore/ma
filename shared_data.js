@@ -49,7 +49,7 @@ const products = [
   {
     id: 13,
     name: "Ensemble class",
-    price: "199",
+    price: "219",
     originalPrice: "259",
     description: "طقم فاخر من قميص وبنطلون، تصميم عصري، مناسب للسهرات والمناسبات الخاصة.",
     cat: "clothes",
