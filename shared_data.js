@@ -54,9 +54,9 @@ const products = [
     description: "طقم فاخر من قميص وبنطلون، تصميم عصري، مناسب للسهرات والمناسبات الخاصة.",
     cat: "clothes",
     images: [
-      "1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (2).webp",
-      "1754474745_WhatsApp Image 2025-08-05 at 23.47.53.webp",
-      "1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (1).webp"
+      "Untitled design (72).png",
+      "Untitled design (70).png",
+      "Untitled design (71).png"
     ],
     colors: [
       {name:"أسود", class:"black", inStock: true},
