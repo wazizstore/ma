@@ -10,7 +10,7 @@
 const products = [
   {
     id: 12,
-    name: "Ensemble Nike Sport",
+    name: "Ensemble Nike ",
     price: "219",
     originalPrice: "259",
     description: "طقم رياضي عصري، خامة ليكرا عالية الجودة، مناسب للرياضة والاستخدام اليومي. يتميز بالمرونة والراحة.",
@@ -26,9 +26,9 @@ const products = [
  
   {
     id: 17,
-    name: "Ensemble Rido Classique",
+    name: "Ensemble",
     price: "199",
-    originalPrice: "299",
+    originalPrice: "229",
     description: "طقم أنيق يتكون من قميص وبنطلون، مناسب للمناسبات والاستخدام اليومي. خامات فاخرة وتفصيل محترف.",
     cat: "clothes",
     images: [
@@ -48,15 +48,15 @@ const products = [
   
   {
     id: 13,
-    name: "Ensemble Rido Premium",
+    name: "Ensemble class",
     price: "199",
     originalPrice: "259",
     description: "طقم فاخر من قميص وبنطلون، تصميم عصري، مناسب للسهرات والمناسبات الخاصة.",
     cat: "clothes",
     images: [
-      "1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (2).webp",
-      "1754474745_WhatsApp Image 2025-08-05 at 23.47.53.webp",
-      "1754474745_WhatsApp Image 2025-08-05 at 23.47.53 (1).webp"
+      "Untitled design (72).png",
+      "Untitled design (70).png",
+      "Untitled design (71).png"
     ],
     colors: [
       {name:"أسود", class:"black", inStock: true},
@@ -69,7 +69,7 @@ const products = [
  
   {
     id: 10,
-    name: "Ensemble Hiver Luxe",
+    name: "Ensemble Luxe",
     price: "219",
     originalPrice: "249",
     description: "طقم شتوي دافئ، مناسب لأيام البرد. خامة ثقيلة وعالية الجودة. تصميم أنيق وعصري.",
@@ -85,25 +85,4 @@ const products = [
     sizes: ["m","l","xl"],
     inStock: true
   },
- 
-  {
-    id: 9,
-    name: "Ensemble Rédou Edition",
-    price: "229",
-    originalPrice: "299",
-    description: "طقم فاخر مع سلسلة، جيوب متعددة، تصميم عصري. مناسب للشباب الباحثين عن الأناقة والراحة.",
-    cat: "clothes",
-    images: [
-      "1760905019_IMG_0375.webp",
-      "Untitled design (29).webp",
-      "Untitled design (30).webp"
-    ],
-    colors: [
-      {name:"أسود", class:"black", inStock: true},
-      {name:"بني فاتح", class:"marron-clair", inStock: true},
-      {name:"أبيض", class:"white", inStock: true}
-    ],
-    sizes: ["m","l","xl","xxl"],
-    inStock: true
-  }
 ];
