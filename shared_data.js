@@ -21,7 +21,7 @@ const products = [
       {name:"أبيض", class:"white", inStock: true}
     ],
     sizes: ["m","l","xl"],
-    inStock: true
+    inStock: false
   },
  
   {
