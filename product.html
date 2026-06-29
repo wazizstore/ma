@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المنتج | WAZIZ SHOP</title>
+  <title>المتجر | WAZIZ SHOP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
@@ -12,10 +12,9 @@
 </head>
 <body>
 
-  <!-- ── Header ── -->
   <header class="site-header">
     <div class="nav-inner">
-      <button class="icon-btn" onclick="history.back()" aria-label="رجوع">
+      <button class="icon-btn" onclick="window.location.href='index.html'" aria-label="الرئيسية">
         <i class="fas fa-arrow-right"></i>
       </button>
       <a href="index.html" class="nav-logo">WAZIZ <span>SHOP</span></a>
@@ -26,17 +25,13 @@
     </div>
   </header>
 
-  <!-- ── Product Content ── -->
-  <div class="product-page" id="productPage">
-    <div style="text-align:center; padding:60px 20px; color:var(--text-muted);">
-      <i class="fas fa-spinner fa-spin" style="font-size:28px;"></i>
-    </div>
-  </div>
+  <section class="section">
+    <h2 class="section-title">جميع المنتجات</h2>
+    <div class="grid" id="shopGrid"></div>
+  </section>
 
-  <!-- ── Toast ── -->
   <div id="toast"></div>
 
-  <!-- ── Cart Drawer ── -->
   <div class="drawer-overlay" id="cartOverlay" onclick="toggleCart()"></div>
   <div class="drawer" id="cartDrawer">
     <div class="drawer-header">
@@ -56,7 +51,6 @@
     </div>
   </div>
 
-  <!-- ── Checkout Drawer ── -->
   <div class="drawer-overlay" id="coOverlay" onclick="closeCheckout()"></div>
   <div class="co-drawer" id="coDrawer">
     <div class="drawer-header">
@@ -64,38 +58,34 @@
       <button class="icon-btn" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
     </div>
     <div class="drawer-body" id="coBody">
-      <div id="coForm">
-        <div class="form-field"><label>الاسم الكامل</label><input type="text" id="cName" placeholder="اسمك الكامل"></div>
-        <div class="form-field"><label>رقم الهاتف</label><input type="tel" id="cPhone" placeholder="06XXXXXXXX"></div>
-        <div class="form-field"><label>المدينة</label><input type="text" id="cCity" placeholder="مدينتك"></div>
-        <div class="form-field"><label>العنوان التفصيلي</label><textarea id="cAddr" placeholder="الحي، الشارع..."></textarea></div>
-        <button class="submit-btn" id="coSubmitBtn" onclick="submitOrder()">
-          <i class="fas fa-paper-plane"></i>
-          تأكيد الطلب الآن
-        </button>
+      <div class="order-section" style="margin-top:0; border:none; background:transparent;">
+        <div class="order-section-body" style="padding:0;">
+          <div class="form-field"><label>الاسم الكامل</label><input type="text" id="cName" placeholder="اسمك الكامل"></div>
+          <div class="form-field"><label>رقم الهاتف</label><input type="tel" id="cPhone" placeholder="06XXXXXXXX"></div>
+          <div class="form-field"><label>المدينة</label><input type="text" id="cCity" placeholder="مدينتك"></div>
+          <div class="form-field"><label>العنوان التفصيلي</label><textarea id="cAddr" placeholder="الحي، الشارع..."></textarea></div>
+          <button class="submit-btn" id="cartSubmitBtn" onclick="submitCart()">
+            <i class="fas fa-paper-plane"></i>
+            تأكيد الطلب الآن
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ── WhatsApp ── -->
-  <a href="https://wa.me/212604971625" class="whatsapp-float" target="_blank" aria-label="واتساب">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
   <script src="shared_data.js"></script>
   <script>
-    // ── Google Sheets Order System ──────────────────────────────
+    // ═══════════════════════════════════════════════════════════════
+    //  GOOGLE SHEETS - الرابط الصحيح لتطبيق Google Apps Script
+    // ═══════════════════════════════════════════════════════════════
     const ORDER_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz7l58sKruc0gM3-cpufK5m6b9BqCOkHcC_UX0N4_Fx1P8wa6uaqkt0eS3e9KBg6RwRbQ/exec';
 
-    // ── Cart ──────────────────────────────────────────────────────
     let cart = JSON.parse(sessionStorage.getItem('wz_cart') || '[]');
 
-    // Current product & selections
-    let currentProduct = null;
-    let selectedColor   = null;
-    let selectedSize    = null;
+    function updateBadge() {
+      document.getElementById('cartBadge').textContent = cart.length;
+    }
 
-    // ─── Toast ─────────────────────────────────────────────────
     function showToast(msg, type = '') {
       const t = document.getElementById('toast');
       t.textContent = msg;
@@ -104,12 +94,28 @@
       setTimeout(() => t.style.display = 'none', 3000);
     }
 
-    // ─── Badge ─────────────────────────────────────────────────
-    function updateBadge() {
-      document.getElementById('cartBadge').textContent = cart.length;
+    function renderShop() {
+      const grid = document.getElementById('shopGrid');
+      grid.innerHTML = products.map((p, i) => {
+        const disc = Math.round((1 - p.price / p.originalPrice) * 100);
+        return `
+          <div class="pcard reveal" style="animation-delay:${i * 0.07}s" onclick="window.location.href='product.html?id=${p.id}'">
+            <div class="pcard-img">
+              <img src="${p.images[0]}" alt="${p.name}" loading="lazy">
+              ${disc > 0 ? `<span class="pcard-badge">-${disc}%</span>` : ''}
+            </div>
+            <div class="pcard-body">
+              <div class="pcard-name">${p.name}</div>
+              <div class="pcard-price">
+                <span class="price-now">${p.price} درهم</span>
+                <span class="price-old">${p.originalPrice} درهم</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
-    // ─── Cart Drawer ───────────────────────────────────────────
     function toggleCart() {
       document.getElementById('cartDrawer').classList.toggle('open');
       document.getElementById('cartOverlay').classList.toggle('open');
@@ -150,7 +156,6 @@
       renderCart();
     }
 
-    // ─── Checkout Drawer ───────────────────────────────────────
     function openCheckout() {
       document.getElementById('coDrawer').classList.add('open');
       document.getElementById('coOverlay').classList.add('open');
@@ -161,69 +166,10 @@
       document.getElementById('coOverlay').classList.remove('open');
     }
 
-    // ─── Variant Selection ─────────────────────────────────────
-    function selectColor(colorName, el) {
-      selectedColor = colorName;
-      document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-      el.classList.add('active');
-    }
-
-    function selectSize(size, el) {
-      selectedSize = size;
-      document.querySelectorAll('.chip.size-chip').forEach(c => c.classList.remove('active'));
-      el.classList.add('active');
-    }
-
-    // ─── Validate Selections ───────────────────────────────────
-    function validateSelections() {
-      const p = currentProduct;
-      const hasColors = p.colors && p.colors.length > 0;
-      const hasSizes  = p.sizes  && p.sizes.length  > 0;
-      if (hasColors && !selectedColor) {
-        showToast('الرجاء اختيار اللون', 'error');
-        return false;
-      }
-      if (hasSizes && !selectedSize) {
-        showToast('الرجاء اختيار المقاس', 'error');
-        return false;
-      }
-      return true;
-    }
-
-    // ─── Add to Cart ───────────────────────────────────────────
-    function addToCart() {
-      if (!validateSelections()) return;
-      const p = currentProduct;
-      cart.push({
-        id:    p.id,
-        name:  p.name,
-        price: p.price,
-        img:   p.images[0],
-        color: selectedColor || '',
-        size:  selectedSize  || ''
-      });
-      sessionStorage.setItem('wz_cart', JSON.stringify(cart));
-      updateBadge();
-      showToast('تمت الإضافة إلى السلة ✓', 'success');
-    }
-
-    // ─── Buy Now ───────────────────────────────────────────────
-    function buyNow() {
-      if (!validateSelections()) return;
-      const p = currentProduct;
-      window._buyNowItem = {
-        id:    p.id,
-        name:  p.name,
-        price: p.price,
-        img:   p.images[0],
-        color: selectedColor || '',
-        size:  selectedSize  || ''
-      };
-      openCheckout();
-    }
-
-    // ─── Submit Order to Google Sheets ────────────────────────
-    async function submitOrder() {
+    // ═══════════════════════════════════════════════════════════════
+    //  إرسال الطلب إلى Google Sheets - لا تيليجرام
+    // ═══════════════════════════════════════════════════════════════
+    async function submitCart() {
       const name  = document.getElementById('cName').value.trim();
       const phone = document.getElementById('cPhone').value.trim();
       const city  = document.getElementById('cCity').value.trim();
@@ -234,18 +180,17 @@
         return;
       }
 
-      // Determine items: buy-now single OR full cart
-      let items = window._buyNowItem ? [window._buyNowItem] : cart;
-      if (!items.length) {
+      if (!cart.length) {
         showToast('السلة فارغة', 'error');
         return;
       }
 
-      const btn = document.getElementById('coSubmitBtn');
+      const btn = document.getElementById('cartSubmitBtn');
       btn.disabled = true;
       btn.innerHTML = 'جاري الإرسال... <span class="spinner"></span>';
 
       try {
+        // ✅ هنا يتم إرسال الطلب إلى Google Sheets وليس تيليجرام
         const response = await fetch(ORDER_ENDPOINT, {
           method: 'POST',
           headers: {
@@ -256,7 +201,7 @@
             phone: phone,
             city: city,
             address: addr,
-            items: items.map(item => ({
+            items: cart.map(item => ({
               name: item.name || 'Product',
               color: item.color || '',
               size: item.size || '',
@@ -268,178 +213,32 @@
         const result = await response.json();
 
         if (result.status === 'success') {
-          // Show success message
           document.getElementById('coBody').innerHTML = `
             <div class="success-box">
               <div class="suc-ico"><i class="fas fa-check-circle"></i></div>
-              <h3>تم استلام طلبك بنجاح!</h3>
+              <h3>✅ تم استلام طلبك بنجاح!</h3>
               <p>شكراً ${name}، سنتصل بك قريباً لتأكيد طلبك.</p>
-              ${result.orderId ? `<p style="font-size:12px;color:var(--text-muted);margin-top:8px;">رقم الطلب: ${result.orderId}</p>` : ''}
+              ${result.orderId ? `<p style="font-size:12px;color:var(--text-muted);margin-top:8px;">📋 رقم الطلب: ${result.orderId}</p>` : ''}
             </div>
           `;
           
-          // Clear cart if it was a cart order
-          if (!window._buyNowItem) {
-            cart = [];
-            sessionStorage.setItem('wz_cart', JSON.stringify(cart));
-            updateBadge();
-          }
-          window._buyNowItem = null;
+          cart = [];
+          sessionStorage.setItem('wz_cart', JSON.stringify(cart));
+          updateBadge();
         } else {
           throw new Error(result.message || 'فشل إرسال الطلب');
         }
       } catch (error) {
-        console.error('Order submission error:', error);
-        showToast('حدث خطأ، حاول مرة أخرى: ' + error.message, 'error');
+        console.error('❌ خطأ في إرسال الطلب:', error);
+        showToast('❌ حدث خطأ، حاول مرة أخرى: ' + error.message, 'error');
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> تأكيد الطلب الآن';
       }
     }
 
-    // ─── Gallery ───────────────────────────────────────────────
-    function switchImage(src, thumbEl) {
-      const main = document.getElementById('mainImg');
-      main.style.opacity = '0';
-      setTimeout(() => {
-        main.src = src;
-        main.style.opacity = '1';
-      }, 150);
-      document.querySelectorAll('.thumb-img').forEach(t => t.classList.remove('active'));
-      thumbEl.classList.add('active');
-    }
-
-    // ─── Render Product Page ────────────────────────────────────
-    function renderProduct() {
-      const params = new URLSearchParams(window.location.search);
-      const id = parseInt(params.get('id'));
-      const p  = products.find(x => x.id === id);
-
-      if (!p) {
-        document.getElementById('productPage').innerHTML = `
-          <div style="text-align:center;padding:80px 20px;color:var(--text-muted);">
-            <i class="fas fa-exclamation-circle" style="font-size:40px;margin-bottom:16px;display:block;"></i>
-            المنتج غير موجود
-            <br><br>
-            <button class="btn-primary" onclick="window.location.href='shop.html'" style="display:inline-flex;">
-              العودة للمتجر
-            </button>
-          </div>
-        `;
-        return;
-      }
-
-      currentProduct = p;
-      document.title = `${p.name} | WAZIZ SHOP`;
-
-      // Helpers
-      const hasColors = p.colors && p.colors.length > 0;
-      const hasSizes  = p.sizes  && p.sizes.length  > 0;
-      const disc = Math.round((1 - p.price / p.originalPrice) * 100);
-
-      // ── Gallery HTML ──────────────────────────────────────
-      const galleryHtml = `
-        <div class="product-gallery">
-          <div class="main-img-wrap">
-            <img id="mainImg" class="main-img" src="${p.images[0]}" alt="${p.name}">
-          </div>
-          ${p.images.length > 1 ? `
-            <div class="thumb-grid">
-              ${p.images.map((img, i) => `
-                <img
-                  class="thumb-img ${i === 0 ? 'active' : ''}"
-                  src="${img}"
-                  alt="${p.name} ${i + 1}"
-                  loading="lazy"
-                  onclick="switchImage('${img}', this)"
-                >
-              `).join('')}
-            </div>
-          ` : ''}
-        </div>
-      `;
-
-      // ── Discount badge ────────────────────────────────────
-      const discountHtml = disc > 0 ? `<span class="discount-tag">-${disc}% تخفيض</span>` : '';
-
-      // ── Colors (only if product has colors) ───────────────
-      const colorsHtml = hasColors ? `
-        <div class="option-group">
-          <span class="option-label"><i class="fas fa-palette"></i> اللون</span>
-          <div class="color-swatch-group">
-            ${p.colors.map(c => `
-              <div
-                class="color-swatch ${c.class}${!c.inStock ? ' out-of-stock' : ''}"
-                title="${c.name}${!c.inStock ? ' (غير متوفر)' : ''}"
-                onclick="${c.inStock ? `selectColor('${c.name}', this)` : ''}"
-              >
-                <span class="color-name-tooltip">${c.name}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      ` : '';
-
-      // ── Sizes (only if product has sizes) ─────────────────
-      const sizesHtml = hasSizes ? `
-        <div class="option-group">
-          <span class="option-label"><i class="fas fa-ruler"></i> المقاس</span>
-          <div class="chips">
-            ${p.sizes.map(s => `
-              <button class="chip size-chip" onclick="selectSize('${s}', this)">${s}</button>
-            `).join('')}
-          </div>
-          ${p.showSizeGuide ? `
-            <div class="size-hint">
-              <i class="fas fa-info-circle"></i>
-              <span>M مناسب 65–75كغ · L مناسب 75–85كغ · XL مناسب 85–95كغ</span>
-            </div>
-          ` : ''}
-        </div>
-      ` : '';
-
-      // ── CTA buttons ───────────────────────────────────────
-      const ctaHtml = `
-        <div class="cta-group">
-          <button class="btn-buy-now" onclick="buyNow()">
-            <i class="fas fa-bolt"></i>
-            اطلب الآن
-          </button>
-          <button class="btn-add-cart" onclick="addToCart()">
-            <i class="fas fa-shopping-bag"></i>
-            أضف إلى السلة
-          </button>
-        </div>
-      `;
-
-      // ── Info block ────────────────────────────────────────
-      const infoHtml = `
-        <div class="product-info">
-          <h1 class="product-name">${p.name}</h1>
-          <div class="product-prices">
-            <span class="product-price-now">${p.price} درهم</span>
-            ${disc > 0 ? `<span class="product-price-old">${p.originalPrice} درهم</span>` : ''}
-            ${discountHtml}
-          </div>
-          <p class="product-desc">${p.description}</p>
-
-          ${colorsHtml}
-          ${sizesHtml}
-          ${ctaHtml}
-        </div>
-      `;
-
-      // ── Assemble ──────────────────────────────────────────
-      document.getElementById('productPage').innerHTML = `
-        <div class="product-layout">
-          ${galleryHtml}
-          ${infoHtml}
-        </div>
-      `;
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
       updateBadge();
-      renderProduct();
+      renderShop();
     });
   </script>
 </body>
